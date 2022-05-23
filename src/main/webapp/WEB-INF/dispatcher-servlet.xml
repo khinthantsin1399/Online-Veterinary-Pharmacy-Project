@@ -38,6 +38,7 @@
         <property name="definitions">
             <list>
                 <value>/WEB-INF/layouts/layout.xml</value>
+                <value>/WEB-INF/layouts/viewUser.xml</value>
             </list>
         </property>
     </bean>
@@ -114,6 +115,10 @@
         class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!-- setting maximum upload size -->
         <property name="maxUploadSize" value="2000000" />
+    </bean>
+
+    <bean id="bCryptPasswordEncoder"
+        class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
     </bean>
 
 </beans>

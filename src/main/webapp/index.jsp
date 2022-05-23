@@ -1,3 +1,1 @@
-<%
- response.sendRedirect("/");
-%>
+<% request.getRequestDispatcher("/userList").forward(request, response); %>
