@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
 <html>
 <head>
 <!-- CSS only -->
@@ -23,7 +22,7 @@
           <h2 class="text-primary text-center mb-4">User
             Registration Confirm Form</h2>
           <form:form method="post"
-            action="${pageContext.request.contextPath}/saveUser"
+            action="${pageContext.request.contextPath}/user/save"
             modelAttribute="userConfirmForm">
             <div class="form-group w-75" style="margin: 0 auto;">
               <label for="name">User Name :</label> ${ userConfirmForm.username }

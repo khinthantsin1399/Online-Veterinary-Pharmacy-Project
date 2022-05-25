@@ -40,13 +40,15 @@
       <div class="container d-flex justify-content-center">
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body mt-3">
               <h4 class="card-title">User List Table</h4>
               <c:if test="${errorMsg != null }">
                 <p class="card-description text-success text-center">
                   ${errorMsg }</p>
               </c:if>
               <div class="table-responsive">
+                <c:url value="/logout" var="logoutUrl" />
+                <a href="${logoutUrl}">Log out</a>
                 <div class="margin-right mb-5">
                   <div class="col-lg-3" style="float: right;">
                     <div class="input-group">
@@ -55,11 +57,13 @@
                         placeholder="Search user..."> <span
                         class="input-group-btn">
                         <button class="btn btn-info btn-flat"
-                          type="button">Search</button> <a
-                        href="${pageContext.request.contextPath}/createUser"><button
-                            class="btn btn-info btn-flat button-leftList"
-                            type="button">Add</button></a>
-
+                          type="button">Search</button> <c:if
+                          test="${ LOGIN_USER.type == '1' }">
+                          <a
+                            href="${pageContext.request.contextPath}/user/create"><button
+                              class="btn btn-info btn-flat button-leftList"
+                              type="button">Add</button></a>
+                        </c:if>
                       </span>
                     </div>
                     <!-- /input-group -->
@@ -76,8 +80,10 @@
                       <th>Phone</th>
                       <th>Address</th>
                       <th>Type</th>
-                      <th>Registerd Date</th>
-                      <th>Action</th>
+                      <th>Registered Date</th>
+                      <c:if test="${ LOGIN_USER.type == '1' }">
+                        <th>Action</th>
+                      </c:if>
                     </tr>
                   </thead>
                   <tbody>
@@ -94,12 +100,14 @@
                         </td>
                         <td><fmt:formatDate pattern="dd/MM/YYYY"
                             value="${user.created_at}" /></td>
-                        <td><a
-                          href="<c:url value='/updateUser/?id=${user.id}'/>"
-                          class="btn btn-sm btn btn-outline-primary">Edit</a>
-                          <a
-                          href="${pageContext.request.contextPath}/deleteUser/?id=${user.id }"
-                          class="btn btn-sm btn btn-outline-danger">Delete</a></td>
+                        <c:if test="${ LOGIN_USER.type == '1' }">
+                          <td><a
+                            href="<c:url value='/user/update/?id=${user.id}'/>"
+                            class="btn btn-sm btn btn-outline-primary">Edit</a>
+                            <a
+                            href="${pageContext.request.contextPath}/user/delete/?id=${user.id }"
+                            class="btn btn-sm btn btn-outline-danger">Delete</a></td>
+                        </c:if>
                       </tr>
                     </c:forEach>
                   </tbody>

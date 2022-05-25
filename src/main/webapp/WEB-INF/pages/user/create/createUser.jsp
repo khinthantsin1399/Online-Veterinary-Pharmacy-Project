@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
 <html>
 <head>
 <!-- CSS only -->
@@ -22,7 +21,7 @@
         <div class="card mt-5">
           <h2 class="text-primary text-center mb-4">User
             Registration Form</h2>
-          <c:url var="addAction" value="/createUserConfirm"></c:url>
+          <c:url var="addAction" value="/user/create/confirm"></c:url>
           <form:form action="${addAction}" modelAttribute="userForm"
             method="POST">
             <c:if test="${errorMsg != null }">
@@ -87,7 +86,7 @@
             </div>
             <div class="col-md-12 text-center mt-3">
               <button type="submit" class="btn btn-primary align-center">Confirm</button>
-              <button type="reset" name="cancel"
+              <button type="submit" name="cancel"
                 class="btn btn-secondary" value="Cancel">Back</button>
             </div>
           </form:form>

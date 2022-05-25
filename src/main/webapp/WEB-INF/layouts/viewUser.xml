@@ -4,6 +4,12 @@
     "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>
+    <!-- UserLogin Page -->
+    <definition name="userLogin" extends="template1">
+        <put-attribute name="title" value="userLogin" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user/login/userLogin.jsp" />
+    </definition>
     <!-- UserList Page -->
     <definition name="userList" extends="template1">
         <put-attribute name="title" value="userList" />
@@ -35,5 +41,11 @@
             value="updateUserConfirm" />
         <put-attribute name="body"
             value="/WEB-INF/pages/user/update/updateUserConfirm.jsp" />
+    </definition>
+    <!--AccessDenied Page -->
+    <definition name="accessDenied" extends="template1">
+        <put-attribute name="title" value="accessDenied" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/error/accessDenied.jsp" />
     </definition>
 </tiles-definitions>

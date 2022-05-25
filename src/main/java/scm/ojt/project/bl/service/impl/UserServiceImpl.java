@@ -14,16 +14,44 @@ import scm.ojt.project.persistence.dao.UserDao;
 import scm.ojt.project.persistence.entity.User;
 import scm.ojt.project.web.form.UserForm;
 
+/**
+ * <h2>UserServiceImpl Class</h2>
+ * <p>
+ * Process for Displaying UserServiceImpl
+ * </p>
+ * 
+ * @author KyawHtet
+ *
+ */
 @Service
 @Transactional
 public class UserServiceImpl implements UserService {
-
+	/**
+	 * <h2>passwordEncoder</h2>
+	 * <p>
+	 * passwordEncoder
+	 * </p>
+	 */
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
+	/**
+	 * <h2>userDao</h2>
+	 * <p>
+	 * userDao
+	 * </p>
+	 */
 	@Autowired
 	private UserDao userDao;
 
+	/**
+	 * <h2>isUserExist</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @param email
+	 * @return
+	 */
 	@Override
 	public boolean isUserExist(String email) {
 		boolean userExist = false;
@@ -117,5 +145,20 @@ public class UserServiceImpl implements UserService {
 			updateUser.setUpdated_at(new Date());
 			this.userDao.updateUser(updateUser);
 		}
+	}
+
+	/**
+	 * <h2>findByEmail</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @param email
+	 * @return
+	 */
+	@Override
+	public UserDTO findByEmail(String email) {
+		UserDTO userDto = new UserDTO(userDao.findByEmail(email));
+		return userDto;
 	}
 }

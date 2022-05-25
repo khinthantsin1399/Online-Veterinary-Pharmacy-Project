@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ page session="false"%>
 <html>
 <head>
 <!-- CSS only -->
@@ -21,7 +20,7 @@
       <div class="col-md-6">
         <div class="card mt-5">
           <h2 class="text-primary text-center mb-4">User Edit Form</h2>
-          <c:url var="addAction" value="/updateUserConfirm"></c:url>
+          <c:url var="addAction" value="/user/update/confirm"></c:url>
           <form:form action="${addAction}" modelAttribute="oldUserForm"
             method="POST">
             <c:if test="${errorMsg != null }">

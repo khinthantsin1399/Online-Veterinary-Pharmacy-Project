@@ -1,1 +1,1 @@
-<% request.getRequestDispatcher("/userList").forward(request, response); %>
+<% request.getRequestDispatcher("/userLogin").forward(request, response); %>

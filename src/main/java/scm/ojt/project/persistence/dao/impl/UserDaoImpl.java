@@ -25,7 +25,6 @@ import scm.ojt.project.persistence.entity.User;
 @Repository
 @Transactional
 public class UserDaoImpl implements UserDao {
-
 	/**
 	 * <h2>sessionFactory</h2>
 	 * <p>
@@ -136,5 +135,24 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void updateUser(User updateUser) {
 		this.sessionFactory.getCurrentSession().update(updateUser);
+	}
+
+	/**
+	 * <h2>findByEmail</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @param email
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public User findByEmail(String email) {
+		String userHqlQuery = "SELECT u FROM User u where u.email = :email";
+		Query queryUserById = this.sessionFactory.getCurrentSession().createQuery(userHqlQuery);
+		queryUserById.setParameter("email", email);
+		User resultUser = (User) queryUserById.uniqueResult();
+		return resultUser;
 	}
 }

@@ -3,8 +3,6 @@ package scm.ojt.project.web.form;
 import java.util.Date;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 
 import scm.ojt.project.persistence.entity.User;
@@ -26,7 +24,6 @@ public class UserForm {
 	 * </p>
 	 */
 	private int id;
-
 	/**
 	 * <h2>username</h2>
 	 * <p>
@@ -35,7 +32,6 @@ public class UserForm {
 	 */
 	@NotEmpty
 	private String username;
-
 	/**
 	 * <h2>email</h2>
 	 * <p>
@@ -45,7 +41,6 @@ public class UserForm {
 	@Email(message = "Invalid Email Format!")
 	@NotEmpty
 	private String email;
-
 	/**
 	 * <h2>password</h2>
 	 * <p>
@@ -54,7 +49,6 @@ public class UserForm {
 	 */
 	@NotEmpty
 	private String password;
-
 	/**
 	 * <h2>type</h2>
 	 * <p>
@@ -63,7 +57,6 @@ public class UserForm {
 	 */
 	@NotEmpty
 	private String type;
-
 	/**
 	 * <h2>phone</h2>
 	 * <p>
@@ -72,7 +65,6 @@ public class UserForm {
 	 */
 	@NotEmpty
 	private String phone;
-
 	/**
 	 * <h2>address</h2>
 	 * <p>
@@ -81,7 +73,6 @@ public class UserForm {
 	 */
 	@NotEmpty
 	private String address;
-
 	/**
 	 * <h2>created_user_id</h2>
 	 * <p>
@@ -89,7 +80,6 @@ public class UserForm {
 	 * </p>
 	 */
 	private Integer created_user_id;
-
 	/**
 	 * <h2>created_at</h2>
 	 * <p>
@@ -97,7 +87,6 @@ public class UserForm {
 	 * </p>
 	 */
 	private Date created_at;
-
 	/**
 	 * <h2>updated_user_id</h2>
 	 * <p>
@@ -105,7 +94,6 @@ public class UserForm {
 	 * </p>
 	 */
 	private Integer updated_user_id;
-
 	/**
 	 * <h2>updated_at</h2>
 	 * <p>
@@ -121,7 +109,6 @@ public class UserForm {
 	 * </p>
 	 */
 	private Integer deleted_user_id;
-
 	/**
 	 * <h2>deleted_at</h2>
 	 * <p>
@@ -139,6 +126,7 @@ public class UserForm {
 	 * @return
 	 * @return int
 	 */
+
 	public int getId() {
 		return id;
 	}
@@ -479,10 +467,11 @@ public class UserForm {
 	}
 
 	/**
-	 * <h2> Constructor for UserForm </h2>
+	 * <h2>Constructor for UserForm</h2>
 	 * <p>
 	 * Constructor for UserForm
 	 * </p>
+	 * 
 	 * @param user
 	 */
 	public UserForm(User user) {

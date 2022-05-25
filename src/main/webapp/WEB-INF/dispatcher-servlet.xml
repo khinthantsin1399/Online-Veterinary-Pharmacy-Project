@@ -26,6 +26,25 @@
     <mvc:resources mapping="/resources/**"
         location="/resources/" />
 
+    <!-- Interceptors -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/userList" />
+            <mvc:mapping path="/createUser" />
+            <bean
+                class="scm.ojt.project.bl.filter.AdminAuthInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/userList" />
+            <mvc:mapping path="/createUser" />
+            <bean
+                class="scm.ojt.project.bl.filter.PharmacistAuthInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
     <bean id="viewResolver"
         class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="order" value="0" />
