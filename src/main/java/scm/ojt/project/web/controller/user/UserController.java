@@ -310,7 +310,7 @@ public class UserController {
 	@RequestMapping(value = "/user/update", params = "updateUser", method = RequestMethod.POST)
 	public ModelAndView updateUser(@ModelAttribute("updateUserConfirmForm") UserForm userForm) {
 		this.userService.updateUser(userForm);
-		ModelAndView updateUserView = new ModelAndView("redirect:/userList");
+		ModelAndView updateUserView = new ModelAndView("redirect:/user/list");
 		updateUserView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0004", null, null));
 		return updateUserView;
 	}
