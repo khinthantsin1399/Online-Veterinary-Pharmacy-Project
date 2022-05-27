@@ -58,6 +58,8 @@
             <list>
                 <value>/WEB-INF/layouts/layout.xml</value>
                 <value>/WEB-INF/layouts/viewUser.xml</value>
+                <value>/WEB-INF/layouts/view_category.xml</value>
+                <value>/WEB-INF/layouts/view_medicine.xml</value>
             </list>
         </property>
     </bean>
