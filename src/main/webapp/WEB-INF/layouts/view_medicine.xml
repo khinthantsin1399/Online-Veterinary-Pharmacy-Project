@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!-- studentList Page -->
+    <definition name="medicineList" extends="template1">
+        <put-attribute name="title" value="MedicineList" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/list/medicineList.jsp" />
+    </definition>
+    
+     <definition name="detailMedicine" extends="template1">
+        <put-attribute name="title" value="detailMedicine" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/detail/detailMedicine.jsp" />
+    </definition>
+    <!-- createStudent -->
+    <definition name="createMedicine" extends="template1">
+        <put-attribute name="title" value="createMedicine" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/create/createMedicine.jsp" />
+    </definition>
+    <!-- createStudentConfirm Page -->
+    <definition name="createMedicineConfirm"
+        extends="template1">
+        <put-attribute name="title"
+            value="createMedicineConfirm" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/create/createMedicineConfirm.jsp" />
+    </definition>
+    <!-- UpdateStudent Page -->
+    <definition name="updateMedicine" extends="template1">
+        <put-attribute name="title" value="updateMedicine" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/update/updateMedicine.jsp" />
+    </definition>
+    <!-- UpdateStudentConfirm Page -->
+    <definition name="updateMedicineConfirm" extends="template1">
+        <put-attribute name="title"
+            value="updateMedicineConfirm" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/update/updateMedicineConfirm.jsp" />
+    </definition>
+</tiles-definitions>
