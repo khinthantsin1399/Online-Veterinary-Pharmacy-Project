@@ -48,7 +48,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	@Transactional(readOnly = true)
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		UserDTO userDto = userService.findByEmail(email);
+		UserDTO userDto = userService.doFindByEmail(email);
 		if (userDto == null) {
 			throw new UsernameNotFoundException("User not found");
 		}

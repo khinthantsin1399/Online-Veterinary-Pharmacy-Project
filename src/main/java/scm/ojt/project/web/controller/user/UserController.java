@@ -93,7 +93,7 @@ public class UserController {
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String login(@RequestParam(value = "error", required = false) String error, ModelMap model,
 	        HttpServletRequest request) {
-		if (authService.isLoggedIn()) {
+		if (authService.doIsLoggedIn()) {
 			return "redirect:/userList";
 		}
 		if (error != null) {
@@ -115,14 +115,36 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
 	public ModelAndView viewUserList(ModelAndView model, HttpSession session) {
-		boolean isLoggedIn = authService.isLoggedIn();
+		boolean isLoggedIn = authService.doIsLoggedIn();
 		ModelAndView createUserListView = new ModelAndView("userList");
-		List<UserDTO> userList = this.userService.getUserList();
+		List<UserDTO> userList = this.userService.doGetUserList();
 		createUserListView.addObject("userList", userList);
 		if (isLoggedIn) {
-			session.setAttribute("LOGIN_USER", authService.getLoggedInUser());
+			session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
 		}
 		return createUserListView;
+	}
+
+	/**
+	 * <h2>registerUser</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param model
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/user/register", method = RequestMethod.GET)
+	public ModelAndView registerUser(ModelAndView model) {
+		User user = new User();
+		boolean isLoggedIn = authService.doIsLoggedIn();
+		ModelAndView mv = new ModelAndView("createUser");
+		mv.addObject("userForm", user);
+		if (isLoggedIn) {
+			mv.addObject("LOGIN_USER", authService.doGetLoggedInUser());
+		}
+		return mv;
 	}
 
 	/**
@@ -160,7 +182,7 @@ public class UserController {
 	        BindingResult result) throws ParseException {
 		ModelAndView userConfirmView = new ModelAndView("createUser");
 		if (result.hasErrors()) {
-		} else if (userService.isUserExist(userForm.getEmail())) {
+		} else if (userService.doIsUserExist(userForm.getEmail())) {
 			userConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0001", null, null));
 		} else {
 			userConfirmView.addObject("userConfirmForm", userForm);
@@ -197,9 +219,13 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/save", params = "addUser", method = RequestMethod.POST)
 	public ModelAndView saveUser(@ModelAttribute("userConfirmForm") @Valid UserForm userForm) throws ParseException {
-		this.userService.saveUser(userForm);
+		this.userService.doSaveUser(userForm);
+		boolean isLoggedIn = authService.doIsLoggedIn();
+		if (!isLoggedIn) {
+			authService.doLoadAuth(userForm.getEmail());
+		}
 		ModelAndView createUserView = new ModelAndView("userList");
-		List<UserDTO> userList = this.userService.getUserList();
+		List<UserDTO> userList = this.userService.doGetUserList();
 		createUserView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0002", null, null));
 		createUserView.addObject("userList", userList);
 		return createUserView;
@@ -236,7 +262,7 @@ public class UserController {
 	@RequestMapping(value = "/user/update", method = RequestMethod.GET)
 	public ModelAndView update(@RequestParam("id") Integer userId) {
 		ModelAndView updateView = new ModelAndView("updateUser");
-		UserForm oldUserForm = this.userService.getUserbyId(userId);
+		UserForm oldUserForm = this.userService.doGetUserbyId(userId);
 		updateView.addObject("oldUserForm", oldUserForm);
 		return updateView;
 	}
@@ -309,7 +335,7 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/user/update", params = "updateUser", method = RequestMethod.POST)
 	public ModelAndView updateUser(@ModelAttribute("updateUserConfirmForm") UserForm userForm) {
-		this.userService.updateUser(userForm);
+		this.userService.doUpdateUser(userForm);
 		ModelAndView updateUserView = new ModelAndView("redirect:/user/list");
 		updateUserView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0004", null, null));
 		return updateUserView;
@@ -329,8 +355,8 @@ public class UserController {
 	@RequestMapping(value = "/user/delete", method = RequestMethod.GET)
 	public ModelAndView delete(@RequestParam("id") Integer userId, HttpServletRequest request) {
 		ModelAndView updateView = new ModelAndView("userList");
-		this.userService.softDelete(userId);
-		List<UserDTO> userList = this.userService.getUserList();
+		this.userService.doSoftDelete(userId);
+		List<UserDTO> userList = this.userService.doGetUserList();
 		updateView.addObject("userList", userList);
 		updateView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0005", null, null));
 		return updateView;
@@ -350,7 +376,7 @@ public class UserController {
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request, HttpSession session) {
 		session.removeAttribute("LOGIN_USER");
-		authService.logout(request);
+		authService.doLogout(request);
 		return "redirect:/userLogin";
 	}
 

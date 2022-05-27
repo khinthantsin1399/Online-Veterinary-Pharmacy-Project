@@ -95,7 +95,7 @@
                         <td>${user.email}</td>
                         <td>${user.phone }</td>
                         <td>${user.address }</td>
-                        <td><c:if test="${user.type == 0}"> USER </c:if>
+                        <td><c:if test="${user.type == 0}"> PHARMACIST </c:if>
                           <c:if test="${user.type == 1}"> ADMIN </c:if>
                         </td>
                         <td><fmt:formatDate pattern="dd/MM/YYYY"
@@ -124,11 +124,9 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		var table = $('#userTable').DataTable({
-			"aoColumns" : [ null, null, null, null, {
+			/* "aoColumns" : [ null, null, null, null, null, null, {
 				"sType" : "date-uk"
-			}, null, {
-				"sType" : "date-uk"
-			}, null ],
+			}, null ], */
 			"paging" : true,
 			"pageLength" : 5,
 			"bLengthChange" : false,

@@ -2,8 +2,10 @@ package scm.ojt.project.web.form;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 import scm.ojt.project.persistence.entity.User;
 
@@ -38,7 +40,8 @@ public class UserForm {
 	 * email
 	 * </p>
 	 */
-	@Email(message = "Invalid Email Format!")
+	@Column(unique = true)
+	@Email
 	@NotEmpty
 	private String email;
 	/**
@@ -63,6 +66,7 @@ public class UserForm {
 	 * phone
 	 * </p>
 	 */
+	@Pattern(regexp = "(09|959)\\d{9,11}")
 	@NotEmpty
 	private String phone;
 	/**

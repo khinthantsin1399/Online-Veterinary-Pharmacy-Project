@@ -50,26 +50,32 @@
                 name="password" path="password" />
               <form:errors path="password" style="color:red;" />
             </div>
-            <div class="form-group w-75" style="margin: 0 auto;">
-              <label for="type">Type :</label>
-              <form:select path="type" id="type" class="form-select"
-                aria-label="Default select example"
-                value="${ userForm.type }">
-                <c:if test="${ userForm.type == null }">
-                  <option value="0">User</option>
-                  <option value="1">Admin</option>
-                </c:if>
-                <c:if test="${ userForm.type == 0 }">
-                  <option value="0" selected>User</option>
-                  <option value="1">Admin</option>
-                </c:if>
-                <c:if test="${ userForm.type == 1 }">
-                  <option value="0">User</option>
-                  <option value="1" selected>Admin</option>
-                </c:if>
-              </form:select>
-              <form:errors path="type" style="color:red;" />
-            </div>
+            <c:if test="${LOGIN_USER.type == 1 }">
+              <div class="form-group w-75" style="margin: 0 auto;">
+                <label for="type">Type :</label>
+                <form:select path="type" id="type" class="form-select"
+                  aria-label="Default select example"
+                  value="${ userForm.type }">
+                  <c:if test="${ userForm.type == null }">
+                    <option value="0">PHARMACIST</option>
+                    <option value="1">Admin</option>
+                  </c:if>
+                  <c:if test="${ userForm.type == 0 }">
+                    <option value="0" selected>PHARMACIST</option>
+                    <option value="1">Admin</option>
+                  </c:if>
+                  <c:if test="${ userForm.type == 1 }">
+                    <option value="0">PHARMACIST</option>
+                    <option value="1" selected>Admin</option>
+                  </c:if>
+                </form:select>
+                <form:errors path="type" style="color:red;" />
+              </div>
+            </c:if>
+            <c:if test="${LOGIN_USER.type == null }">
+              <form:input type="hidden" path="type" value="0"
+                name="type" />
+            </c:if>
             <div class="form-group w-75" style="margin: 0 auto;">
               <label for="phone">Phone No:</label>
               <form:input type="text" class="form-control" id="phone"

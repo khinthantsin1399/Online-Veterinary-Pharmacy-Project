@@ -46,14 +46,14 @@ public class AuthServiceImpl implements AuthService {
 	private UserDetailsService userDetailsService;
 
 	/**
-	 * <h2>getLoggedInUser</h2>
+	 * <h2>doGetLoggedInUser</h2>
 	 * <p>
 	 * 
 	 * </p>
 	 * 
 	 * @return
 	 */
-	public UserDTO getLoggedInUser() {
+	public UserDTO doGetLoggedInUser() {
 		String user_email = null;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
@@ -63,32 +63,32 @@ public class AuthServiceImpl implements AuthService {
 			user_email = principal.toString();
 		}
 
-		return userService.findByEmail(user_email);
+		return userService.doFindByEmail(user_email);
 	}
 
 	/**
-	 * <h2>isLoggedIn</h2>
+	 * <h2>doIsLoggedIn</h2>
 	 * <p>
 	 * 
 	 * </p>
 	 * 
 	 * @return
 	 */
-	public boolean isLoggedIn() {
+	public boolean doIsLoggedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		return authentication != null && !(authentication instanceof AnonymousAuthenticationToken)
 		        && authentication.isAuthenticated();
 	}
 
 	/**
-	 * <h2>loadAuth</h2>
+	 * <h2>doLoadAuth</h2>
 	 * <p>
 	 * 
 	 * </p>
 	 * 
 	 * @param email
 	 */
-	public void loadAuth(String email) {
+	public void doLoadAuth(String email) {
 		UserDetails userDetails = userDetailsService.loadUserByUsername(email);
 		Authentication auth = new UsernamePasswordAuthenticationToken(userDetails.getUsername(),
 		        userDetails.getPassword(), userDetails.getAuthorities());
@@ -96,14 +96,14 @@ public class AuthServiceImpl implements AuthService {
 	}
 
 	/**
-	 * <h2>logout</h2>
+	 * <h2>doLogout</h2>
 	 * <p>
 	 * 
 	 * </p>
 	 * 
 	 * @param request
 	 */
-	public void logout(HttpServletRequest request) {
+	public void doLogout(HttpServletRequest request) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {
 			SecurityContextHolder.getContext().setAuthentication(null);

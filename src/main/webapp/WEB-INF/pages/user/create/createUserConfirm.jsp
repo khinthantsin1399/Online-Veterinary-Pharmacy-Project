@@ -50,7 +50,7 @@
             </c:if>
               <c:if test="${ userConfirmForm.type == 0}">
                 <label for="type">Type :</label>
-            User
+            PHARMACIST
             </c:if>
               <form:input type="hidden" class="form-control" id="type"
                 placeholder="Enter password" name="type" path="type"

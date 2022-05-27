@@ -15,7 +15,7 @@ import scm.ojt.project.bl.dto.UserDTO;
  */
 public interface AuthService {
 	/**
-	 * <h2>getLoggedInUser</h2>
+	 * <h2>doGetLoggedInUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -23,10 +23,10 @@ public interface AuthService {
 	 * @return
 	 * @return UserDTO
 	 */
-	UserDTO getLoggedInUser();
+	UserDTO doGetLoggedInUser();
 
 	/**
-	 * <h2>isLoggedIn</h2>
+	 * <h2>doIsLoggedIn</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -34,10 +34,10 @@ public interface AuthService {
 	 * @return
 	 * @return boolean
 	 */
-	boolean isLoggedIn();
+	boolean doIsLoggedIn();
 
 	/**
-	 * <h2>loadAuth</h2>
+	 * <h2>doLoadAuth</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -45,10 +45,10 @@ public interface AuthService {
 	 * @param email
 	 * @return void
 	 */
-	void loadAuth(String email);
+	void doLoadAuth(String email);
 
 	/**
-	 * <h2>logout</h2>
+	 * <h2>doLogout</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -56,5 +56,5 @@ public interface AuthService {
 	 * @param request
 	 * @return void
 	 */
-	void logout(HttpServletRequest request);
+	void doLogout(HttpServletRequest request);
 }

@@ -16,7 +16,7 @@ import scm.ojt.project.web.form.UserForm;
  */
 public interface UserService {
 	/**
-	 * <h2>isUserExist</h2>
+	 * <h2>doIsUserExist</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -25,10 +25,10 @@ public interface UserService {
 	 * @return
 	 * @return boolean
 	 */
-	public boolean isUserExist(String email);
+	public boolean doIsUserExist(String email);
 
 	/**
-	 * <h2>saveUser</h2>
+	 * <h2>doSaveUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -36,10 +36,10 @@ public interface UserService {
 	 * @param userForm
 	 * @return void
 	 */
-	public void saveUser(UserForm userForm);
+	public void doSaveUser(UserForm userForm);
 
 	/**
-	 * <h2>getUserList</h2>
+	 * <h2>doGetUserList</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -47,10 +47,10 @@ public interface UserService {
 	 * @return
 	 * @return List<UserDTO>
 	 */
-	public List<UserDTO> getUserList();
+	public List<UserDTO> doGetUserList();
 
 	/**
-	 * <h2>softDelete</h2>
+	 * <h2>doSoftDelete</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -58,10 +58,10 @@ public interface UserService {
 	 * @param userId
 	 * @return void
 	 */
-	public void softDelete(Integer userId);
+	public void doSoftDelete(Integer userId);
 
 	/**
-	 * <h2>getUserbyId</h2>
+	 * <h2>doGetUserbyId</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -70,10 +70,10 @@ public interface UserService {
 	 * @return
 	 * @return UserForm
 	 */
-	public UserForm getUserbyId(Integer userId);
+	public UserForm doGetUserbyId(Integer userId);
 
 	/**
-	 * <h2>updateUser</h2>
+	 * <h2>doUpdateUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -81,10 +81,10 @@ public interface UserService {
 	 * @param userForm
 	 * @return void
 	 */
-	public void updateUser(UserForm userForm);
+	public void doUpdateUser(UserForm userForm);
 
 	/**
-	 * <h2>findByEmail</h2>
+	 * <h2>doFindByEmail</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -93,5 +93,5 @@ public interface UserService {
 	 * @return
 	 * @return UserDTO
 	 */
-	public UserDTO findByEmail(String user_email);
+	public UserDTO doFindByEmail(String user_email);
 }

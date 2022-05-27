@@ -57,15 +57,15 @@
                 aria-label="Default select example"
                 value="${ oldUserForm.type }">
                 <c:if test="${ oldUserForm.type == null }">
-                  <option value="0">User</option>
+                  <option value="0">PHARMACIST</option>
                   <option value="1">Admin</option>
                 </c:if>
                 <c:if test="${ oldUserForm.type == 0 }">
-                  <option value="0" selected>User</option>
+                  <option value="0" selected>PHARMACIST</option>
                   <option value="1">Admin</option>
                 </c:if>
                 <c:if test="${ oldUserForm.type == 1 }">
-                  <option value="0">User</option>
+                  <option value="0">PHARMACIST</option>
                   <option value="1" selected>Admin</option>
                 </c:if>
               </form:select>

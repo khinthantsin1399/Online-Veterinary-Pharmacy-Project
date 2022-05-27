@@ -60,6 +60,10 @@
                 <c:url value="/password/reset" var="pwReset" />
                 <a href="${pwReset}">Forgot Your Password?</a>
               </div>
+              <div class="form-group">
+                <c:url value="/user/register" var="register" />
+                <a href="${register}">Sign Up?</a>
+              </div>
               <div class="form-group col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Login</button>
               </div>

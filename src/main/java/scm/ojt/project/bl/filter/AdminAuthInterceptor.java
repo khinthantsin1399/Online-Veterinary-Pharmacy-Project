@@ -43,10 +43,10 @@ public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	        throws Exception {
-		if (!authService.isLoggedIn()) {
+		if (!authService.doIsLoggedIn()) {
 			response.sendRedirect(request.getContextPath() + "/login");
-		} else if (authService.getLoggedInUser().getType() == "0") {
-			System.out.println(authService.getLoggedInUser().getType());
+		} else if (authService.doGetLoggedInUser().getType() == "0") {
+			System.out.println(authService.doGetLoggedInUser().getType());
 			response.sendRedirect(request.getContextPath() + "/denied");
 		}
 		return true;

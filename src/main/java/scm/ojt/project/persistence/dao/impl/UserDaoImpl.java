@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 
 	/**
-	 * <h2>getUserByEmail</h2>
+	 * <h2>dbGetUserByEmail</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -45,7 +45,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public User getUserByEmail(String email) {
+	public User dbGetUserByEmail(String email) {
 		String userHqlQuery = "SELECT u FROM User u WHERE u.email = :email";
 		Query queryUserByEmail = this.sessionFactory.getCurrentSession().createQuery(userHqlQuery);
 		queryUserByEmail.setParameter("email", email);
@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	/**
-	 * <h2>saveUser</h2>
+	 * <h2>dbSaveUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -64,14 +64,14 @@ public class UserDaoImpl implements UserDao {
 	 * @param date
 	 */
 	@Override
-	public void saveUser(User user, int createdUserId, Date date) {
+	public void dbSaveUser(User user, int createdUserId, Date date) {
 		user.setCreated_user_id(createdUserId);
 		user.setCreated_at(date);
 		this.sessionFactory.getCurrentSession().save(user);
 	}
 
 	/**
-	 * <h2>getUserList</h2>
+	 * <h2>dbGetUserList</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -80,13 +80,13 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<UserDTO> getUserList() {
+	public List<UserDTO> dbGetUserList() {
 		return sessionFactory.getCurrentSession().createQuery("SELECT u FROM User u WHERE u.deleted_user_id = null")
 		        .list();
 	}
 
 	/**
-	 * <h2>softDeleteUser</h2>
+	 * <h2>dbSoftDeleteUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -96,7 +96,7 @@ public class UserDaoImpl implements UserDao {
 	 * @param currentDate
 	 */
 	@Override
-	public void softDeleteUser(Integer userId, int currentUserId, Date currentDate) {
+	public void dbSoftDeleteUser(Integer userId, int currentUserId, Date currentDate) {
 		User user = (User) sessionFactory.getCurrentSession().load(User.class, userId);
 		if (user != null) {
 			user.setDeleted_user_id(userId);
@@ -106,7 +106,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	/**
-	 * <h2>getUserbyId</h2>
+	 * <h2>dbGetUserbyId</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -116,7 +116,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public User getUserbyId(Integer userId) {
+	public User dbGetUserbyId(Integer userId) {
 		String userHqlQuery = "SELECT u FROM User u where u.id = :id";
 		Query queryUserById = this.sessionFactory.getCurrentSession().createQuery(userHqlQuery);
 		queryUserById.setParameter("id", userId);
@@ -125,7 +125,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	/**
-	 * <h2>updateUser</h2>
+	 * <h2>dbUpdateUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -133,12 +133,12 @@ public class UserDaoImpl implements UserDao {
 	 * @param updateUser
 	 */
 	@Override
-	public void updateUser(User updateUser) {
+	public void dbUpdateUser(User updateUser) {
 		this.sessionFactory.getCurrentSession().update(updateUser);
 	}
 
 	/**
-	 * <h2>findByEmail</h2>
+	 * <h2>dbFindByEmail</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -148,7 +148,7 @@ public class UserDaoImpl implements UserDao {
 	 */
 	@SuppressWarnings("rawtypes")
 	@Override
-	public User findByEmail(String email) {
+	public User dbFindByEmail(String email) {
 		String userHqlQuery = "SELECT u FROM User u where u.email = :email";
 		Query queryUserById = this.sessionFactory.getCurrentSession().createQuery(userHqlQuery);
 		queryUserById.setParameter("email", email);

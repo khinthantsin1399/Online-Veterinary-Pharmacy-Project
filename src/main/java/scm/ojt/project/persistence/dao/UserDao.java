@@ -17,7 +17,7 @@ import scm.ojt.project.persistence.entity.User;
  */
 public interface UserDao {
 	/**
-	 * <h2>getUserByEmail</h2>
+	 * <h2>dbGetUserByEmail</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -26,10 +26,10 @@ public interface UserDao {
 	 * @return
 	 * @return User
 	 */
-	public User getUserByEmail(String email);
+	public User dbGetUserByEmail(String email);
 
 	/**
-	 * <h2>saveUser</h2>
+	 * <h2>dbSaveUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -39,10 +39,10 @@ public interface UserDao {
 	 * @param date
 	 * @return void
 	 */
-	public void saveUser(User user, int createdUserId, Date date);
+	public void dbSaveUser(User user, int createdUserId, Date date);
 
 	/**
-	 * <h2>getUserList</h2>
+	 * <h2>dbGetUserList</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -50,10 +50,10 @@ public interface UserDao {
 	 * @return
 	 * @return List<UserDTO>
 	 */
-	public List<UserDTO> getUserList();
+	public List<UserDTO> dbGetUserList();
 
 	/**
-	 * <h2>softDeleteUser</h2>
+	 * <h2>dbSoftDeleteUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -63,10 +63,10 @@ public interface UserDao {
 	 * @param currentDate
 	 * @return void
 	 */
-	public void softDeleteUser(Integer userId, int currentUserId, Date currentDate);
+	public void dbSoftDeleteUser(Integer userId, int currentUserId, Date currentDate);
 
 	/**
-	 * <h2>getUserbyId</h2>
+	 * <h2>dbGetUserbyId</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -75,10 +75,10 @@ public interface UserDao {
 	 * @return
 	 * @return User
 	 */
-	public User getUserbyId(Integer userId);
+	public User dbGetUserbyId(Integer userId);
 
 	/**
-	 * <h2>updateUser</h2>
+	 * <h2>dbUpdateUser</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -86,10 +86,10 @@ public interface UserDao {
 	 * @param updateUser
 	 * @return void
 	 */
-	public void updateUser(User updateUser);
+	public void dbUpdateUser(User updateUser);
 
 	/**
-	 * <h2>findByEmail</h2>
+	 * <h2>dbFindByEmail</h2>
 	 * <p>
 	 * 
 	 * </p>
@@ -98,5 +98,5 @@ public interface UserDao {
 	 * @return
 	 * @return User
 	 */
-	public User findByEmail(String email);
+	public User dbFindByEmail(String email);
 }
