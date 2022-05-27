@@ -7,155 +7,171 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 
+import lombok.Getter;
+import lombok.Setter;
+import scm.ojt.project.web.form.MedicineForm;
+
+/**
+ * <h2>Medicine Class</h2>
+ * <p>
+ * Process for Displaying Medicine
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
+@Getter
+@Setter
 @Entity
 @Table(name = "medicines")
 public class Medicine implements Serializable {
-	private static final long serialVersionUID = 1L;
-	private int id;
-	private String m_name;
-	private String m_description;
-	private String m_code;
-	private int category_id;
-	private int unit_in_stock;
-	private double amount;
-	private String photo;
-	private int create_user_id;
-	private Date created_at;
-	private int updated_user_id;
-	private Date updated_at;
-	private int deleted_user_id;
-	private Date deleted_at;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id")
-	public int getId() {
-		return id;
-	}
+    /**
+     * <h2>id</h2>
+     * <p>
+     * id
+     * </p>
+     */
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "id")
+    private Integer id;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    /**
+     * <h2>medicine_name</h2>
+     * <p>
+     * medicine_name
+     * </p>
+     */
+    @Column(name = "m_name")
+    private String medicine_name;
 
-	@Column(name = "m_name")
-	public String getM_name() {
-		return m_name;
-	}
+    /**
+     * <h2>medicine_description</h2>
+     * <p>
+     * medicine_description
+     * </p>
+     */
+    @Column(name = "m_description")
+    private String medicine_description;
 
-	public void setM_name(String m_name) {
-		this.m_name = m_name;
-	}
+    /**
+     * <h2>medicine_code</h2>
+     * <p>
+     * medicine_code
+     * </p>
+     */
+    @Column(name = "m_code")
+    private String medicine_code;
 
-	@Column(name = "m_description")
-	public String getM_description() {
-		return m_description;
-	}
+    /**
+     * <h2>unit_in_stock</h2>
+     * <p>
+     * unit_in_stock
+     * </p>
+     */
+    @Min(value = 0,message="Unit In Stock must be numbers!")
+    @Column(name = "unit_in_stock")
+    private Integer unit_in_stock;
 
-	public void setM_description(String m_description) {
-		this.m_description = m_description;
-	}
+    /**
+     * <h2>amount</h2>
+     * <p>
+     * amount
+     * </p>
+     */
+    @Column(name = "amount")
+    @Min(value=0,message="Price must be numbers!")
+    private double amount;
 
-	@Column(name = "m_code")
-	public String getM_code() {
-		return m_code;
-	}
+    /**
+     * <h2>image</h2>
+     * <p>
+     * image
+     * </p>
+     */
+    @Column(name = "image")
+    private String image;
+    // private Integer create_user_id;
 
-	public void setM_code(String m_code) {
-		this.m_code = m_code;
-	}
+    /**
+     * <h2>createdAt</h2>
+     * <p>
+     * createdAt
+     * </p>
+     */
+    @Column(name = "created_at")
+    private Date createdAt;
+//	private Integer updated_user_id;
+    /**
+     * <h2>updatedAt</h2>
+     * <p>
+     * updatedAt
+     * </p>
+     */
+    @Column(name = "updated_at")
+    private Date updatedAt;
+//	private Integer deleted_user_id;
 
-	@Column(name = "category_id")
-	public int getCategory_id() {
-		return category_id;
-	}
+    /**
+     * <h2>deletedAt</h2>
+     * <p>
+     * deletedAt
+     * </p>
+     */
+    @Column(name = "deleted_at")
+    private Date deletedAt;
 
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
-	}
+    /**
+     * <h2>category</h2>
+     * <p>
+     * category
+     * </p>
+     */
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "categoryId", nullable = true, referencedColumnName = "category_id")
+    public Category category;
 
-	@Column(name = "unit_in_stock")
-	public int getUnit_in_stock() {
-		return unit_in_stock;
-	}
+    /**
+     * <h2>Constructor for Medicine</h2>
+     * <p>
+     * Constructor for Medicine
+     * </p>
+     */
+    public Medicine() {
+        super();
+    }
 
-	public void setUnit_in_stock(int unit_in_stock) {
-		this.unit_in_stock = unit_in_stock;
-	}
+    /**
+     * <h2>Constructor for Medicine</h2>
+     * <p>
+     * Constructor for Medicine
+     * </p>
+     * 
+     * @param medicineForm
+     */
+    public Medicine(MedicineForm medicineForm) {
+        this.id = medicineForm.getId();
+        this.medicine_name = medicineForm.getMedicine_name();
+        this.medicine_description = medicineForm.getMedicine_description();
+        this.medicine_code = medicineForm.getMedicine_code();
+        this.unit_in_stock = medicineForm.getUnit_in_stock();
+        this.amount = medicineForm.getAmount();
+        this.image = medicineForm.getImage();
+        this.createdAt = medicineForm.getCreatedAt();
+        this.updatedAt = medicineForm.getUpdatedAt();
+        this.deletedAt = medicineForm.getDeletedAt();
+        this.category = medicineForm.getCategory();
 
-	@Column(name = "amount")
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	@Column(name = "photo")
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	@Column(name = "create_user_id")
-	public int getCreate_user_id() {
-		return create_user_id;
-	}
-
-	public void setCreate_user_id(int create_user_id) {
-		this.create_user_id = create_user_id;
-	}
-
-	@Column(name = "created_at")
-	public Date getCreated_at() {
-		return created_at;
-	}
-
-	public void setCreated_at(Date created_at) {
-		this.created_at = created_at;
-	}
-
-	@Column(name = "updated_user_id")
-	public int getUpdated_user_id() {
-		return updated_user_id;
-	}
-
-	public void setUpdated_user_id(int updated_user_id) {
-		this.updated_user_id = updated_user_id;
-	}
-
-	@Column(name = "updated_at")
-	public Date getUpdated_at() {
-		return updated_at;
-	}
-
-	public void setUpdated_at(Date updated_at) {
-		this.updated_at = updated_at;
-	}
-
-	@Column(name = "deleted_user_id")
-	public int getDeleted_user_id() {
-		return deleted_user_id;
-	}
-
-	public void setDeleted_user_id(int deleted_user_id) {
-		this.deleted_user_id = deleted_user_id;
-	}
-
-	@Column(name = "deleted_at")
-	public Date getDeleted_at() {
-		return deleted_at;
-	}
-
-	public void setDeleted_at(Date deleted_at) {
-		this.deleted_at = deleted_at;
-	}
-
+        // this.categoryId=medicineForm.getCategoryId();
+    }
 }
