@@ -187,12 +187,12 @@ public class MedicineController {
     public ModelAndView createMedicineConfirm(@ModelAttribute("medicineForm") @Valid MedicineForm medicineForm,
             BindingResult result, HttpServletRequest request, HttpServletResponse response)
             throws IOException, ParseException {
-        String medicineImagePath = request.getRealPath("/") + "/resources/images/" + medicineForm.getMedicine_name()+medicineForm.getId();
+        String medicineImagePath = request.getRealPath("/") + "/resources/images/" + medicineForm.getMedicine_name();
         Path uploadPath = Paths.get(medicineImagePath);
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
-        medicineImagePath = uploadPath + "/" + medicineForm.getMedicine_name()+medicineForm.getId() + ".png";
+        medicineImagePath = uploadPath + "/" + medicineForm.getMedicine_name()+".png";
         System.out.println(medicineImagePath);
         this.medicineService.addMedicine(medicineForm, medicineImagePath);
         ModelAndView createMedicineView = new ModelAndView("redirect:/medicineList");
@@ -350,7 +350,10 @@ public class MedicineController {
     @RequestMapping(value = "/editMedicine", params = "cancel", method = RequestMethod.POST)
     public ModelAndView cancelUpdateMedicine(@ModelAttribute("updateMedicineForm") @Valid MedicineForm medicineForm,
             BindingResult result) {
+        List<CategoryDto> CategoryList = categoryService.doGetCategoryList();
+
         ModelAndView updateMedicineView = new ModelAndView("updateMedicine");
+        updateMedicineView.addObject("CategoryList", CategoryList);
         updateMedicineView.addObject("medicine", medicineForm);
         return updateMedicineView;
     }
