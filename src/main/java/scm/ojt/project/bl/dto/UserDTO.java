@@ -1,30 +1,20 @@
-package scm.ojt.project.persistence.entity;
-
-import static javax.persistence.GenerationType.IDENTITY;
+package scm.ojt.project.bl.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import scm.ojt.project.web.form.UserForm;
+import scm.ojt.project.persistence.entity.User;
 
 /**
- * <h2>User Class</h2>
+ * <h2>UserDTO Class</h2>
  * <p>
- * Process for Displaying User
+ * Process for Displaying UserDTO
  * </p>
  * 
  * @author KyawHtet
  *
  */
-@Entity
-@Table(name = "users")
-public class User implements Serializable {
+public class UserDTO implements Serializable {
 	/**
 	 * <h2>serialVersionUID</h2>
 	 * <p>
@@ -42,7 +32,7 @@ public class User implements Serializable {
 	/**
 	 * <h2>username</h2>
 	 * <p>
-	 * name
+	 * username
 	 * </p>
 	 */
 	private String username;
@@ -84,14 +74,14 @@ public class User implements Serializable {
 	/**
 	 * <h2>created_user_id</h2>
 	 * <p>
-	 * create_user_id
+	 * created_user_id
 	 * </p>
 	 */
 	private Integer created_user_id;
 	/**
-	 * <h2>createdAt</h2>
+	 * <h2>created_at</h2>
 	 * <p>
-	 * createdAt
+	 * created_at
 	 * </p>
 	 */
 	private Date created_at;
@@ -103,9 +93,9 @@ public class User implements Serializable {
 	 */
 	private Integer updated_user_id;
 	/**
-	 * <h2>updatedAt</h2>
+	 * <h2>updated_at</h2>
 	 * <p>
-	 * updatedAt
+	 * updated_at
 	 * </p>
 	 */
 	private Date updated_at;
@@ -117,9 +107,9 @@ public class User implements Serializable {
 	 */
 	private Integer deleted_user_id;
 	/**
-	 * <h2>deletedAt</h2>
+	 * <h2>deleted_at</h2>
 	 * <p>
-	 * deletedAt
+	 * deleted_at
 	 * </p>
 	 */
 	private Date deleted_at;
@@ -133,9 +123,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return int
 	 */
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "id")
 	public int getId() {
 		return id;
 	}
@@ -162,7 +149,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "username")
 	public String getUsername() {
 		return username;
 	}
@@ -189,7 +175,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "email", unique = true)
 	public String getEmail() {
 		return email;
 	}
@@ -216,7 +201,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "password")
 	public String getPassword() {
 		return password;
 	}
@@ -243,7 +227,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "type")
 	public String getType() {
 		return type;
 	}
@@ -270,7 +253,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "phone")
 	public String getPhone() {
 		return phone;
 	}
@@ -297,7 +279,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return String
 	 */
-	@Column(name = "address")
 	public String getAddress() {
 		return address;
 	}
@@ -324,7 +305,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Integer
 	 */
-	@Column(name = "created_user_id")
 	public Integer getCreated_user_id() {
 		return created_user_id;
 	}
@@ -351,7 +331,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Date
 	 */
-	@Column(name = "created_at")
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -378,7 +357,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Integer
 	 */
-	@Column(name = "updated_user_id")
 	public Integer getUpdated_user_id() {
 		return updated_user_id;
 	}
@@ -405,7 +383,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Date
 	 */
-	@Column(name = "updated_at")
 	public Date getUpdated_at() {
 		return updated_at;
 	}
@@ -432,7 +409,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Integer
 	 */
-	@Column(name = "deleted_user_id")
 	public Integer getDeleted_user_id() {
 		return deleted_user_id;
 	}
@@ -459,7 +435,6 @@ public class User implements Serializable {
 	 * @return
 	 * @return Date
 	 */
-	@Column(name = "deleted_at")
 	public Date getDeleted_at() {
 		return deleted_at;
 	}
@@ -478,37 +453,37 @@ public class User implements Serializable {
 	}
 
 	/**
-	 * <h2>Constructor for User</h2>
+	 * <h2>Constructor for UserDTO</h2>
 	 * <p>
-	 * Constructor for User
+	 * Constructor for UserDTO
 	 * </p>
 	 */
-	public User() {
+	public UserDTO() {
 		super();
 	}
 
 	/**
-	 * <h2>Constructor for User</h2>
+	 * <h2>Constructor for UserDTO</h2>
 	 * <p>
-	 * Constructor for User
+	 * Constructor for UserDTO
 	 * </p>
 	 * 
-	 * @param userForm
+	 * @param user
 	 */
-	public User(UserForm userForm) {
+	public UserDTO(User user) {
 		super();
-		this.id = userForm.getId();
-		this.username = userForm.getUsername();
-		this.email = userForm.getEmail();
-		this.password = userForm.getPassword();
-		this.type = userForm.getType();
-		this.phone = userForm.getPhone();
-		this.address = userForm.getAddress();
-		this.created_user_id = userForm.getCreated_user_id();
-		this.created_at = userForm.getCreated_at();
-		this.updated_user_id = userForm.getUpdated_user_id();
-		this.updated_at = userForm.getUpdated_at();
-		this.deleted_user_id = userForm.getDeleted_user_id();
-		this.deleted_at = userForm.getDeleted_at();
+		this.id = user.getId();
+		this.username = user.getUsername();
+		this.email = user.getEmail();
+		this.password = user.getPassword();
+		this.type = user.getType();
+		this.phone = user.getPhone();
+		this.address = user.getAddress();
+		this.created_user_id = user.getCreated_user_id();
+		this.created_at = user.getCreated_at();
+		this.updated_user_id = user.getUpdated_user_id();
+		this.updated_at = user.getUpdated_at();
+		this.deleted_user_id = user.getDeleted_user_id();
+		this.deleted_at = user.getDeleted_at();
 	}
 }
