@@ -14,10 +14,12 @@
 	<div class="sec-content">
 		<div class="menu-btn">
 			<a href="${pageContext.request.contextPath}/categoryList"
-				class="cmn-btn">Category List</a> <a
-				href="${pageContext.request.contextPath}/createCategory"
-				class="btn btn-info">Add</a>
-
+				class="cmn-btn">Category List</a> 
+				
+				<a href="${pageContext.request.contextPath}/medicineList"
+				class="cmn-btn">Medicine List</a> 
+				
+			
 
 
 		</div>
