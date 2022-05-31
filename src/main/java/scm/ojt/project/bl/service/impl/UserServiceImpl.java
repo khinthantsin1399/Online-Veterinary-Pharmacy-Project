@@ -1,4 +1,4 @@
-package scm.ojt.project.bl.service.impl;
+package scm.ojt.project.bl.service.Impl;
 
 import java.util.Date;
 import java.util.List;

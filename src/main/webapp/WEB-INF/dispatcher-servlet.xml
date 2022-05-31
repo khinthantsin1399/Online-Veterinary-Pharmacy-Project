@@ -60,6 +60,7 @@
                 <value>/WEB-INF/layouts/viewUser.xml</value>
                 <value>/WEB-INF/layouts/view_category.xml</value>
                 <value>/WEB-INF/layouts/view_medicine.xml</value>
+                  <value>/WEB-INF/layouts/view_cart.xml</value>
             </list>
         </property>
     </bean>

@@ -1,6 +1,8 @@
 package scm.ojt.project.web.form;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -12,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.CartDetail;
 import scm.ojt.project.persistence.entity.Category;
 import scm.ojt.project.persistence.entity.Medicine;
 
@@ -124,6 +127,8 @@ public class MedicineForm {
      * </p>
      */
     public Category category;
+    
+    private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
 
     /**
      * <h2>Constructor for MedicineForm</h2>
@@ -155,6 +160,6 @@ public class MedicineForm {
         this.updatedAt = medicine.getUpdatedAt();
         this.deletedAt = medicine.getDeletedAt();
         this.category = medicine.getCategory();
-
+this.cartDetails=medicine.getCartDetails();
     }
 }

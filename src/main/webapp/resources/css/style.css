@@ -177,7 +177,25 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .work-list {
 	padding: 40px 0;
 }
-
+.img-sec{
+	float:left;
+	width:500px;
+	
+}
+.img-sec img{
+	width:350px;
+}
+.detail-sec{
+	
+	width:700px;
+}
+.detail-box{
+	border:1px solid #3d3d3d;
+}
+.content{
+	margin:100px 0;
+	
+}
 .clearfix::after {
 	display: table;
 	clear: both;

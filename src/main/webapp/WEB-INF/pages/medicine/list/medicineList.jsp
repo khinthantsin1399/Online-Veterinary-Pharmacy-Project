@@ -44,6 +44,8 @@
 								<a href="${pageContext.request.contextPath}/download"
 									class="btn btn-info">Download</a>
 
+	<a href="${pageContext.request.contextPath}/viewCart"
+									class="btn btn-info">View Cart</a>
 
 							</form:form>
 						</div>
@@ -152,6 +154,8 @@
 								<p class="work-txt">${medicine.amount}MMK</p> <a
 								href=" <c:url value='detailMedicine?id=${medicine.id}'/>"
 								class="btn btn-info">View Detail</a></li>
+								 <a class="btn btn-info" href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD TO CARTS</a>
+								
 						</c:forEach>
 					</ul>
 

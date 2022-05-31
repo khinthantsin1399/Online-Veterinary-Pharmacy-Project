@@ -1,4 +1,4 @@
-package scm.ojt.project.bl.service.impl;
+package scm.ojt.project.bl.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

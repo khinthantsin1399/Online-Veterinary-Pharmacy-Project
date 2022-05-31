@@ -1,46 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<div class="content-wrapper">
-  <section class="content">
-    <div class="row">
-      <div class="col-12">
-        <div class="forms-mr">
-          <div class="col-sm-6 col-md-6 form-detail">
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Online Veterinary Pharmacy | Category List</title>
+<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+
+</head>
+<body>
+	<div class="wrapper">
+		<div class="sec-list">
+			<div class="container"> 
+			<div class="detail-box">
+   <div class="content clearfix">
+   <div class="img-sec">
                   <c:if test="${empty detailMedicine.image }">
-                    <img class="profile-user-img img-fluid img-circle"
+                    <img 
                       src="<c:url value='/resources/img/noimage.png'/>"
                       alt="User profile picture">
                   </c:if>
                   <c:if test="${not empty detailMedicine.image }">
-                    <img class="profile-user-img img-fluid img-circle"
+                    <img 
                       src="${detailMedicine.image}" />
                   </c:if>
                 </div>
-                <h3 class="profile-username text-center">${detailMedicine.medicine_name}</h3>
+                <div class="detail-sec clearfix">
+               
                 <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item"><b>Price</b> <a
-                    class="float-right">${detailMedicine.amount}</a></li>
+                 <li><p><b>Name</b> ${detailMedicine.medicine_name}</p></li>
                   
-                  <li class="list-group-item"><b>Category</b> <a
-                    class="float-right">${detailMedicine.category.category_name}</a></li>
-                  <li class="list-group-item"><b>Description</b>
-                    <a class="float-right">${detailMedicine.medicine_description}</a></li>
+                  <li><p
+                   ><b>Price</b> ${detailMedicine.amount}</p></li>
                   
-                </ul>
+                  <li><p
+                  ><b>Category</b> ${detailMedicine.category.category_name}</p></li>
+                    </ul>
+                    </div>
+            </div>
+               <div class="description clearfix">
+                  <b>Description</b>
+                    <p>${detailMedicine.medicine_description}</p>
+                  </div>
+               
                 
                 <a href="${pageContext.request.contextPath}/medicineList"
-                  class="btn btn-block btn-secondary">Back</a>
-              
+                  class="cmn-link">Back</a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
+              </div>
+  </div>
+  </div>
+  </body>
+  </html>

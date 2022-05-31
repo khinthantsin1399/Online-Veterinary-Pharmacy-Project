@@ -1,32 +1,25 @@
-package scm.ojt.project.persistence.entity;
+package scm.ojt.project.bl.dto;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.Cart;
+import scm.ojt.project.persistence.entity.Medicine;
 
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cart_details")
-public class CartDetail implements Serializable {
+public class CartDetailDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -52,12 +45,8 @@ public class CartDetail implements Serializable {
     @Column(name = "amount")
     private double amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)// with cart
-    @JoinColumn(name = "cart_id") // primary key of cart
-    @JsonIgnore
     private Cart cart;
 
-    @ManyToOne // with cartDetail
-    @JoinColumn(name = "medicine_id")
     private Medicine medicine;
+
 }

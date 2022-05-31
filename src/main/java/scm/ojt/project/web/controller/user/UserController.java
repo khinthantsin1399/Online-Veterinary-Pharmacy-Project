@@ -121,6 +121,7 @@ public class UserController {
 		createUserListView.addObject("userList", userList);
 		if (isLoggedIn) {
 			session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
+			 session.setAttribute("loginUserId", authService.doGetLoggedInUser().getId());
 		}
 		return createUserListView;
 	}

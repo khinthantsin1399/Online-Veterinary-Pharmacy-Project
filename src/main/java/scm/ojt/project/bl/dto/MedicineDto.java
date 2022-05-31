@@ -1,10 +1,12 @@
 package scm.ojt.project.bl.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.CartDetail;
 import scm.ojt.project.persistence.entity.Category;
 import scm.ojt.project.persistence.entity.Medicine;
 
@@ -112,6 +114,7 @@ public class MedicineDto {
      */
     public Category category ;
 
+    private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
     /**
      * <h2> Constructor for MedicineDto </h2>
      * <p>
@@ -141,5 +144,6 @@ public class MedicineDto {
         this.updatedAt = medicine.getUpdatedAt();
         this.deletedAt = medicine.getDeletedAt();
         this.category = medicine.getCategory();
+        this.cartDetails=medicine.getCartDetails();
     }
 }

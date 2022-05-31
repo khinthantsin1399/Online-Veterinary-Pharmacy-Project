@@ -1,4 +1,4 @@
-package scm.ojt.project.persistence.entity;
+package scm.ojt.project.bl.dto;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -6,31 +6,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.CartDetail;
+import scm.ojt.project.persistence.entity.User;
 
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "shopping_cart")
-public class Cart implements Serializable {
+public class CartDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -44,7 +35,7 @@ public class Cart implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-   
+  
 
     /**
      * <h2>amount</h2>
@@ -91,15 +82,17 @@ public class Cart implements Serializable {
      * deletedAt
      * </p>
      */
+
+    /**
+     * <h2>deletedAt</h2>
+     * <p>
+     * deletedAt
+     * </p>
+     */
     @Column(name = "deleted_at")
     private Date deletedAt;
 
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
     private List<CartDetail> cartDetails;
-
-    @OneToOne
-    @JoinColumn(name = "id")
-    @JsonIgnore
     private User user;
+
 }
