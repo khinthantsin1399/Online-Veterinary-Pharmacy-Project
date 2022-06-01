@@ -14,14 +14,39 @@ import org.springframework.web.servlet.ModelAndView;
 import scm.ojt.project.bl.dto.OrderDTO;
 import scm.ojt.project.bl.dto.UserDTO;
 import scm.ojt.project.bl.service.OrderService;
+import scm.ojt.project.persistence.entity.Cart;
 import scm.ojt.project.persistence.entity.OrderDetail;
 
+/**
+ * <h2>OrderController Class</h2>
+ * <p>
+ * Process for Displaying OrderController
+ * </p>
+ * 
+ * @author KyawHtet
+ *
+ */
 @Controller
 public class OrderController {
 
+	/**
+	 * <h2>orderService</h2>
+	 * <p>
+	 * orderService
+	 * </p>
+	 */
 	@Autowired
 	private OrderService orderService;
 
+	/**
+	 * <h2>orderList</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @return
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/orderList", method = RequestMethod.GET)
 	public ModelAndView orderList() {
 		ModelAndView mv = new ModelAndView("orderList");
@@ -31,6 +56,16 @@ public class OrderController {
 		return mv;
 	}
 
+	/**
+	 * <h2>orderDetail</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param orderId
+	 * @return
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/order/detail", method = RequestMethod.GET)
 	public ModelAndView orderDetail(@RequestParam("id") Integer orderId) {
 		ModelAndView orderDetailForm = new ModelAndView("orderDetail");
@@ -42,6 +77,16 @@ public class OrderController {
 		return orderDetailForm;
 	}
 
+	/**
+	 * <h2>acceptOrder</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param orderId
+	 * @return
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/order/accept", method = RequestMethod.GET)
 	public ModelAndView acceptOrder(@RequestParam("id") Integer orderId) {
 		this.orderService.doAcceptOrder(orderId);
@@ -49,11 +94,45 @@ public class OrderController {
 		return acceptOrder;
 	}
 
+	/**
+	 * <h2>cancelOrder</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param orderId
+	 * @param session
+	 * @return
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/order/cancel", method = RequestMethod.GET)
 	public ModelAndView cancelOrder(@RequestParam("id") Integer orderId, HttpSession session) {
 		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 		this.orderService.doCancelOrder(orderId, user.getId());
 		ModelAndView cancelOrder = new ModelAndView("redirect:/orderList");
 		return cancelOrder;
+	}
+
+	/**
+	 * <h2>checkoutCart</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param cartId
+	 * @param session
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/cart/checkout")
+	public ModelAndView checkoutCart(@RequestParam("id") Integer cartId, HttpSession session) {
+		Cart cart = this.orderService.doGetCartAndCheckOutByCartId(cartId);
+		if (cart != null) {
+			int orderId = this.orderService.doSaveOrder(cart);
+			System.out.println(orderId + "heloo");
+			List<OrderDetail> orderDetails = this.orderService.doGetCartDetail(cartId, orderId);
+			this.orderService.doSaveOrderDetail(orderDetails);
+		}
+		return new ModelAndView("redirect:/medicineList");
 	}
 }
