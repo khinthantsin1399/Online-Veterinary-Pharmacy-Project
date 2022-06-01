@@ -1,4 +1,4 @@
-package scm.ojt.project.persistence.dao.impl;
+package scm.ojt.project.persistence.dao.Impl;
 
 import java.util.Date;
 import java.util.List;

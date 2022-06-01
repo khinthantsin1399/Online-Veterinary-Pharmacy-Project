@@ -71,6 +71,8 @@ public class MyUserDetailsService implements UserDetailsService {
 			setAuths.add(new SimpleGrantedAuthority("ROLE_PHARMACIST"));
 		} else if (Integer.parseInt(type) == 1) {
 			setAuths.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+		} else if (Integer.parseInt(type) == 2) {
+			setAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
 		}
 		return setAuths;
 	}

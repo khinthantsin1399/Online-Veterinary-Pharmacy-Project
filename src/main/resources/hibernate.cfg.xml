@@ -7,6 +7,8 @@
     <session-factory>
         <mapping class="scm.ojt.project.persistence.entity.User" />
         <mapping class="scm.ojt.project.persistence.entity.Medicine" />
-         <mapping class="scm.ojt.project.persistence.entity.Category" />
+        <mapping class="scm.ojt.project.persistence.entity.Category" />
+        <mapping class="scm.ojt.project.persistence.entity.Order" />
+        <mapping class="scm.ojt.project.persistence.entity.OrderDetail" />
     </session-factory>
 </hibernate-configuration> 
