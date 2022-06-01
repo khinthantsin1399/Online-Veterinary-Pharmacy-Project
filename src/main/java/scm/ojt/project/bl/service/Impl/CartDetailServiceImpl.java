@@ -52,4 +52,8 @@ public class CartDetailServiceImpl implements CartDetailService {
     public void doUpdateCartDetail(CartDetail cartDetail) {
         this.cartDetailDao.dbUpdateCartDetail(cartDetail);
     }
+    @Override
+    public void doUpdateQuantity(CartDetail cartDetail) {
+        this.cartDetailDao.dbUpdateQuantity(cartDetail);
+    }
 }

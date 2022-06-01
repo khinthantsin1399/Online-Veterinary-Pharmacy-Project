@@ -30,20 +30,36 @@
 
 						</tr>
 						<c:forEach items="${cartDetails}" var="cartDetail" varStatus="loop">
+							<form action="${pageContext.request.contextPath}/updateQuantity">
+ 					
 							<tr>
 								<td>${cartDetail.medicine.medicine_name}</td>
 								<td>${cartDetail.medicine.amount}</td>
-								<td>${cartDetail.quantity}</td>
+								<td>
+								<input type="hidden" name="id" value="${ cartDetail.c_id}"/>
+							
+								<input type="number" min="1" max="${cartDetail.medicine.unit_in_stock}" name="quantity" value="${cartDetail.quantity}" onblur="this.form.submit()"/>
+								</td>
 								<td>${cartDetail.medicine.amount * cartDetail.quantity}</td>
 							<td><a
 								href="${pageContext.request.contextPath}/deleteCartItem?id=${cartDetail.c_id }"
 								class="cmn-link"
-								onclick="if (!(confirm('Are you sure you want to remove this item?'))) return false">Delete</a></td>
+								onclick="if (!(confirm('Are you sure you want to remove this item?'))) return false">Delete</a>
+						<!--  <a
+								href="${pageContext.request.contextPath}/updateQuantity?id=${cartDetail.c_id }&quantity=${cartDetail.quantity}"
+								class="cmn-link"
+								>Update</a>-->
 						</tr>
+						
+					</form>
 						</c:forEach>
+						<tr>
+					<b>Total Amount : ${cart.amount} </b>
+						</tr>
 					</table>
 					</div>
 					</div>
 					</div>
+					<script src="<c:url value="/resources/js/common.js"/>"></script>
 </body>
 </html>

@@ -18,4 +18,5 @@ public interface CartDetailDao {
 
     public List<CartDetail> dbGetCartDetailListById();
     public void dbUpdateCartDetail(CartDetail cartDetail);
+    public void dbUpdateQuantity(CartDetail cartDetail) ;
 }

@@ -1,6 +1,9 @@
 package scm.ojt.project.web.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import scm.ojt.project.bl.dto.CategoryDto;
 import scm.ojt.project.bl.dto.MedicineDto;
 import scm.ojt.project.bl.service.CartDetailService;
 import scm.ojt.project.bl.service.CartService;
@@ -55,7 +57,7 @@ public class CartDetailController {
         List<CartDetail> cd = new ArrayList<>();
         for (CartDetail cartDetailResult : cartDetails) {
             if (cartDetailResult.getCart().getId() == cartId) {
-               cd.add(cartDetailResult);
+                cd.add(cartDetailResult);
             }
         }
         cartView.addObject("cartDetails", cd);
@@ -63,55 +65,56 @@ public class CartDetailController {
         return cartView;
     }
 
+    @SuppressWarnings("deprecation")
     @RequestMapping(value = "/addToCart", method = { RequestMethod.GET, RequestMethod.POST })
-    public ModelAndView addToCart(@RequestParam("id") Integer medicineId, HttpServletRequest request,MedicineForm medicineForm)
-            throws IOException {
-       // ModelAndView cartView = new ModelAndView("medicineList");
-       // List<MedicineDto> MedicineList = medicineService.doGetMedicineList();
+    public ModelAndView addToCart(@RequestParam("id") Integer medicineId, HttpServletRequest request,
+            MedicineForm medicineForm) throws IOException {
+        // ModelAndView cartView = new ModelAndView("medicineList");
+        // List<MedicineDto> MedicineList = medicineService.doGetMedicineList();
         ModelAndView medicineListView = new ModelAndView("medicineList");
         int currentPage = getCurrentPage(request);
         int recordsPerPage = getRecordsPerPage(request);
-       
+
         int loginUserId = (int) request.getSession().getAttribute("loginUserId");
 
         MedicineForm medForm = this.medicineService.getMedicineById(medicineId);
         Medicine med = new Medicine(medForm);
-       
+
         if (this.cartService.isCreatedUserIdExist(loginUserId)) {
-          //  List<Cart> carts = this.cartService.doGetCarts();
-          Cart cartList=this.cartService.doGetCart(loginUserId);
-         // List<CartDetail> cartDetails=cartList.getCartDetails();
-          
-         List<CartDetail> cartDetails = this.cartDetailService.doGetCartDetailListById();
-       
-          for (CartDetail cartDetailResult : cartDetails) {
-              if (cartDetailResult.getCart().getId()== cartList.getId() && cartDetailResult.getMedicine().getId()==med.getId()) {
-                cartDetailResult.setQuantity(cartDetailResult.getQuantity()+1);
-                cartDetailResult.setAmount(cartDetailResult.getQuantity()*med.getAmount());
-                cartDetailService.doUpdateCartDetail(cartDetailResult);
-                cartList.setAmount(cartList.getAmount() + cartDetailResult.getAmount());
-                cartService.doUpdateCart(cartList);
-               // ModelAndView cartView = new ModelAndView("redirect:/medicineList");
-               // return cartView;
-                //cartView.addObject("MedicineList", MedicineList);
-                //return cartView;
-                
-                this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
-                return medicineListView;
-              }
-               
-          }
-          
-          CartDetail cartDetail = new CartDetail();
-          cartDetail.setCart(cartList);
-          cartDetail.setMedicine(med);
-          cartDetail.setQuantity(1);
-          cartDetail.setAmount(medicineForm.getAmount() * cartDetail.getQuantity());
-          cartDetailService.addCartItem(cartDetail, loginUserId);
-          cartList.setAmount(cartList.getAmount() + cartDetail.getAmount());
-          cartService.doUpdateCart(cartList);
-      
-           
+            // List<Cart> carts = this.cartService.doGetCarts();
+            Cart cartList = this.cartService.doGetCart(loginUserId);
+            // List<CartDetail> cartDetails=cartList.getCartDetails();
+
+            List<CartDetail> cartDetails = this.cartDetailService.doGetCartDetailListById();
+
+            for (CartDetail cartDetailResult : cartDetails) {
+                if (cartDetailResult.getCart().getId() == cartList.getId()
+                        && cartDetailResult.getMedicine().getId() == med.getId()) {
+                    cartDetailResult.setQuantity(cartDetailResult.getQuantity() + 1);
+                    cartDetailResult.setAmount(cartDetailResult.getQuantity() * med.getAmount());
+                    cartDetailService.doUpdateCartDetail(cartDetailResult);
+                    cartList.setAmount(cartList.getAmount() + cartDetailResult.getAmount());
+                    cartService.doUpdateCart(cartList);
+                    // ModelAndView cartView = new ModelAndView("redirect:/medicineList");
+                    // return cartView;
+                    // cartView.addObject("MedicineList", MedicineList);
+                    // return cartView;
+
+                    this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
+                    return medicineListView;
+                }
+
+            }
+
+            CartDetail cartDetail = new CartDetail();
+            cartDetail.setCart(cartList);
+            cartDetail.setMedicine(med);
+            cartDetail.setQuantity(1);
+            cartDetail.setAmount(medicineForm.getAmount() * cartDetail.getQuantity());
+            cartDetailService.addCartItem(cartDetail, loginUserId);
+            cartList.setAmount(cartList.getAmount() + cartDetail.getAmount());
+            cartService.doUpdateCart(cartList);
+
         } else {
             Cart cart = new Cart();
             cart.setCreated_user_id(loginUserId);
@@ -128,57 +131,40 @@ public class CartDetailController {
             cartDetail.setAmount(medicineForm.getAmount() * cartDetail.getQuantity());
             cartDetailService.addCartItem(cartDetail, loginUserId);
         }
+        Path path = Paths.get(request.getRealPath("/") + "/resources/images/" + medForm.getMedicine_name());
+        String medicineImagePath = Files.createDirectories(path) + "/" + medForm.getMedicine_name() + ".png";
+
+        medForm.setUnit_in_stock(medForm.getUnit_in_stock() - 1);
+        medicineService.updateMedicine(medForm, medicineImagePath);
         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
         return medicineListView;
-       // cartView.addObject("MedicineList", MedicineList);
-       // return cartView;
+        // cartView.addObject("MedicineList", MedicineList);
+        // return cartView;
 
     }
 
-    /*
-     * @RequestMapping(value = "/addToCart", method = RequestMethod.GET) public
-     * ModelAndView addToCart(@RequestParam("id") Integer medicineId, Integer
-     * userId, HttpServletRequest request) { ModelAndView medicineView = new
-     * ModelAndView("detailMedicine"); // UserForm userForm =
-     * this.userService.doGetUserbyId(userForm.getId()); //
-     * customerService.findCustomerByUsername(activeUser.getUsername()); // Cart
-     * cart = userForm.getCart(); // Cart cart=new Cart(); int loginUserId = (int)
-     * request.getSession().getAttribute("loginUserId"); Cart cartresult =
-     * this.cartService.doGetCart(loginUserId); MedicineForm detailMedicine = null;
-     * try { detailMedicine = this.medicineService.getMedicineById(medicineId); }
-     * catch (NullPointerException | IOException e) { medicineView = new
-     * ModelAndView("redirect:/medicineList"); }
-     * 
-     * List<CartDetail> cartDetails = cartresult.getCartDetails();
-     * 
-     * // IF PRODUCT ALREDAY EXIST IN CART THEN INCRESE ITS QUANTITY
-     * 
-     * for (int i = 0; i < cartDetails.size(); i++) {
-     * 
-     * if (detailMedicine.getId() == cartDetails.get(i).getMedicine().getId()) {
-     * CartDetail cartDetail = cartDetails.get(i);
-     * cartDetail.setQuantity(cartDetail.getQuantity() + 1);
-     * cartDetail.setAmount(detailMedicine.getAmount() * cartDetail.getQuantity());
-     * cartDetailService.addCartItem(cartDetail);
-     * 
-     * return medicineView; }
-     * 
-     * }
-     * 
-     * // IF PRODUCT IS NEW
-     * 
-     * CartDetail cartDetail = new CartDetail();
-     * cartDetail.setMedicine(detailMedicine); cartDetail.setQuantity(1);
-     * cartDetail.setAmount(detailMedicine.getAmount() * cartDetail.getQuantity());
-     * cartDetail.setCart(cartresult); cartDetailService.addCartItem(cartDetail);
-     * return medicineView;
-     * 
-     * }
-     */
+    @RequestMapping(value = "/updateQuantity", method = { RequestMethod.GET, RequestMethod.POST })
+    public ModelAndView addToCart(@RequestParam("id") Integer cartDetailId, @RequestParam Integer quantity,
+            HttpServletRequest request, MedicineForm medicineForm) throws IOException {
+        CartDetail cartDetail = cartDetailService.doGetCartDetailById(cartDetailId);
+        if (cartDetail != null) {
+            int loginUserId = (int) request.getSession().getAttribute("loginUserId");
+            Cart cartList = cartService.doGetCart(loginUserId);
+            cartDetail.setQuantity(quantity);
+            cartDetail.setAmount(quantity * cartDetail.getMedicine().getAmount());
+            cartDetailService.doUpdateCartDetail(cartDetail);
+            cartList.setAmount(cartList.getAmount() + cartDetail.getAmount());
+            cartService.doUpdateCart(cartList);
+        }
+        return new ModelAndView("redirect:/viewCart");
+    }
 
+    @SuppressWarnings("deprecation")
     @RequestMapping(value = "/deleteCartItem", method = RequestMethod.GET)
-    public ModelAndView deleteCategory(@RequestParam("id") Integer cartDetailId, HttpServletRequest request) {
-        
+    public ModelAndView deleteCategory(@RequestParam("id") Integer cartDetailId, @RequestParam("id") Integer medicineId,
+            HttpServletRequest request) throws IOException {
+        MedicineForm medForm = this.medicineService.getMedicineById(medicineId);
+      
         CartDetail cartDetail = cartDetailService.doGetCartDetailById(cartDetailId);
         if (cartDetail != null) {
             int loginUserId = (int) request.getSession().getAttribute("loginUserId");
@@ -188,11 +174,15 @@ public class CartDetailController {
             cartService.doUpdateCart(cart);
             cartDetailService.deleteCartItem(cartDetailId);
         }
+        Path path = Paths.get(request.getRealPath("/") + "/resources/images/" + medForm.getMedicine_name());
+        String medicineImagePath = Files.createDirectories(path) + "/" + medForm.getMedicine_name() + ".png";
+
+        medForm.setUnit_in_stock(medForm.getUnit_in_stock() + 1);
+        medicineService.updateMedicine(medForm, medicineImagePath);
         return new ModelAndView("redirect:/viewCart");
 
     }
-    
-    
+
     private void getPagination(ModelAndView medicineListView, int currentPage, int recordsPerPage, boolean resultSearch,
             MedicineForm medicineForm) throws IOException {
         List<MedicineDto> medicineList;
@@ -248,6 +238,5 @@ public class CartDetailController {
                 : 6;
         return recordsPerPage;
     }
-
 
 }

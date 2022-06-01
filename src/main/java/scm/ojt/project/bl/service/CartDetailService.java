@@ -13,4 +13,5 @@ public interface CartDetailService {
     public CartDetail doGetCartDetailById(int cartDetailId);
     public List<CartDetail> doGetCartDetailListById();
     public void doUpdateCartDetail(CartDetail cartDetail);
+    public void doUpdateQuantity(CartDetail cartDetail) ;
 }

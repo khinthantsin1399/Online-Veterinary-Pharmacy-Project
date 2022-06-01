@@ -68,5 +68,10 @@ public class CartDetailDaoImpl implements CartDetailDao {
     public void dbUpdateCartDetail(CartDetail cartDetail) {
         this.sessionFactory.getCurrentSession().update(cartDetail);
     }
+    
+    @Override
+    public void dbUpdateQuantity(CartDetail cartDetail) {
+        this.sessionFactory.getCurrentSession().update(cartDetail);
+    }
    
 }

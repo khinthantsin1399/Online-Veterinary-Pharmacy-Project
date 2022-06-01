@@ -72,6 +72,17 @@ public class MedicineController {
         return medicineListView;
     }
 
+    
+    @RequestMapping(value = "/userMedicineList", method = RequestMethod.GET)
+    public ModelAndView getUserMedicineList(HttpServletRequest request, MedicineForm medicineForm) throws IOException {
+        ModelAndView medicineListView = new ModelAndView("userMedicineList");
+        int currentPage = getCurrentPage(request);
+        int recordsPerPage = getRecordsPerPage(request);
+        this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
+        return medicineListView;
+    }
+    
+    
     /**
      * <h2>detailMedicine</h2>
      * <p>
