@@ -42,6 +42,20 @@
         <put-attribute name="body"
             value="/WEB-INF/pages/user/update/updateUserConfirm.jsp" />
     </definition>
+    <!-- profileDetail Page -->
+    <definition name="profileDetail" extends="template1">
+        <put-attribute name="title"
+            value="ProfileDetail" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user/profile/profileDetail.jsp" />
+    </definition>
+    <!-- profileEdit Page -->
+    <definition name="profileEdit" extends="template1">
+        <put-attribute name="title"
+            value="ProfileEdit" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/user/profile/profileEdit.jsp" />
+    </definition>
     <!--AccessDenied Page -->
     <definition name="accessDenied" extends="template1">
         <put-attribute name="title" value="accessDenied" />

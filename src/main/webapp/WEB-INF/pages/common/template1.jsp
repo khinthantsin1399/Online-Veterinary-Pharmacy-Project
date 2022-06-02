@@ -14,6 +14,17 @@ response.addDateHeader("Expires", 0);
 <meta charset="UTF-8">
 <title>Online Veterinary Pharmacy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- CSS only -->
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
 <link rel="stylesheet"
   href='<c:url value="/resources/plugins/fontawesome-free/css/all.min.css"/>'>
 <link rel="stylesheet"
@@ -37,7 +48,13 @@ response.addDateHeader("Expires", 0);
   src="<c:url value="/resources/js/lib/bootstrap-datepicker.min.js"/>"></script>
 <link rel="stylesheet"
   href='<c:url value="/resources/css/alt/bootstrap-datepicker3.css"/>' />
+
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
     <tiles:insertAttribute name="header" />

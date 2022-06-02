@@ -143,6 +143,12 @@ public class Cart implements Serializable {
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CartDetail> cartDetails;
 
+    /**
+     * <h2>user</h2>
+     * <p>
+     * user
+     * </p>
+     */
     @OneToOne
     @JoinColumn(name = "id")
     @JsonIgnore

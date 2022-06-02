@@ -17,6 +17,7 @@ import lombok.Setter;
 import scm.ojt.project.persistence.entity.CartDetail;
 import scm.ojt.project.persistence.entity.Category;
 import scm.ojt.project.persistence.entity.Medicine;
+import scm.ojt.project.persistence.entity.OrderDetail;
 
 /**
  * <h2>MedicineForm Class</h2>
@@ -30,95 +31,95 @@ import scm.ojt.project.persistence.entity.Medicine;
 @Getter
 @Setter
 public class MedicineForm {
-    /**
-     * <h2>id</h2>
-     * <p>
-     * id
-     * </p>
-     */
-    private Integer id;
+	/**
+	 * <h2>id</h2>
+	 * <p>
+	 * id
+	 * </p>
+	 */
+	private Integer id;
 
-    /**
-     * <h2>medicine_name</h2>
-     * <p>
-     * medicine_name
-     * </p>
-     */
+	/**
+	 * <h2>medicine_name</h2>
+	 * <p>
+	 * medicine_name
+	 * </p>
+	 */
 
-    @NotBlank(message = "Medicine Name is required")
-    private String medicine_name;
+	@NotBlank(message = "Medicine Name is required")
+	private String medicine_name;
 
-    /**
-     * <h2>medicine_description</h2>
-     * <p>
-     * medicine_description
-     * </p>
-     */
-    @NotBlank(message = "Medicine Description is required")
-    private String medicine_description;
+	/**
+	 * <h2>medicine_description</h2>
+	 * <p>
+	 * medicine_description
+	 * </p>
+	 */
+	@NotBlank(message = "Medicine Description is required")
+	private String medicine_description;
 
-    /**
-     * <h2>medicine_code</h2>
-     * <p>
-     * medicine_code
-     * </p>
-     */
+	/**
+	 * <h2>medicine_code</h2>
+	 * <p>
+	 * medicine_code
+	 * </p>
+	 */
 
-    @NotEmpty
-    private String medicine_code;
+	@NotEmpty
+	private String medicine_code;
 
-    /**
-     * <h2>unit_in_stock</h2>
-     * <p>
-     * unit_in_stock
-     * </p>
-     */
-   // @Min(value = 0,message = "Invalid Data Entries!")
-    // @Digits(integer = 4, fraction = 0, message = "Invalid Data Entries!")
-   //@Pattern(regexp = "[0-9]*", message = "Invalid Data Entries!")
-    private Integer unit_in_stock;
+	/**
+	 * <h2>unit_in_stock</h2>
+	 * <p>
+	 * unit_in_stock
+	 * </p>
+	 */
+	// @Min(value = 0,message = "Invalid Data Entries!")
+	// @Digits(integer = 4, fraction = 0, message = "Invalid Data Entries!")
+	// @Pattern(regexp = "[0-9]*", message = "Invalid Data Entries!")
+	private Integer unit_in_stock;
 
-    /**
-     * <h2>amount</h2>
-     * <p>
-     * amount
-     * </p>
-     */
-    @Digits(integer = 10, fraction = 2)
-    private double amount;
+	/**
+	 * <h2>amount</h2>
+	 * <p>
+	 * amount
+	 * </p>
+	 */
+	@Digits(integer = 10, fraction = 2)
+	private double amount;
 
-    /**
-     * <h2>image</h2>
-     * <p>
-     * image
-     * </p>
-     */
-    private String image;
+	/**
+	 * <h2>image</h2>
+	 * <p>
+	 * image
+	 * </p>
+	 */
+	private String image;
 
-    /**
-     * <h2>createdAt</h2>
-     * <p>
-     * createdAt
-     * </p>
-     */
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private Date createdAt;
+	/**
+	 * <h2>createdAt</h2>
+	 * <p>
+	 * createdAt
+	 * </p>
+	 */
+	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	private Date createdAt;
 
-    /**
-     * <h2>updatedAt</h2>
-     * <p>
-     * updatedAt
-     * </p>
-     */
-    private Date updatedAt;
+	/**
+	 * <h2>updatedAt</h2>
+	 * <p>
+	 * updatedAt
+	 * </p>
+	 */
+	private Date updatedAt;
 
-    /**
-     * <h2>deletedAt</h2>
-     * <p>
-     * deletedAt
-     * </p>
-     */
-    private Date deletedAt;
+	/**
+	 * <h2>deletedAt</h2>
+	 * <p>
+	 * deletedAt
+	 * </p>
+	 */
+	private Date deletedAt;
 
     /**
      * <h2>category</h2>
@@ -130,15 +131,7 @@ public class MedicineForm {
     
     private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
 
-    /**
-     * <h2>Constructor for MedicineForm</h2>
-     * <p>
-     * Constructor for MedicineForm
-     * </p>
-     */
-    public MedicineForm() {
-        super();
-    }
+	  private OrderDetail orderDetail;
 
     /**
      * <h2>Constructor for MedicineForm</h2>
@@ -160,6 +153,7 @@ public class MedicineForm {
         this.updatedAt = medicine.getUpdatedAt();
         this.deletedAt = medicine.getDeletedAt();
         this.category = medicine.getCategory();
-this.cartDetails=medicine.getCartDetails();
+        this.cartDetails=medicine.getCartDetails();
+	      this.orderDetail = medicine.getOrderDetail();
     }
 }

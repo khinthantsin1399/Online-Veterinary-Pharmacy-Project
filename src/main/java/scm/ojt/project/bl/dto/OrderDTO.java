@@ -1,23 +1,17 @@
-package scm.ojt.project.persistence.entity;
-
-import static javax.persistence.GenerationType.IDENTITY;
+package scm.ojt.project.bl.dto;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import lombok.Getter;
 import lombok.Setter;
-import scm.ojt.project.web.form.OrderForm;
+import scm.ojt.project.persistence.entity.Order;
+import scm.ojt.project.persistence.entity.OrderDetail;
 
 /**
- * <h2>Order Class</h2>
+ * <h2>OrderDTO Class</h2>
  * <p>
- * Process for Displaying Order
+ * Process for Displaying OrderDTO
  * </p>
  * 
  * @author KyawHtet
@@ -25,9 +19,7 @@ import scm.ojt.project.web.form.OrderForm;
  */
 @Getter
 @Setter
-@Entity
-@Table(name = "orders")
-public class Order implements Serializable {
+public class OrderDTO implements Serializable {
 	/**
 	 * <h2>serialVersionUID</h2>
 	 * <p>
@@ -41,8 +33,6 @@ public class Order implements Serializable {
 	 * id
 	 * </p>
 	 */
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
 	private int id;
 	/**
 	 * <h2>u_name</h2>
@@ -138,52 +128,38 @@ public class Order implements Serializable {
 	public OrderDetail orderDetail;
 
 	/**
-	 * <h2>Constructor for Order</h2>
+	 * <h2>Constructor for OrderDTO</h2>
 	 * <p>
-	 * Constructor for Order
+	 * Constructor for OrderDTO
 	 * </p>
 	 */
-	public Order() {
+	public OrderDTO() {
 		super();
 	}
 
 	/**
-	 * <h2>Constructor for Order</h2>
+	 * <h2>Constructor for OrderDTO</h2>
 	 * <p>
-	 * Constructor for Order
+	 * Constructor for OrderDTO
 	 * </p>
 	 * 
-	 * @param orderForm
+	 * @param order
 	 */
-	public Order(OrderForm orderForm) {
+	public OrderDTO(Order order) {
 		super();
-		this.id = orderForm.getId();
-		this.u_name = orderForm.getU_name();
-		this.u_phone = orderForm.getU_phone();
-		this.u_address = orderForm.getU_address();
-		this.date = orderForm.getDate();
-		this.status = orderForm.getStatus();
-		this.amount = orderForm.getAmount();
-		this.created_user_id = orderForm.getCreated_user_id();
-		this.created_at = orderForm.getCreated_at();
-		this.updated_user_id = orderForm.getUpdated_user_id();
-		this.updated_at = orderForm.getUpdated_at();
-		this.deleted_user_id = orderForm.getDeleted_user_id();
-		this.deleted_at = orderForm.getDeleted_at();
-	}
-
-	/**
-	 * <h2>Constructor for Order</h2>
-	 * <p>
-	 * Constructor for Order
-	 * </p>
-	 * 
-	 * @param cart
-	 */
-	public Order(Cart cart) {
-		super();
-		this.status = false;
-		this.amount = cart.getAmount();
-		this.created_user_id = cart.getCreated_user_id();
+		this.id = order.getId();
+		this.u_name = order.getU_name();
+		this.u_phone = order.getU_phone();
+		this.u_address = order.getU_address();
+		this.date = order.getDate();
+		this.status = order.getStatus();
+		this.amount = order.getAmount();
+		this.created_user_id = order.getCreated_user_id();
+		this.created_at = order.getCreated_at();
+		this.updated_user_id = order.getUpdated_user_id();
+		this.updated_at = order.getUpdated_at();
+		this.deleted_user_id = order.getDeleted_user_id();
+		this.deleted_at = order.getDeleted_at();
+		this.orderDetail = order.getOrderDetail();
 	}
 }

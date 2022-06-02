@@ -78,53 +78,63 @@ public class UserController {
         return mv;
     }
 
-    /**
-     * <h2>login</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param error
-     * @param model
-     * @param request
-     * @return
-     * @return String
-     */
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login(@RequestParam(value = "error", required = false) String error, ModelMap model,
-            HttpServletRequest request) {
-        if (authService.doIsLoggedIn()) {
-            return "redirect:/userList";
-        }
-        if (error != null) {
-            model.addAttribute("errorMsg", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
-        }
-        return "userLogin";
-    }
+	/**
+	 * <h2>login</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param error
+	 * @param model
+	 * @param request
+	 * @return
+	 * @return String
+	 */
+	@RequestMapping(value = "login", method = RequestMethod.GET)
+	public String login(@RequestParam(value = "error", required = false) String error, ModelMap model,
+	        HttpServletRequest request) {
+		if (authService.doIsLoggedIn()) {
+			if (authService.doGetLoggedInUser().getType() == "2") {
+				return "medicineList";
+			}
+			return "redirect:/userList";
+		}
+		if (error != null) {
+			model.addAttribute("errorMsg", getErrorMessage(request, "SPRING_SECURITY_LAST_EXCEPTION"));
+		}
+		return "userLogin";
+	}
 
-    /**
-     * <h2>viewUserList</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param model
-     * @param session
-     * @return
-     * @return ModelAndView
-     */
-    @RequestMapping(value = "/user/list", method = RequestMethod.GET)
-    public ModelAndView viewUserList(ModelAndView model, HttpSession session) {
-        boolean isLoggedIn = authService.doIsLoggedIn();
-        ModelAndView createUserListView = new ModelAndView("userList");
-        List<UserDTO> userList = this.userService.doGetUserList();
-        createUserListView.addObject("userList", userList);
-        if (isLoggedIn) {
-            session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
-            session.setAttribute("loginUserId", authService.doGetLoggedInUser().getId());
-        }
-        return createUserListView;
-    }
+	/**
+	 * <h2>viewUserList</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param model
+	 * @param session
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/user/list", method = RequestMethod.GET)
+	public ModelAndView viewUserList(ModelAndView model, HttpSession session) {
+		System.out.println("isLoggedIn" + authService.doGetLoggedInUser().getType());
+		boolean isLoggedIn = authService.doIsLoggedIn();
+		ModelAndView createUserListView = new ModelAndView("userList");
+		List<UserDTO> userList = this.userService.doGetUserList();
+		createUserListView.addObject("userList", userList);
+		if (isLoggedIn) {
+			session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
+             session.setAttribute("loginUserId", authService.doGetLoggedInUser().getId());
+			System.out.print(isLoggedIn + authService.doGetLoggedInUser().getType());
+			String type = authService.doGetLoggedInUser().getType();
+			if (Integer.parseInt(type) == 2) {
+				System.out.println("turee;;");
+				return new ModelAndView("redirect:/medicineList");
+			}
+		}
+		return createUserListView;
+	}
 
     /**
      * <h2>registerUser</h2>
@@ -327,23 +337,105 @@ public class UserController {
         return backUpdateUserForm;
     }
 
-    /**
-     * <h2>updateUser</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param userForm
-     * @return
-     * @return ModelAndView
-     */
-    @RequestMapping(value = "/user/update", params = "updateUser", method = RequestMethod.POST)
-    public ModelAndView updateUser(@ModelAttribute("updateUserConfirmForm") UserForm userForm) {
-        this.userService.doUpdateUser(userForm);
-        ModelAndView updateUserView = new ModelAndView("redirect:/user/list");
-        updateUserView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0004", null, null));
-        return updateUserView;
-    }
+	/**
+	 * <h2>profileDetail</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param userId
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/profile/detail", method = RequestMethod.GET)
+	public ModelAndView profileDetail(@RequestParam("id") Integer userId, HttpSession session) {
+		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+		if (user.getId() == userId) {
+			ModelAndView mv = new ModelAndView("profileDetail");
+			UserForm profileDetailForm = this.userService.doGetUserbyId(userId);
+			mv.addObject("profileDetailForm", profileDetailForm);
+			return mv;
+		}
+		return new ModelAndView("redirect:/denied");
+	}
+
+	/**
+	 * <h2>profileEdit</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param userId
+	 * @param session
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/profile/edit", method = RequestMethod.GET)
+	public ModelAndView profileEdit(@RequestParam("id") Integer userId, HttpSession session) {
+		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+		if (user.getId() == userId) {
+			ModelAndView mv = new ModelAndView("profileEdit");
+			UserForm profileEditForm = this.userService.doGetUserbyId(userId);
+			mv.addObject("profileEditForm", profileEditForm);
+			return mv;
+		}
+		return new ModelAndView("redirect:/denied");
+	}
+
+	/**
+	 * <h2>profileUpdate</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param profileForm
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/profile/update", params = "editProfile", method = RequestMethod.POST)
+	public ModelAndView profileUpdate(@ModelAttribute("profileEditForm") UserForm profileForm) {
+		this.userService.doUpdateUser(profileForm);
+		ModelAndView updateUserView = new ModelAndView("redirect:/medicineList");
+		return updateUserView;
+	}
+
+	/**
+	 * <h2>cancelProfileUpdate</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param profileForm
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/profile/update", params = "cancelProfile", method = RequestMethod.POST)
+	public ModelAndView cancelProfileUpdate(@ModelAttribute("profileEditForm") UserForm profileForm) {
+		ModelAndView cancelProfile = new ModelAndView("profileDetail");
+		cancelProfile.addObject("profileDetailForm", profileForm);
+		return cancelProfile;
+	}
+
+	/**
+	 * <h2>delete</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @param userId
+	 * @param request
+	 * @return
+	 * @return ModelAndView
+	 */
+	@RequestMapping(value = "/user/delete", method = RequestMethod.GET)
+	public ModelAndView delete(@RequestParam("id") Integer userId, HttpServletRequest request) {
+		ModelAndView updateView = new ModelAndView("userList");
+		this.userService.doSoftDelete(userId);
+		List<UserDTO> userList = this.userService.doGetUserList();
+		updateView.addObject("userList", userList);
+		updateView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0005", null, null));
+		return updateView;
+	}
 
     /**
      * <h2>delete</h2>
