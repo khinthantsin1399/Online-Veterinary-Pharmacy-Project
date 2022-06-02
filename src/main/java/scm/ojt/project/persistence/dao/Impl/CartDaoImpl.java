@@ -19,7 +19,7 @@ public class CartDaoImpl implements CartDao {
     private SessionFactory sessionFactory;
 
     public static String SELECT_CART_HQL = "FROM Cart c " + "WHERE c.deletedAt IS NUll "
-            + "AND c.created_user_id = :created_user_id";
+            + "AND c.created_user_id = :created_user_id " + "AND c.checkout_flg IS NULL";
 
     /**
      * <h2>dbAddCart</h2>
@@ -129,7 +129,7 @@ public class CartDaoImpl implements CartDao {
     @SuppressWarnings({ "deprecation", "rawtypes" })
     @Override
     public Cart isCreatedUserIdExist(int createdUserId) {
-        String HqlQuery = "SELECT c FROM Cart c where c.created_user_id = :created_user_id";
+        String HqlQuery = "SELECT c FROM Cart c where c.created_user_id = :created_user_id and c.checkout_flg IS NULL";
         Query queryisExist = this.sessionFactory.getCurrentSession().createQuery(HqlQuery);
         queryisExist.setParameter("created_user_id", createdUserId);
         Cart resultCart = (Cart) queryisExist.uniqueResult();
