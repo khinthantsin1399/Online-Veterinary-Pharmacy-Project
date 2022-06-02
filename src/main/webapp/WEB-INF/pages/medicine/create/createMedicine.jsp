@@ -20,8 +20,7 @@
 				<h2 class="cmn-ttl">Medicine Add Form</h2>
 				<c:url var="createMedicine" value="/createMedicineConfirm"></c:url>
 				<form:form class="form" action="createMedicineConfirm" method="POST"
-					id="form" modelAttribute="createMedicineForm"
-					enctype="multipart/form-data">
+					id="form" modelAttribute="createMedicineForm">
 					<c:if test="${errorMsg != null }">
 						<div class="alert alert-danger">
 							<strong>${errorMsg }</strong>
@@ -53,7 +52,10 @@
 						<c:forEach items="${CategoryList}" var="category">
 							<form:option value="${category.category_id}">${category.category_name}</form:option>
 						</c:forEach>
-					</form:select><br><br><br>
+					</form:select>
+					<br>
+					<br>
+					<br>
 
 					<label for="unit_in_stock">Unit In Stock</label>
 					<input name="unit_in_stock" type="number"
@@ -63,8 +65,9 @@
 
 
 					<label for="amount">Price</label>
-					<input name="amount" type="number" value="${createMedicineForm.amount}"
-						class="input" placeholder="Enter Price" />
+					<input name="amount" type="number"
+						value="${createMedicineForm.amount}" class="input"
+						placeholder="Enter Price" />
 					<form:errors path="amount" class="text-danger" />
 
 

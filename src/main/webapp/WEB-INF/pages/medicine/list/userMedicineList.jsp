@@ -19,7 +19,11 @@
 		<div class="sec-list">
 			<div class="container">
 				<h2 class="cmn-ttl">Medicine List</h2>
-
+				<c:if test="${errorMsg != null }">
+					<div class="alert alert-danger">
+						<strong>${errorMsg }</strong>
+					</div>
+				</c:if>
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
 						<div class="search-sec">

@@ -114,6 +114,12 @@ public class MedicineDto {
      */
     public Category category ;
 
+    /**
+     * <h2> cartDetails</h2>
+     * <p>
+     * cartDetails
+     * </p>
+     */
     private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
     /**
      * <h2> Constructor for MedicineDto </h2>

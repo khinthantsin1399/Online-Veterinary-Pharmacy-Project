@@ -289,11 +289,10 @@ public class MedicineController {
      * @param imageData
      * @return
      * @throws ParseException
-     * @throws IOException
+     * @throws IOException 
      * @return ModelAndView
      */
-    @RequestMapping(value = "/updateMedicineConfirm", method = RequestMethod.POST, consumes = {
-            MediaType.MULTIPART_FORM_DATA_VALUE })
+    @RequestMapping(value = "/updateMedicineConfirm", method = RequestMethod.POST)
     public ModelAndView callUpdateMedicineConfirm(@ModelAttribute("medicine") @Valid MedicineForm updateMedicineForm,
             BindingResult result, HttpServletRequest request, HttpSession session,
             @RequestParam("imageData") String imageData) throws ParseException, IOException {
@@ -343,7 +342,6 @@ public class MedicineController {
         this.medicineService.updateMedicine(medicineForm, medicineImagePath);
         ModelAndView updateUserView = new ModelAndView("redirect:/medicineList");
         session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0009", null, null));
-
         return updateUserView;
     }
 

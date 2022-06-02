@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import scm.ojt.project.bl.dto.CategoryDto;
 import scm.ojt.project.bl.dto.MedicineDto;
+import scm.ojt.project.persistence.entity.Medicine;
 import scm.ojt.project.web.form.CategoryForm;
 import scm.ojt.project.web.form.MedicineForm;
 
@@ -141,5 +142,7 @@ public ByteArrayInputStream load();
      * @return
      * @return boolean
      */
-    public boolean isMedicineCodeExist(String medCode) ;
+    public boolean isMedicineCodeExist(String medCode);
+
+    public void doUpdateMedicine(Medicine medicine);
 }

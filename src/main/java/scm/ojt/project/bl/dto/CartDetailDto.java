@@ -15,6 +15,15 @@ import lombok.Setter;
 import scm.ojt.project.persistence.entity.Cart;
 import scm.ojt.project.persistence.entity.Medicine;
 
+/**
+ * <h2>CartDetailDto Class</h2>
+ * <p>
+ * Process for Displaying CartDetailDto
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -33,6 +42,12 @@ public class CartDetailDto implements Serializable {
     @Column(name = "c_id")
     private Integer c_id;
 
+    /**
+     * <h2>quantity</h2>
+     * <p>
+     * quantity
+     * </p>
+     */
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -45,8 +60,19 @@ public class CartDetailDto implements Serializable {
     @Column(name = "amount")
     private double amount;
 
+    /**
+     * <h2>cart</h2>
+     * <p>
+     * cart
+     * </p>
+     */
     private Cart cart;
 
+    /**
+     * <h2>medicine</h2>
+     * <p>
+     * medicine
+     * </p>
+     */
     private Medicine medicine;
-
 }

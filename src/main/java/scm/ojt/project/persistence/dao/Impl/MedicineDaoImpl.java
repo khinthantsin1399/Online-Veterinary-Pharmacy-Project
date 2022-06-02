@@ -207,4 +207,9 @@ public class MedicineDaoImpl implements MedicineDao {
         Medicine resultMedicine = (Medicine) queryisExist.uniqueResult();
         return resultMedicine;
     }
+
+    @Override
+    public void dbUpdateMedicine(Medicine medicine) {
+        this.sessionFactory.getCurrentSession().update(medicine);        
+    }
 }

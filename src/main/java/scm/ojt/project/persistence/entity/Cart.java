@@ -24,6 +24,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * <h2>Cart Class</h2>
+ * <p>
+ * Process for Displaying Cart
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 @Getter
 @Setter
 @Entity
@@ -44,8 +53,6 @@ public class Cart implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-   
-
     /**
      * <h2>amount</h2>
      * <p>
@@ -55,18 +62,51 @@ public class Cart implements Serializable {
     @Column(name = "amount")
     private double amount;
 
+    /**
+     * <h2>date</h2>
+     * <p>
+     * date
+     * </p>
+     */
     @Column(name = "date")
     private Date date;
 
+    /**
+     * <h2>checkout_flg</h2>
+     * <p>
+     * checkout_flg
+     * </p>
+     */
     @Column(name = "checkout_flg")
     private Boolean checkout_flg;
-    
+
+    /**
+     * <h2>created_user_id</h2>
+     * <p>
+     * created_user_id
+     * </p>
+     */
     @Column(name = "created_user_id")
     private Integer created_user_id;
+
+    /**
+     * <h2>updated_user_id</h2>
+     * <p>
+     * updated_user_id
+     * </p>
+     */
     @Column(name = "updated_user_id")
     private Integer updated_user_id;
+
+    /**
+     * <h2>deleted_user_id</h2>
+     * <p>
+     * deleted_user_id
+     * </p>
+     */
     @Column(name = "deleted_user_id")
     private Integer deleted_user_id;
+
     /**
      * <h2>createdAt</h2>
      * <p>
@@ -94,8 +134,13 @@ public class Cart implements Serializable {
     @Column(name = "deleted_at")
     private Date deletedAt;
 
+    /**
+     * <h2>cartDetails</h2>
+     * <p>
+     * cartDetails
+     * </p>
+     */
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-
     private List<CartDetail> cartDetails;
 
     @OneToOne

@@ -41,9 +41,7 @@
                     <a
                       href="${pageContext.request.contextPath}/createCategory"
                       class="btn btn-info">Add</a>
-                    <a
-                      href="${pageContext.request.contextPath}/uploadCSV"
-                      class="btn btn-info">Upload</a>
+                    
                     <c:if test="${!empty categoryList }">
                       <input type="submit" class="btn btn-info"
                         value="Download" name="downloadExcel">

@@ -111,4 +111,6 @@ public interface MedicineDao {
      * @return Medicine
      */
     public Medicine isMedicineCodeExist(String medCode) ;
+
+    public void dbUpdateMedicine(Medicine medicine);
 }

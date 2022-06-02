@@ -20,6 +20,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * <h2>CartDetail Class</h2>
+ * <p>
+ * Process for Displaying CartDetail
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 @Getter
 @Setter
 @Entity
@@ -40,6 +49,12 @@ public class CartDetail implements Serializable {
     @Column(name = "c_id")
     private Integer c_id;
 
+    /**
+     * <h2>quantity</h2>
+     * <p>
+     * quantity
+     * </p>
+     */
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -52,11 +67,23 @@ public class CartDetail implements Serializable {
     @Column(name = "amount")
     private double amount;
 
-    @ManyToOne(fetch = FetchType.EAGER)// with cart
+    /**
+     * <h2>cart</h2>
+     * <p>
+     * cart
+     * </p>
+     */
+    @ManyToOne(fetch = FetchType.EAGER) // with cart
     @JoinColumn(name = "cart_id") // primary key of cart
     @JsonIgnore
     private Cart cart;
 
+    /**
+     * <h2>medicine</h2>
+     * <p>
+     * medicine
+     * </p>
+     */
     @ManyToOne // with cartDetail
     @JoinColumn(name = "medicine_id")
     private Medicine medicine;

@@ -19,6 +19,11 @@
 		<div class="sec-list">
 			<div class="container">
 				<h2 class="cmn-ttl">Medicine List</h2>
+				<c:if test="${errorMsg != null }">
+					<div class="alert alert-danger">
+						<strong>${errorMsg }</strong>
+					</div>
+				</c:if>
 				<c:if test="${completeMsg != null  && completeMsg != ''}">
 					<div class="alert alert-success">
 						<strong>${completeMsg }</strong>
@@ -44,8 +49,6 @@
 								<a href="${pageContext.request.contextPath}/download"
 									class="btn btn-info">Download</a>
 
-	<a href="${pageContext.request.contextPath}/viewCart"
-									class="btn btn-info">View Cart</a>
 
 							</form:form>
 						</div>
@@ -133,38 +136,6 @@
 						</div>
 					</div>
 				</c:if>
-
-
-
-				<div class="sec-work clearfix">
-					<h2 class="cmn-ttl">
-						<span>Medicine List</span>
-					</h2>
-
-
-					<ul class="work-list clearfix">
-						<c:forEach items="${MedicineList}" var="medicine" varStatus="loop">
-							<li><c:if test="${empty medicine.image }">
-									<img src="<c:url value='/resources/img/noimage.png'/>"
-										alt="Medicine picture">
-								</c:if> <c:if test="${not empty medicine.image }">
-									<img src="${medicine.image}" alt="product image">
-								</c:if>
-								<p class="work-txt">${medicine.medicine_name}</p>
-								<p class="work-txt">${medicine.amount}MMK</p> <a
-								href=" <c:url value='detailMedicine?id=${medicine.id}'/>"
-								class="btn btn-info">View Detail</a>
-								 <a class="btn btn-info" href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD TO CART</a>
-								
-								</li>
-								
-						</c:forEach>
-					</ul>
-
-
-				</div>
-
-
 			</div>
 		</div>
 	</div>

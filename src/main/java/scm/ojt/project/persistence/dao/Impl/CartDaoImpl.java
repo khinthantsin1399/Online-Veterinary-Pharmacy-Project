@@ -21,12 +21,32 @@ public class CartDaoImpl implements CartDao {
     public static String SELECT_CART_HQL = "FROM Cart c " + "WHERE c.deletedAt IS NUll "
             + "AND c.created_user_id = :created_user_id";
 
+    /**
+     * <h2>dbAddCart</h2>
+     * <p>
+     * adding cart
+     * </p>
+     *
+     * @param cart
+     * @param currentDate
+     * @return void
+     */
     @Override
     public void dbAddCart(Cart cart, Date currentDate) {
         this.sessionFactory.getCurrentSession().saveOrUpdate(cart);
         this.sessionFactory.getCurrentSession().flush();
     }
 
+    /**
+     * <h2>dbGetCart</h2>
+     * <p>
+     * Getting cart by user id
+     * </p>
+     *
+     * @param createdUserId
+     * @return
+     * @return Cart
+     */
     @SuppressWarnings("deprecation")
     @Override
     public Cart dbGetCart(int createdUserId) {
@@ -40,17 +60,35 @@ public class CartDaoImpl implements CartDao {
         return cartResult;
     }
 
+    /**
+     * <h2>dbGetCartList</h2>
+     * <p>
+     * 
+     * </pGetting cart
+     *
+     * @return
+     * @return Cart
+     */
     @SuppressWarnings({ "unchecked", "deprecation" })
     @Override
-    public Cart doGetCartList() {
+    public Cart dbGetCartList() {
         Query<Cart> queryCartList = this.sessionFactory.getCurrentSession()
                 .createQuery("FROM Cart c WHERE c.deletedAt IS NUll ");
         queryCartList.setMaxResults(1);
         Cart cartList = (Cart) queryCartList.uniqueResult();
         return cartList;
-
     }
 
+    /**
+     * <h2>dbGetCartByCartId</h2>
+     * <p>
+     * Getting cart by cart id
+     * </p>
+     *
+     * @param cartId
+     * @return
+     * @return Cart
+     */
     @SuppressWarnings({ "deprecation", "rawtypes" })
     @Override
     public Cart dbGetCartByCartId(int cartId) {
@@ -62,12 +100,32 @@ public class CartDaoImpl implements CartDao {
 
     }
 
+    /**
+     * <h2>dbUpdateCart</h2>
+     * <p>
+     * Updating cart
+     * </p>
+     *
+     * @param cart
+     * @param currentDate
+     * @return void
+     */
     @Override
     public void dbUpdateCart(Cart cart, Date currentDate) {
         cart.setUpdatedAt(currentDate);
         this.sessionFactory.getCurrentSession().update(cart);
     }
 
+    /**
+     * <h2>isCreatedUserIdExist</h2>
+     * <p>
+     * Checking user id already exists or not
+     * </p>
+     *
+     * @param createdUserId
+     * @return
+     * @return Cart
+     */
     @SuppressWarnings({ "deprecation", "rawtypes" })
     @Override
     public Cart isCreatedUserIdExist(int createdUserId) {
@@ -78,6 +136,15 @@ public class CartDaoImpl implements CartDao {
         return resultCart;
     }
 
+    /**
+     * <h2>dbGetCarts</h2>
+     * <p>
+     * Getting carts
+     * </p>
+     *
+     * @return
+     * @return List<Cart>
+     */
     @SuppressWarnings({ "deprecation", "unchecked", "rawtypes" })
     @Override
     public List<Cart> dbGetCarts() {

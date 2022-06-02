@@ -17,6 +17,23 @@ import lombok.Setter;
 import scm.ojt.project.persistence.entity.CartDetail;
 import scm.ojt.project.persistence.entity.User;
 
+/**<h2> CartDto Class</h2>
+ * <p>
+ * Process for Displaying CartDto
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
+/**
+ * <h2>CartDto Class</h2>
+ * <p>
+ * Process for Displaying CartDto
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,8 +52,6 @@ public class CartDto implements Serializable {
     @Column(name = "id")
     private Integer id;
 
-  
-
     /**
      * <h2>amount</h2>
      * <p>
@@ -46,18 +61,51 @@ public class CartDto implements Serializable {
     @Column(name = "amount")
     private double amount;
 
+    /**
+     * <h2>date</h2>
+     * <p>
+     * date
+     * </p>
+     */
     @Column(name = "date")
     private Date date;
 
+    /**
+     * <h2>checkout_flg</h2>
+     * <p>
+     * checkout_flg
+     * </p>
+     */
     @Column(name = "checkout_flg")
     private Boolean checkout_flg;
-    
+
+    /**
+     * <h2>created_user_id</h2>
+     * <p>
+     * created_user_id
+     * </p>
+     */
     @Column(name = "created_user_id")
     private Integer created_user_id;
+
+    /**
+     * <h2>updated_user_id</h2>
+     * <p>
+     * updated_user_id
+     * </p>
+     */
     @Column(name = "updated_user_id")
     private Integer updated_user_id;
+
+    /**
+     * <h2>deleted_user_id</h2>
+     * <p>
+     * deleted_user_id
+     * </p>
+     */
     @Column(name = "deleted_user_id")
     private Integer deleted_user_id;
+
     /**
      * <h2>createdAt</h2>
      * <p>
@@ -82,17 +130,22 @@ public class CartDto implements Serializable {
      * deletedAt
      * </p>
      */
-
-    /**
-     * <h2>deletedAt</h2>
-     * <p>
-     * deletedAt
-     * </p>
-     */
     @Column(name = "deleted_at")
     private Date deletedAt;
 
+    /**
+     * <h2>cartDetails</h2>
+     * <p>
+     * cartDetails
+     * </p>
+     */
     private List<CartDetail> cartDetails;
-    private User user;
 
+    /**
+     * <h2>user</h2>
+     * <p>
+     * user
+     * </p>
+     */
+    private User user;
 }
