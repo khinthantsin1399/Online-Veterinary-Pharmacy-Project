@@ -1,6 +1,9 @@
 package scm.ojt.project.web.controller;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -110,7 +113,8 @@ public class CartDetailController {
      * @throws IOException
      * @return ModelAndView
      */
-    @RequestMapping(value = "/addToCart", method = { RequestMethod.GET, RequestMethod.POST })
+    @SuppressWarnings("deprecation")
+	@RequestMapping(value = "/addToCart", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView addToCart(@RequestParam("id") Integer medicineId, HttpServletRequest request,
             MedicineForm medicineForm) throws IOException {
         ModelAndView medicineListView = new ModelAndView("userMedicineList");
@@ -119,6 +123,9 @@ public class CartDetailController {
         int loginUserId = (int) request.getSession().getAttribute("loginUserId");
         MedicineForm medForm = this.medicineService.getMedicineById(medicineId);
         Medicine med = new Medicine(medForm);
+        Path path = Paths.get(request.getRealPath("/") + "/resources/images/" + med.getMedicine_name());
+        String medicineImagePath = Files.createDirectories(path) + "/" + med.getMedicine_name() + ".png";
+        med.setImage(medicineImagePath);
 
         if (this.cartService.isCreatedUserIdExist(loginUserId)) {
             Cart cartList = this.cartService.doGetCart(loginUserId);

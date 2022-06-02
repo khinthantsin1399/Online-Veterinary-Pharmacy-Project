@@ -178,7 +178,7 @@ public class OrderDaoImpl implements OrderDao {
 	@Override
 	public List<CartDetail> dbGetCartDetail(Integer cartId) {
 		Query queryCartDetailById = this.sessionFactory.getCurrentSession()
-		        .createQuery("SELECT cd FROM CartDetail cd where cd.cart_id = :cart_id");
+		        .createQuery("SELECT cd FROM CartDetail cd where cd.cart.id = :cart_id");
 		queryCartDetailById.setParameter("cart_id", cartId);
 		List<CartDetail> resultCartDetailList = (List<CartDetail>) queryCartDetailById.list();
 		return resultCartDetailList;

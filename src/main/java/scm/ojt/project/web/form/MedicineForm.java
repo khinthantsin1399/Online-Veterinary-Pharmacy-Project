@@ -5,10 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -129,9 +127,31 @@ public class MedicineForm {
      */
     public Category category;
     
+    /**
+     * <h2>cartDetails</h2>
+     * <p>
+     * cartDetails
+     * </p>
+     */
     private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
-
-	  private OrderDetail orderDetail;
+    
+    /**
+     * <h2>orderDetail</h2>
+     * <p>
+     * orderDetail
+     * </p>
+     */
+    private List<OrderDetail> orderDetail = new ArrayList<OrderDetail>();
+	  
+    /**
+     * <h2>Constructor for MedicineForm</h2>
+     * <p>
+     * Constructor for MedicineForm
+     * </p>
+     */
+    public MedicineForm() {
+		super();
+	}  
 
     /**
      * <h2>Constructor for MedicineForm</h2>
@@ -154,6 +174,6 @@ public class MedicineForm {
         this.deletedAt = medicine.getDeletedAt();
         this.category = medicine.getCategory();
         this.cartDetails=medicine.getCartDetails();
-	      this.orderDetail = medicine.getOrderDetail();
+	    this.orderDetail = medicine.getOrderDetail();
     }
 }

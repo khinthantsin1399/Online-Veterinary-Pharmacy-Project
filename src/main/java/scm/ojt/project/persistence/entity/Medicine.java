@@ -149,8 +149,9 @@ public class Medicine implements Serializable {
     @OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, targetEntity = CartDetail.class, fetch = FetchType.LAZY)
     private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
 
-@OneToOne(mappedBy = "medicine")
-	private OrderDetail orderDetail;
+	@OneToMany(mappedBy = "medicine", cascade = CascadeType.ALL, targetEntity = OrderDetail.class, fetch = FetchType.LAZY)
+	private List<OrderDetail> orderDetail = new ArrayList<OrderDetail>();
+
 
     /**
      * <h2>Constructor for Medicine</h2>
