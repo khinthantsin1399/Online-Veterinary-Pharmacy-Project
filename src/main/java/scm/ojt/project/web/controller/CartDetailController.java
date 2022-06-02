@@ -134,10 +134,11 @@ public class CartDetailController {
                 if (cartDetailResult.getCart().getId() == cartList.getId()
                         && cartDetailResult.getMedicine().getId() == med.getId()) {
                     if (med.getUnit_in_stock() > 0) {
+                        double oldAmount = cartDetailResult.getAmount();
                         cartDetailResult.setQuantity(cartDetailResult.getQuantity() + 1);
                         cartDetailResult.setAmount(cartDetailResult.getQuantity() * med.getAmount());
                         cartDetailService.doUpdateCartDetail(cartDetailResult);
-                        cartList.setAmount(cartList.getAmount() + cartDetailResult.getAmount());
+                        cartList.setAmount((cartList.getAmount() - oldAmount) + cartDetailResult.getAmount());
                         cartService.doUpdateCart(cartList);
                         med.setUnit_in_stock(med.getUnit_in_stock() - 1);
                         this.medicineService.doUpdateMedicine(med);
@@ -207,6 +208,7 @@ public class CartDetailController {
      * @throws IOException
      * @return ModelAndView
      */
+    @SuppressWarnings("deprecation")
     @RequestMapping(value = "/updateQuantity", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView addToCart(@RequestParam("id") Integer cartDetailId, @RequestParam Integer quantity,
             HttpServletRequest request) throws IOException {
@@ -214,23 +216,38 @@ public class CartDetailController {
         int medId = cartDetail.getMedicine().getId();
         MedicineForm medForm = this.medicineService.getMedicineById(medId);
         Medicine med = new Medicine(medForm);
+        Path path = Paths.get(request.getRealPath("/") + "/resources/images/" + med.getMedicine_name());
+        String medicineImagePath = Files.createDirectories(path) + "/" + med.getMedicine_name() + ".png";
+
         if (cartDetail != null && med.getUnit_in_stock() > 0 && quantity <= med.getUnit_in_stock()) {
             int loginUserId = (int) request.getSession().getAttribute("loginUserId");
             Cart cartList = cartService.doGetCart(loginUserId);
             double oldAmount = cartDetail.getAmount();
+            int oldQuantity = cartDetail.getQuantity();
             cartDetail.setQuantity(quantity);
             cartDetail.setAmount(quantity * cartDetail.getMedicine().getAmount());
             cartDetailService.doUpdateCartDetail(cartDetail);
 
             cartList.setAmount(cartList.getAmount() - oldAmount + cartDetail.getAmount());
             cartService.doUpdateCart(cartList);
-        } else {
+            if (oldQuantity > quantity) {
+                med.setUnit_in_stock(med.getUnit_in_stock() + (oldQuantity - quantity));
+                med.setImage(medicineImagePath);
+                this.medicineService.doUpdateMedicine(med);
+            } else {
+                med.setUnit_in_stock(med.getUnit_in_stock() - (quantity - oldQuantity));
+                med.setImage(medicineImagePath);
+                this.medicineService.doUpdateMedicine(med);
+            }
+        } 
+        else {
             return new ModelAndView("redirect:/viewCart");
         }
         return new ModelAndView("redirect:/viewCart");
     }
 
     // @SuppressWarnings("deprecation")
+    @SuppressWarnings("deprecation")
     /**
      * <h2>deleteCartItem</h2>
      * <p>
@@ -251,6 +268,9 @@ public class CartDetailController {
         int medId = cartDetail.getMedicine().getId();
         medicineForm = this.medicineService.getMedicineById(medId);
         Medicine med = new Medicine(medicineForm);
+        Path path = Paths.get(request.getRealPath("/") + "/resources/images/" + med.getMedicine_name());
+        String medicineImagePath = Files.createDirectories(path) + "/" + med.getMedicine_name() + ".png";
+
         if (cartDetail != null) {
             int loginUserId = (int) request.getSession().getAttribute("loginUserId");
             Cart cart = cartService.doGetCart(loginUserId);
@@ -258,7 +278,8 @@ public class CartDetailController {
             cartService.doUpdateCart(cart);
             cartDetailService.deleteCartItem(cartDetailId);
         }
-        med.setUnit_in_stock(medicineForm.getUnit_in_stock() + cartDetail.getQuantity());
+        med.setUnit_in_stock(med.getUnit_in_stock() + cartDetail.getQuantity());
+        med.setImage(medicineImagePath);
         this.medicineService.doUpdateMedicine(med);
         return new ModelAndView("redirect:/viewCart");
     }
