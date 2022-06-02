@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <!-- OrderList Page -->
+    <definition name="orderList" extends="template1">
+        <put-attribute name="title" value="OrderList" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/order/list/orderList.jsp" />
+    </definition>
+    <!-- OrderDetail Page -->
+    <definition name="orderDetail" extends="template1">
+        <put-attribute name="title" value="OrderDetail" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/order/list/orderDetail.jsp" />
+    </definition>
+</tiles-definitions>
