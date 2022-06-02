@@ -133,6 +133,9 @@ public class MedicineForm {
 
 	  private OrderDetail orderDetail;
 
+	  public MedicineForm() {
+	      super();
+	  }
     /**
      * <h2>Constructor for MedicineForm</h2>
      * <p>

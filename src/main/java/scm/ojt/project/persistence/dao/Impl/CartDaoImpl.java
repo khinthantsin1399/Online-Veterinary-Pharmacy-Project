@@ -19,7 +19,7 @@ public class CartDaoImpl implements CartDao {
     private SessionFactory sessionFactory;
 
     public static String SELECT_CART_HQL = "FROM Cart c " + "WHERE c.deletedAt IS NUll "
-            + "AND c.created_user_id = :created_user_id";
+            + "AND c.created_user_id = :created_user_id " + "AND c.checkout_flg IS NULL ";
 
     /**
      * <h2>dbAddCart</h2>
@@ -47,15 +47,12 @@ public class CartDaoImpl implements CartDao {
      * @return
      * @return Cart
      */
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({ "deprecation", "rawtypes" })
     @Override
     public Cart dbGetCart(int createdUserId) {
         StringBuffer query = new StringBuffer(SELECT_CART_HQL);
-        @SuppressWarnings("rawtypes")
-        Query queryCartList = this.sessionFactory.getCurrentSession().createQuery(query.toString());
-
-        queryCartList.setParameter("created_user_id", createdUserId);
-
+        Query  queryCartList = this.sessionFactory.getCurrentSession().createQuery(query.toString());
+        queryCartList.setParameter("created_user_id", createdUserId);     
         Cart cartResult = (Cart) queryCartList.uniqueResult();
         return cartResult;
     }
@@ -93,7 +90,7 @@ public class CartDaoImpl implements CartDao {
     @Override
     public Cart dbGetCartByCartId(int cartId) {
         Query queryCartById = this.sessionFactory.getCurrentSession()
-                .createQuery("SELECT c FROM Cart c where c.id = :id");
+                .createQuery("SELECT c FROM Cart c where c.id = :id AND c.checkout_flg IS NULL");
         queryCartById.setParameter("id", cartId);
         Cart resultCart = (Cart) queryCartById.uniqueResult();
         return resultCart;
@@ -129,7 +126,7 @@ public class CartDaoImpl implements CartDao {
     @SuppressWarnings({ "deprecation", "rawtypes" })
     @Override
     public Cart isCreatedUserIdExist(int createdUserId) {
-        String HqlQuery = "SELECT c FROM Cart c where c.created_user_id = :created_user_id";
+        String HqlQuery = "SELECT c FROM Cart c where c.created_user_id = :created_user_id and c.checkout_flg IS NULL";
         Query queryisExist = this.sessionFactory.getCurrentSession().createQuery(HqlQuery);
         queryisExist.setParameter("created_user_id", createdUserId);
         Cart resultCart = (Cart) queryisExist.uniqueResult();
@@ -149,9 +146,13 @@ public class CartDaoImpl implements CartDao {
     @Override
     public List<Cart> dbGetCarts() {
         Query queryCarts = this.sessionFactory.getCurrentSession()
-                .createQuery("FROM Cart c WHERE c.deletedAt IS NUll ");
-
+                .createQuery("FROM Cart c WHERE c.deletedAt IS NUll AND c.checkout_flg IS  NULL");
         List<Cart> cartList = (List<Cart>) queryCarts.list();
         return cartList;
     }
+    
+  /*
+    public void dbDeleteCart(int cartId){
+        this.sessionFactory.getCurrentSession().delete(cartId);
+    }*/
 }

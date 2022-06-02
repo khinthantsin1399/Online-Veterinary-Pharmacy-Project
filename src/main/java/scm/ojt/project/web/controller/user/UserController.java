@@ -438,27 +438,6 @@ public class UserController {
 	}
 
     /**
-     * <h2>delete</h2>
-     * <p>
-     * 
-     * </p>
-     *
-     * @param userId
-     * @param request
-     * @return
-     * @return ModelAndView
-     */
-    @RequestMapping(value = "/user/delete", method = RequestMethod.GET)
-    public ModelAndView delete(@RequestParam("id") Integer userId, HttpServletRequest request) {
-        ModelAndView updateView = new ModelAndView("userList");
-        this.userService.doSoftDelete(userId);
-        List<UserDTO> userList = this.userService.doGetUserList();
-        updateView.addObject("userList", userList);
-        updateView.addObject("errorMsg", messageSource.getMessage("M_SC_USR_0005", null, null));
-        return updateView;
-    }
-
-    /**
      * <h2>logout</h2>
      * <p>
      * 

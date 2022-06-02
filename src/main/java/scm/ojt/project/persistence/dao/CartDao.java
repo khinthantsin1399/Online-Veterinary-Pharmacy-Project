@@ -14,6 +14,14 @@ import scm.ojt.project.persistence.entity.Cart;
  * @author khinthantsin
  *
  */
+/**<h2> CartDao Class</h2>
+ * <p>
+ * Process for Displaying CartDao
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 public interface CartDao {
     /**
      * <h2>dbAddCart</h2>
@@ -96,4 +104,15 @@ public interface CartDao {
      * @return Cart
      */
     public Cart isCreatedUserIdExist(int createdUserId);
+      
+    /**
+     * <h2> dbDeleteCart</h2>
+     * <p>
+     * Deleting cart
+     * </p>
+     *
+     * @param cartId
+     * @return void
+     */
+   // public void dbDeleteCart(int cartId);
 }

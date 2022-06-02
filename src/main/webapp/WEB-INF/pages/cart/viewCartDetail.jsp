@@ -46,7 +46,10 @@
 							</tr>
 						</form>
 						<c:if test="${loop.index == 0}">
-							<b>Total Amount : ${cartDetail.cart.amount} </b>
+						<a
+                href="${pageContext.request.contextPath}/cart/checkout?id=${cartDetail.cart.id}">Check
+                Out Items</a>
+              <b>Total Amount : ${cartDetail.cart.amount} </b>
 						</c:if>
 					</c:forEach>
 				</table>
