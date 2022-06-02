@@ -11,6 +11,12 @@
             value="/WEB-INF/pages/medicine/list/medicineList.jsp" />
     </definition>
     
+    <definition name="userMedicineList" extends="template1">
+        <put-attribute name="title" value="userMedicineList" />
+        <put-attribute name="body"
+            value="/WEB-INF/pages/medicine/list/userMedicineList.jsp" />
+    </definition>
+    
      <definition name="detailMedicine" extends="template1">
         <put-attribute name="title" value="detailMedicine" />
         <put-attribute name="body"

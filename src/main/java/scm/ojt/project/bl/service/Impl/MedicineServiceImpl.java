@@ -195,7 +195,6 @@ public class MedicineServiceImpl implements MedicineService {
             updatedMedicine.setUnit_in_stock(medicine.getUnit_in_stock());
             updatedMedicine.setAmount(medicine.getAmount());
             updatedMedicine.setImage(medicine.getImage());
-
         }
         this.medicineDao.updateMedicine(updatedMedicine, currentDate);
     }
@@ -367,4 +366,10 @@ public class MedicineServiceImpl implements MedicineService {
         return medicineCodeExist;
     }
 
+    @Override
+    public void doUpdateMedicine(Medicine medicine) {
+       this.medicineDao.dbUpdateMedicine(medicine);       
+    }
+
+   
 }

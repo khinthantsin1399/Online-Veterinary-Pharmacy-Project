@@ -1,4 +1,4 @@
-package scm.ojt.project.persistence.entity;
+package scm.ojt.project.bl.dto;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -6,28 +6,29 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.CartDetail;
+import scm.ojt.project.persistence.entity.User;
 
-/**
- * <h2>Cart Class</h2>
+/**<h2> CartDto Class</h2>
  * <p>
- * Process for Displaying Cart
+ * Process for Displaying CartDto
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
+/**
+ * <h2>CartDto Class</h2>
+ * <p>
+ * Process for Displaying CartDto
  * </p>
  * 
  * @author khinthantsin
@@ -35,11 +36,9 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "shopping_cart")
-public class Cart implements Serializable {
+public class CartDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -140,7 +139,6 @@ public class Cart implements Serializable {
      * cartDetails
      * </p>
      */
-    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<CartDetail> cartDetails;
 
     /**
@@ -149,8 +147,5 @@ public class Cart implements Serializable {
      * user
      * </p>
      */
-    @OneToOne
-    @JoinColumn(name = "id")
-    @JsonIgnore
     private User user;
 }

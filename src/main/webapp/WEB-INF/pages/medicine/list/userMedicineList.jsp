@@ -24,12 +24,6 @@
 						<strong>${errorMsg }</strong>
 					</div>
 				</c:if>
-				<c:if test="${completeMsg != null  && completeMsg != ''}">
-					<div class="alert alert-success">
-						<strong>${completeMsg }</strong>
-					</div>
-				</c:if>
-				<c:remove var="completeMsg" />
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
 						<div class="search-sec">
@@ -43,12 +37,10 @@
 								<input name="searchMedicine" type="submit" value="Search"
 									class="btn btn-secondary">
 
-								<a href="${pageContext.request.contextPath}/createMedicine"
-									class="btn btn-info">Add</a>
 
-								<a href="${pageContext.request.contextPath}/download"
-									class="btn btn-info">Download</a>
 
+								<a href="${pageContext.request.contextPath}/viewCart"
+									class="btn btn-info">View Cart</a>
 
 							</form:form>
 						</div>
@@ -57,47 +49,35 @@
 
 
 
-					<form action="${pageContext.request.contextPath}/uploadExcel"
-						method="POST" enctype="multipart/form-data">
-						<br /> <br /> Please select a file to upload : <input
-							type="file" name="file" value="Browse File" accept=".xlsx" /> <br />
-						<br /> Press here to upload the file : <input type="submit"
-							value="upload" /> <br /> <br />
 
-					</form>
+				</div>
 
-					<table class="tbl-student">
-						<tr>
-							<th>ID</th>
-							<th>Code</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Category</th>
-							<th>Price</th>
-							<th>Unit In Stock</th>
-							<th>Action</th>
 
-						</tr>
+
+
+
+				<div class="sec-work clearfix">
+
+
+					<ul class="work-list clearfix">
 						<c:forEach items="${MedicineList}" var="medicine" varStatus="loop">
-							<tr>
-								<td>${medicine.id}</td>
-								<td>${medicine.medicine_code}</td>
-								<td><a
-									href="<c:url value='detailMedicine?id=${medicine.id}'/>"
-									class="btn btn-info">${medicine.medicine_name}</a></td>
-								<td>${medicine.medicine_description}</td>
-								<td>${medicine.category.category_name}</td>
-								<td>${medicine.amount}</td>
-								<td>${medicine.unit_in_stock}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/updateMedicine?id=${medicine.id}"
-									class="cmn-link">Update</a> <a
-									href="${pageContext.request.contextPath}/deleteMedicine?id=${medicine.id }"
-									class="cmn-link"
-									onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
-							</tr>
+							<li><c:if test="${empty medicine.image }">
+									<img src="<c:url value='/resources/img/noimage.png'/>"
+										alt="Medicine picture">
+								</c:if> <c:if test="${not empty medicine.image }">
+									<img src="${medicine.image}" alt="product image">
+								</c:if>
+								<p class="work-txt">${medicine.medicine_name}</p>
+								<p class="work-txt">${medicine.amount}MMK</p> <a
+								href=" <c:url value='detailMedicine?id=${medicine.id}'/>"
+								class="btn btn-info">View Detail</a> <a class="btn btn-info"
+								href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
+									TO CART</a></li>
+
 						</c:forEach>
-					</table>
+					</ul>
+
+
 				</div>
 
 

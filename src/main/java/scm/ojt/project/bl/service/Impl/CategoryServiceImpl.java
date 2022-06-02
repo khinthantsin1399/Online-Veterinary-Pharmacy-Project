@@ -125,15 +125,6 @@ public class CategoryServiceImpl implements CategoryService {
         categoryDao.deleteCategory(catId);
     }
 
-    @Override
-    @Transactional
-    public CategoryForm getCategoryById(int catId) {
-        Category resultCategory = this.categoryDao.getCategoryById(catId);
-        CategoryForm resultCategoryform = resultCategory != null ? new CategoryForm(resultCategory) : null;
-
-        return resultCategoryform;
-    }
-
     /**
      * <h2>getCategoryById</h2>
      * <p>
@@ -144,6 +135,16 @@ public class CategoryServiceImpl implements CategoryService {
      * @return
      * @return CategoryForm
      */
+    @Override
+    @Transactional
+    public CategoryForm getCategoryById(int catId) {
+        Category resultCategory = this.categoryDao.getCategoryById(catId);
+        CategoryForm resultCategoryform = resultCategory != null ? new CategoryForm(resultCategory) : null;
+
+        return resultCategoryform;
+    }
+
+    
     @Override
     public void updateCategory(CategoryForm categoryForm) {
         Category category = new Category(categoryForm);

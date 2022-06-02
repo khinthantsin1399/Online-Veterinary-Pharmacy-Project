@@ -1,6 +1,8 @@
 package scm.ojt.project.web.form;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
@@ -12,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
 import lombok.Setter;
+import scm.ojt.project.persistence.entity.CartDetail;
 import scm.ojt.project.persistence.entity.Category;
 import scm.ojt.project.persistence.entity.Medicine;
 import scm.ojt.project.persistence.entity.OrderDetail;
@@ -118,46 +121,39 @@ public class MedicineForm {
 	 */
 	private Date deletedAt;
 
-	/**
-	 * <h2>category</h2>
-	 * <p>
-	 * category
-	 * </p>
-	 */
-	public Category category;
+    /**
+     * <h2>category</h2>
+     * <p>
+     * category
+     * </p>
+     */
+    public Category category;
+    
+    private List<CartDetail> cartDetails = new ArrayList<CartDetail>();
 
-	private OrderDetail orderDetail;
+	  private OrderDetail orderDetail;
 
-	/**
-	 * <h2>Constructor for MedicineForm</h2>
-	 * <p>
-	 * Constructor for MedicineForm
-	 * </p>
-	 */
-	public MedicineForm() {
-		super();
-	}
-
-	/**
-	 * <h2>Constructor for MedicineForm</h2>
-	 * <p>
-	 * Constructor for MedicineForm
-	 * </p>
-	 * 
-	 * @param medicine
-	 */
-	public MedicineForm(Medicine medicine) {
-		this.id = medicine.getId();
-		this.medicine_name = medicine.getMedicine_name();
-		this.medicine_description = medicine.getMedicine_description();
-		this.medicine_code = medicine.getMedicine_code();
-		this.unit_in_stock = medicine.getUnit_in_stock();
-		this.amount = medicine.getAmount();
-		this.image = medicine.getImage();
-		this.createdAt = medicine.getCreatedAt();
-		this.updatedAt = medicine.getUpdatedAt();
-		this.deletedAt = medicine.getDeletedAt();
-		this.category = medicine.getCategory();
-		this.orderDetail = medicine.getOrderDetail();
-	}
+    /**
+     * <h2>Constructor for MedicineForm</h2>
+     * <p>
+     * Constructor for MedicineForm
+     * </p>
+     * 
+     * @param medicine
+     */
+    public MedicineForm(Medicine medicine) {
+        this.id = medicine.getId();
+        this.medicine_name = medicine.getMedicine_name();
+        this.medicine_description = medicine.getMedicine_description();
+        this.medicine_code = medicine.getMedicine_code();
+        this.unit_in_stock = medicine.getUnit_in_stock();
+        this.amount = medicine.getAmount();
+        this.image = medicine.getImage();
+        this.createdAt = medicine.getCreatedAt();
+        this.updatedAt = medicine.getUpdatedAt();
+        this.deletedAt = medicine.getDeletedAt();
+        this.category = medicine.getCategory();
+        this.cartDetails=medicine.getCartDetails();
+	      this.orderDetail = medicine.getOrderDetail();
+    }
 }
