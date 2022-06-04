@@ -90,8 +90,6 @@ public class CartDetailController {
         for (CartDetail cartDetailResult : cartDetails) {
           if (cartDetailResult.getCart().getId() == cartId && cartDetailResult.getCart().getCheckout_flg()== null) {
                 cd.add(cartDetailResult);
-           }else {
-               return cartView;
            }
         }
         cartView.addObject("cartDetails", cd);
