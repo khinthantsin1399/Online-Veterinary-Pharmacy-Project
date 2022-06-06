@@ -37,6 +37,15 @@ import scm.ojt.project.persistence.entity.Medicine;
 import scm.ojt.project.web.form.CategoryForm;
 import scm.ojt.project.web.form.MedicineForm;
 
+/**
+ * <h2>MedicineController Class</h2>
+ * <p>
+ * Process for Displaying MedicineController
+ * </p>
+ * 
+ * @author khinthantsin
+ *
+ */
 @Controller
 public class MedicineController {
     @Autowired
@@ -72,7 +81,18 @@ public class MedicineController {
         return medicineListView;
     }
 
-    
+    /**
+     * <h2>getUserMedicineList</h2>
+     * <p>
+     * Getting User Medicine List
+     * </p>
+     *
+     * @param request
+     * @param medicineForm
+     * @return
+     * @throws IOException
+     * @return ModelAndView
+     */
     @RequestMapping(value = "/userMedicineList", method = RequestMethod.GET)
     public ModelAndView getUserMedicineList(HttpServletRequest request, MedicineForm medicineForm) throws IOException {
         ModelAndView medicineListView = new ModelAndView("userMedicineList");
@@ -81,8 +101,7 @@ public class MedicineController {
         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
         return medicineListView;
     }
-    
-    
+
     /**
      * <h2>detailMedicine</h2>
      * <p>
@@ -203,7 +222,7 @@ public class MedicineController {
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
-        medicineImagePath = uploadPath + "/" + medicineForm.getMedicine_name()+".png";
+        medicineImagePath = uploadPath + "/" + medicineForm.getMedicine_name() + ".png";
         System.out.println(medicineImagePath);
         this.medicineService.addMedicine(medicineForm, medicineImagePath);
         ModelAndView createMedicineView = new ModelAndView("redirect:/medicineList");
@@ -289,7 +308,7 @@ public class MedicineController {
      * @param imageData
      * @return
      * @throws ParseException
-     * @throws IOException 
+     * @throws IOException
      * @return ModelAndView
      */
     @RequestMapping(value = "/updateMedicineConfirm", method = RequestMethod.POST)
@@ -427,6 +446,35 @@ public class MedicineController {
     }
 
     /**
+     * <h2>searchMedicine</h2>
+     * <p>
+     * Searching medicine
+     * </p>
+     *
+     * @param search_input String
+     * @param request      HttpServletRequest
+     * @return
+     * @return ModelAndView
+     * @throws IOException
+     */
+    @RequestMapping(value = "/searchMedicineUser", params = "searchMedicine", method = RequestMethod.POST)
+    public ModelAndView searchMedicineUser(@RequestParam("search-input") String search_input,
+            HttpServletRequest request) throws IOException {
+
+        MedicineForm medicineForm = new MedicineForm();
+        ModelAndView medicineListView = new ModelAndView("userMedicineList");
+        if (search_input.isEmpty()) {
+            this.getPagination(medicineListView, 1, 6, false, medicineForm);
+            medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0013", null, null));
+        } else {
+            medicineForm.setMedicine_name(search_input);
+            this.getPagination(medicineListView, 1, 6, true, medicineForm);
+            medicineListView.addObject("searchData", search_input);
+        }
+        return medicineListView;
+    }
+
+    /**
      * <h2>getPagination</h2>
      * <p>
      * To get Pagination
@@ -515,6 +563,28 @@ public class MedicineController {
     }
 
     /**
+     * <h2> getUploadMedicineList</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @param request
+     * @param medicineForm
+     * @return
+     * @throws IOException
+     * @return ModelAndView
+     */
+    @RequestMapping(value = "/uploadExcel", method = RequestMethod.GET)
+    public ModelAndView getUploadMedicineList(HttpServletRequest request, MedicineForm medicineForm)
+            throws IOException {
+        ModelAndView medicineListView = new ModelAndView("medicineList");
+        int currentPage = getCurrentPage(request);
+        int recordsPerPage = getRecordsPerPage(request);
+        this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
+        return medicineListView;
+    }
+
+    /**
      * <h2>uploadExcel</h2>
      * <p>
      * Method to upload excel file and save to database
@@ -526,15 +596,24 @@ public class MedicineController {
      * @return ModelAndView
      * @throws InvalidFormatException
      * @throws EncryptedDocumentException
+     * @throws IOException
      */
     @RequestMapping(value = "/uploadExcel", method = RequestMethod.POST)
     public ModelAndView uploadExcel(@RequestParam("file") MultipartFile file, HttpServletRequest request)
-            throws EncryptedDocumentException, InvalidFormatException {
-        ModelAndView uploadView = new ModelAndView("uploadExcel");
-        this.medicineService.save(file);
-        uploadView = new ModelAndView("redirect:/medicineList");
-        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0017", null, null));
+            throws EncryptedDocumentException, InvalidFormatException, IOException {
+        ModelAndView uploadView = new ModelAndView("medicineList");
+        MedicineForm medicineForm = new MedicineForm();
+        int currentPage = getCurrentPage(request);
+        int recordsPerPage = getRecordsPerPage(request);
+        this.getPagination(uploadView, currentPage, recordsPerPage, false, medicineForm);
 
+        if (file.getSize() == 0) {
+            uploadView.addObject("uploadErrorMsg", messageSource.getMessage("M_SC_0010", null, null));
+            return uploadView;
+        }
+        this.medicineService.save(file);
+        // uploadView = new ModelAndView("redirect:/medicineList");
+        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0017", null, null));
         return uploadView;
     }
 }
