@@ -72,9 +72,6 @@ public class MedicineForm {
 	 * unit_in_stock
 	 * </p>
 	 */
-	// @Min(value = 0,message = "Invalid Data Entries!")
-	// @Digits(integer = 4, fraction = 0, message = "Invalid Data Entries!")
-	// @Pattern(regexp = "[0-9]*", message = "Invalid Data Entries!")
 	private Integer unit_in_stock;
 
 	/**

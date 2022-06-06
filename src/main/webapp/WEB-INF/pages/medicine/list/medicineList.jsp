@@ -56,10 +56,19 @@
 
 
 
-
-					<form action="${pageContext.request.contextPath}/uploadExcel"
-						method="POST" enctype="multipart/form-data">
-						<br /> <br /> Please select a file to upload : <input
+					<c:forEach items="${uploadErrorMsg}" var="err" varStatus="loop">
+						<c:if test="${err != null }">
+							<div class="alert alert-danger">
+								<strong>${err }</strong>
+							</div>
+						</c:if>
+					</c:forEach>
+					<form:form action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
+						method="POST" enctype="multipart/form-data" class="upload-sec">
+						<br /> <br />
+						<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+						 Please select a file to upload : <input
 							type="file" name="file" value="Browse File" accept=".xlsx" /> <br />
 						<br /> Press here to upload the file : <input type="submit"
 							value="upload" /> <br /> <br />
@@ -68,7 +77,7 @@
 
 					<table class="tbl-student">
 						<tr>
-							<th>ID</th>
+						
 							<th>Code</th>
 							<th>Name</th>
 							<th>Description</th>
@@ -76,11 +85,11 @@
 							<th>Price</th>
 							<th>Unit In Stock</th>
 							<th>Action</th>
-
 						</tr>
+
+						<c:if test="${!empty MedicineList}">
 						<c:forEach items="${MedicineList}" var="medicine" varStatus="loop">
 							<tr>
-								<td>${medicine.id}</td>
 								<td>${medicine.medicine_code}</td>
 								<td><a
 									href="<c:url value='detailMedicine?id=${medicine.id}'/>"
@@ -97,6 +106,12 @@
 									onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
 							</tr>
 						</c:forEach>
+					</c:if>
+					<c:if test="${empty MedicineList}">
+						<tr>
+							<td colspan="7">No Data Available!</td>
+						</tr>
+					</c:if>
 					</table>
 				</div>
 

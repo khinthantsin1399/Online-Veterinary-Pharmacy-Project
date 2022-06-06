@@ -59,7 +59,7 @@
                     </div>
                   </c:if>
 					<tr>
-						<th>ID</th>
+					
 						<th>Category Code</th>
 						<th>Category Name</th>
 						<th>Action</th>
@@ -67,7 +67,7 @@
 					<c:forEach items="${CategoryList}" var="category" varStatus="loop">
 						<tr>
 						
-							<td>${category.category_id }</td>
+						
 							<td>${category.category_code}</td>
 							<td>${category.category_name}</td>
 							<td><a
