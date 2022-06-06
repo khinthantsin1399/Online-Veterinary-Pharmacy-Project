@@ -30,7 +30,7 @@
           </tr>
           <c:forEach items="${cartDetails}" var="cartDetail"
             varStatus="loop">
-            <form
+            <form:form
               action="${pageContext.request.contextPath}/updateQuantity">
 
               <tr>
@@ -47,7 +47,7 @@
                   class="cmn-link"
                   onclick="if (!(confirm('Are you sure you want to remove this item?'))) return false">Delete</a>
               </tr>
-            </form>
+            </form:form>
             <c:if test="${loop.index == 0}">
               <b>Total Amount : ${cartDetail.cart.amount} </b>
               <a class="btn btn-success"

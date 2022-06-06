@@ -73,7 +73,7 @@
 						<br /> Press here to upload the file : <input type="submit"
 							value="upload" /> <br /> <br />
 
-					</form>
+					</form:form>
 
 					<table class="tbl-student">
 						<tr>
