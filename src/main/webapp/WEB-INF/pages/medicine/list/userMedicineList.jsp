@@ -12,7 +12,6 @@
 <title>Online Veterinary Pharmacy | Category List</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-
 </head>
 <body>
 	<div class="wrapper">
@@ -24,63 +23,49 @@
 						<strong>${errorMsg }</strong>
 					</div>
 				</c:if>
-				<div class="row">
-					<div class="col-sm-12 col-md-12">
-						<div class="search-sec">
-							<c:url var="addAction" value="/searchMedicine"></c:url>
-							<form:form action="${addAction}" modelAtrribute="medicineForm"
-								method="post" id="form" class="searchForm-mr">
-								<label><input type="text"
-									class="form-control form-control-sm search-text-pd"
+				<div class="search-sec">
+					<c:url var="addAction" value="/searchMedicineUser"></c:url>
+					<form:form action="${addAction}" modelAtrribute="medicineForm"
+						method="post" id="form" class="searchForm-mr">
+						<ul class="btn-list clearfix">
+							<li><label><input type="text" class="search-box"
 									aria-controls="example1" name="search-input"
-									value="${searchData }"></label>
-								<input name="searchMedicine" type="submit" value="Search"
-									class="btn btn-secondary">
+									value="${searchData }"></label></li>
+							<li><input name="searchMedicine" type="submit"
+								value="Search" class="cmn-link"></li>
 
-
-
-								<a href="${pageContext.request.contextPath}/viewCart"
-									class="btn btn-info">View Cart</a>
-
-							</form:form>
-						</div>
-					</div>
-
-
-
-
+							<li><a href="${pageContext.request.contextPath}/viewCart"
+								class="cart cmn-link"><i class="fa fa-shopping-cart"
+									aria-hidden="true"></i></a></li>
+						</ul>
+					</form:form>
 
 				</div>
+				<div class="sec-medicine clearfix">
+					<ul class="medicine-list clearfix">
+						<c:if test="${!empty MedicineList}">
+							<c:forEach items="${MedicineList}" var="medicine"
+								varStatus="loop">
+								<li><c:if test="${empty medicine.image }">
+										<img src="<c:url value='/resources/img/noimage.png'/>"
+											alt="Medicine picture">
+									</c:if> <c:if test="${not empty medicine.image }">
+										<img src="${medicine.image}" alt="product image">
+									</c:if>
+									<p class="medicine-txt">${medicine.medicine_name}</p>
+									<p class="medicine-txt">${medicine.amount}MMK</p> <a
+									href=" <c:url value='detailMedicine?id=${medicine.id}'/>"
+									class="cmn-link">View Detail</a> <a class="cmn-link"
+									href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
+										TO CART</a></li>
 
-
-
-
-
-				<div class="sec-work clearfix">
-
-
-					<ul class="work-list clearfix">
-						<c:forEach items="${MedicineList}" var="medicine" varStatus="loop">
-							<li><c:if test="${empty medicine.image }">
-									<img src="<c:url value='/resources/img/noimage.png'/>"
-										alt="Medicine picture">
-								</c:if> <c:if test="${not empty medicine.image }">
-									<img src="${medicine.image}" alt="product image">
-								</c:if>
-								<p class="work-txt">${medicine.medicine_name}</p>
-								<p class="work-txt">${medicine.amount}MMK</p> <a
-								href=" <c:url value='detailMedicine?id=${medicine.id}'/>"
-								class="btn btn-info">View Detail</a> <a class="btn btn-info"
-								href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
-									TO CART</a></li>
-
-						</c:forEach>
+							</c:forEach>
+						</c:if>
 					</ul>
-
-
+					<c:if test="${empty MedicineList}">
+						<p>No Data Available!</p>
+					</c:if>
 				</div>
-
-
 				<c:if test="${noOfPages > 0}">
 					<div class="row">
 						<div class="col-sm-12 col-md-6">

@@ -19,103 +19,96 @@
 		<div class="sec-list">
 			<div class="container">
 				<h2 class="cmn-ttl">Category List</h2>
-			 <c:if test="${completeMsg != null  && completeMsg != ''}">
-            <div class="alert alert-success">
-              <strong>${completeMsg }</strong>
-            </div>
-          </c:if>
-          <c:remove var="completeMsg" />
-				  <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <div class="search-sec">
-                  <c:url var="addAction" value="/searchCategory"></c:url>
-                  <form:form action="${addAction}"
-                    modelAtrribute="categoryForm" method="post" id="form"
-                    class="searchForm-mr">
-                    <label><input type="text"
-                      class="form-control form-control-sm search-text-pd"
-                      aria-controls="example1" name="search-input"
-                      value="${searchData }"></label>
-                    <input name="searchCategory" type="submit"
-                      value="Search" class="btn btn-secondary">
-                    <a
-                      href="${pageContext.request.contextPath}/createCategory"
-                      class="btn btn-info">Add</a>
-                    
-                    <c:if test="${!empty categoryList }">
-                      <input type="submit" class="btn btn-info"
-                        value="Download" name="downloadExcel">
-                    </c:if>
-                  </form:form>
-                </div>
-              </div>
-				 
-				 
-				
-				<table class="tbl-student">
-				 <c:if test="${errorMsg != null }">
-                    <div class="alert alert-danger">
-                      <strong>${errorMsg }</strong>
-                    </div>
-                  </c:if>
+				<c:if test="${completeMsg != null  && completeMsg != ''}">
+					<div class="alert alert-success">
+						<strong>${completeMsg }</strong>
+					</div>
+				</c:if>
+				<c:remove var="completeMsg" />
+
+				<div class="search-sec">
+					<c:url var="addAction" value="/searchCategory"></c:url>
+					<form:form action="${addAction}" modelAtrribute="categoryForm"
+						method="post" id="form">
+						<ul class="btn-list clearfix">
+							<li><label><input type="text"
+									class="form-control form-control-sm search-text-pd"
+									aria-controls="example1" name="search-input" class="search-box"
+									value="${searchData }"></label></li>
+							<li><input name="searchCategory" type="submit"
+								value="Search" class="cmn-link"></li>
+							<li><a
+								href="${pageContext.request.contextPath}/createCategory"
+								class="cmn-link">Add</a></li>
+
+							<c:if test="${!empty categoryList }">
+								<li><input type="submit" class="cmn-link" value="Download"
+									name="downloadExcel"></li>
+							</c:if>
+						</ul>
+					</form:form>
+				</div>
+
+				<table class="tbl">
+					<c:if test="${errorMsg != null }">
+						<div class="alert alert-danger">
+							<strong>${errorMsg }</strong>
+						</div>
+					</c:if>
 					<tr>
-					
 						<th>Category Code</th>
 						<th>Category Name</th>
 						<th>Action</th>
 					</tr>
 					<c:forEach items="${CategoryList}" var="category" varStatus="loop">
 						<tr>
-						
-						
 							<td>${category.category_code}</td>
 							<td>${category.category_name}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/updateCategory?id=${category.category_id}"
-								>Update</a> <a
+							<td><a class="cmn-link"
+								href="${pageContext.request.contextPath}/updateCategory?id=${category.category_id}">Update</a>
+								<a
 								href="${pageContext.request.contextPath}/deleteCategory?id=${category.category_id}"
 								class="cmn-link"
 								onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
 						</tr>
 					</c:forEach>
 				</table>
-				
-			 <c:if test="${noOfPages > 0}">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <div class="dataTables_paginate paging_simple_numbers"
-            id="example1_paginate">
-            <ul class="pagination">
-              <c:if test="${currentPage != 1}">
-                <li class="page-item"><a class="page-link"
-                  href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
-                </li>
-              </c:if>
-              <c:forEach begin="1" end="${noOfPages }" var="i">
-                <c:choose>
-                  <c:when test="${currentPage eq i}">
-                    <li class="page-item active"><a
-                      class="page-link"> ${i} <span class="sr-only">(current)</span>
-                    </a></li>
-                  </c:when>
-                  <c:otherwise>
-                    <li class="page-item"><a class="page-link"
-                      href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
-                        ${i} </a></li>
-                  </c:otherwise>
-                </c:choose>
-              </c:forEach>
-              <c:if test="${currentPage lt noOfPages}">
-                <li class="page-item"><a class="page-link"
-                  href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
-                </li>
-              </c:if>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </c:if>
-			</div>	
+
+				<c:if test="${noOfPages > 0}">
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="dataTables_paginate paging_simple_numbers"
+								id="example1_paginate">
+								<ul class="pagination">
+									<c:if test="${currentPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
+										</li>
+									</c:if>
+									<c:forEach begin="1" end="${noOfPages }" var="i">
+										<c:choose>
+											<c:when test="${currentPage eq i}">
+												<li class="page-item active"><a class="page-link">
+														${i} <span class="sr-only">(current)</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link"
+													href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
+														${i} </a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${currentPage lt noOfPages}">
+										<li class="page-item"><a class="page-link"
+											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
+										</li>
+									</c:if>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>

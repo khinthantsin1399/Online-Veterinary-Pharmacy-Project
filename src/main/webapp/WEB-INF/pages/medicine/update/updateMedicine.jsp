@@ -6,38 +6,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Medicine Update Form</title>
+<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
 	<div class="wrapper">
-
 		<div class="container">
 			<div class="sec-form">
 				<h2 class="cmn-ttl">Medicine Update Form</h2>
-
-				<form:form class="form"
+				<form:form class="form clearfix"
 					action="${pageContext.request.contextPath}/updateMedicineConfirm"
 					method="POST" id="form" modelAttribute="medicine">
 					<input type="hidden" name="id" value="${medicine.id }" />
-
 					<c:if test="${errorMsg != null }">
 						<div class="alert alert-danger">
 							<strong>${errorMsg }</strong>
 						</div>
 					</c:if>
-
 					<label for="medicine_code">Medicine Code</label>
-					<input name="medicine_code" class="form-control" type="text"
+					<input name="medicine_code" class="input" type="text"
 						value="${medicine.medicine_code}" />
-
 					<label for="medicine_name">Medicine Name</label>
-					<input name="medicine_name" class="form-control" type="text"
+					<input name="medicine_name" class="input" type="text"
 						value="${medicine.medicine_name}" />
-
 					<label for="medicine_description">Medicine Description</label>
-					<input name="medicine_description"
+					<form:textarea path="medicine_description" class="input"
 						value="${medicine.medicine_description}" />
-
 					<label for="category.category_id">Category Name</label>
 					<form:select path="category.category_id"
 						name="medicine.category.category_id">
@@ -47,32 +42,27 @@
 						</c:forEach>
 					</form:select>
 					<br>
-
 					<label for="unit_in_stock">Unit In Stock</label>
-					<input name="unit_in_stock" class="form-control" type="text"
+					<input name="unit_in_stock" class="input" type="text"
 						value="${medicine.unit_in_stock}" />
-
 					<label for="amount">Price</label>
-					<input name="amount" class="form-control" type="text"
+					<input name="amount" class="input" type="text"
 						value="${medicine.amount}" />
-
 					<label for="image">Image</label>
 					<input type="file" name="fileUpload" id="fileUpload"
-						accept="image/*" value="${imageData}"
+						accept="image/*" value="${imageData}" class="medicine-img input"
 						onchange="showImage.call(this)" />
 					<input name="imageData" type="hidden" id="imageData" value="" />
-					<a class="float-right"> <img src="${medicine.image}"
-						id="medicine_image" class="profile-user-img img-fluid img-circle" /></a>
-
-					<button type="submit" class="btn btn-info">Update</button>
-					<a class="btn"
-						href="${pageContext.request.contextPath}/medicineList">Back</a>
-					<a class="btn"
-						href="${pageContext.request.contextPath}/updateMedicine?id=${medicine.id}">Reset</a>
-
-
+					<img src="${medicine.image}" id="medicine_image"
+						class="medicine-img input" />
+					<div class="clearfix update-btn">
+						<button type="submit" class="cmn-btn update-btn">Update</button>
+						<a class="cmn-btn"
+							href="${pageContext.request.contextPath}/medicineList">Back</a> <a
+							class="cmn-btn"
+							href="${pageContext.request.contextPath}/updateMedicine?id=${medicine.id}">Reset</a>
+					</div>
 				</form:form>
-
 			</div>
 		</div>
 	</div>

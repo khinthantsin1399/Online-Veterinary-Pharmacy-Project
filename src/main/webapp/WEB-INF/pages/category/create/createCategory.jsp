@@ -17,37 +17,35 @@
 		<div class="container">
 			<div class="sec-form">
 				<h2 class="cmn-ttl">Category Add Form</h2>
-				
-				
-   
-            <form:form class="form" action="createCategoryConfirm"
-              method="POST" id="form" modelAttribute="createCategoryForm">
-              
-              
-               <c:if test="${errorMsg != null }">
-                    <div class="alert alert-danger">
-                      <strong>${errorMsg }</strong>
-                    </div>
-                  </c:if>
-              
-               <label for="category_code">Category Code</label>
-                    <form:input path="category_code"
-                      value="${createCategoryForm.category_code }"
-                     class="input" placeholder="Enter Category Code" />
-                     <form:errors path="category_code" class="text-danger" />
-              
-               <label for="category_name">Category Name</label>
-                    <form:input path="category_name"
-                      value="${createCategoryForm.category_name }"
-                     class="input" placeholder="Enter Category Name" />
-                        <form:errors path="category_name" class="text-danger" />
-                     
-                       <button type="submit" class="btn"
-                    name="confirmCategory">Confirm</button>
-                    
-                  <button type="reset" class="btn"
-                    name="clear">Reset</button>
-                      </form:form>
+
+				<form:form class="form clearfix" action="createCategoryConfirm"
+					method="POST" id="form" modelAttribute="createCategoryForm">
+
+					<c:if test="${errorMsg != null }">
+						<div class="alert alert-danger">
+							<strong>${errorMsg }</strong>
+						</div>
+					</c:if>
+
+					<label for="category_code" class="required">Category Code</label>
+					<form:input path="category_code"
+						value="${createCategoryForm.category_code }" class="input"
+						placeholder="Enter Category Code" />
+					<form:errors path="category_code" class="text-danger error" />
+
+					<label for="category_name" class="required">Category Name</label>
+					<form:input path="category_name"
+						value="${createCategoryForm.category_name }" class="input"
+						placeholder="Enter Category Name" />
+					<form:errors path="category_name" class="text-danger error" />
+
+					<div class="clearfix">
+						<button type="submit" class="cmn-btn" name="confirmCategory">Confirm</button>
+						<button type="reset" class="cmn-btn" name="clear">Reset</button>
+					</div>
+				</form:form>
+				<a href="${pageContext.request.contextPath}/categoryList"
+					class="back-btn ">&larr; BACK</a>
 			</div>
 		</div>
 	</div>

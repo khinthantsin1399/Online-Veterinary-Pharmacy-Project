@@ -12,7 +12,6 @@
 <title>Online Veterinary Pharmacy | Category List</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-
 </head>
 <body>
 	<div class="wrapper">
@@ -30,70 +29,68 @@
 					</div>
 				</c:if>
 				<c:remove var="completeMsg" />
-				<div class="row">
-					<div class="col-sm-12 col-md-12">
-						<div class="search-sec">
-							<c:url var="addAction" value="/searchMedicine"></c:url>
-							<form:form action="${addAction}" modelAtrribute="medicineForm"
-								method="post" id="form" class="searchForm-mr">
-								<label><input type="text"
-									class="form-control form-control-sm search-text-pd"
+				<div class="search-sec">
+					<c:url var="addAction" value="/searchMedicine"></c:url>
+					<form:form action="${addAction}" modelAtrribute="medicineForm"
+						method="post" id="form">
+						<ul class="btn-list clearfix">
+							<li><label><input type="text"
 									aria-controls="example1" name="search-input"
-									value="${searchData }"></label>
-								<input name="searchMedicine" type="submit" value="Search"
-									class="btn btn-secondary">
+									value="${searchData }" class="search-box"></label></li>
+							<li><input name="searchMedicine" type="submit"
+								value="Search" class="cmn-link"></li>
 
-								<a href="${pageContext.request.contextPath}/createMedicine"
-									class="btn btn-info">Add</a>
+							<li><a
+								href="${pageContext.request.contextPath}/createMedicine"
+								class="cmn-link">Add</a></li>
 
-								<a href="${pageContext.request.contextPath}/download"
-									class="btn btn-info">Download</a>
+							<li><a href="${pageContext.request.contextPath}/download"
+								class="cmn-link">Download</a></li>
+						</ul>
 
+					</form:form>
+				</div>
 
-							</form:form>
+				<c:forEach items="${uploadErrorMsg}" var="err" varStatus="loop">
+					<c:if test="${err != null }">
+						<div class="alert alert-danger">
+							<strong>${err }</strong>
 						</div>
-					</div>
-
-
-
-					<c:forEach items="${uploadErrorMsg}" var="err" varStatus="loop">
-						<c:if test="${err != null }">
-							<div class="alert alert-danger">
-								<strong>${err }</strong>
-							</div>
-						</c:if>
-					</c:forEach>
-					<form:form action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
-						method="POST" enctype="multipart/form-data" class="upload-sec">
-						<br /> <br />
-						<input type="hidden" name="${_csrf.parameterName}"
+					</c:if>
+				</c:forEach>
+				<form:form
+					action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
+					method="POST" enctype="multipart/form-data" class="upload-sec">
+					<br />
+					<br />
+					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
-						 Please select a file to upload : <input
-							type="file" name="file" value="Browse File" accept=".xlsx" /> <br />
-						<br /> Press here to upload the file : <input type="submit"
-							value="upload" /> <br /> <br />
+					<input type="file" name="file" value="Browse File" accept=".xlsx" />
+					<br />
+					<br />
+					<input type="submit" class="cmn-link" value="upload" />
+					<br />
+					<br />
+				</form:form>
 
-					</form>
+				<table class="tbl">
+					<tr>
+						<th>Code</th>
+						<th>Name</th>
+						<th>Description</th>
+						<th>Category</th>
+						<th>Price</th>
+						<th>Unit In Stock</th>
+						<th>Action</th>
+					</tr>
+					<c:if test="${!empty MedicineList}">
 
-					<table class="tbl-student">
-						<tr>
-						
-							<th>Code</th>
-							<th>Name</th>
-							<th>Description</th>
-							<th>Category</th>
-							<th>Price</th>
-							<th>Unit In Stock</th>
-							<th>Action</th>
-						</tr>
-
-						<c:if test="${!empty MedicineList}">
 						<c:forEach items="${MedicineList}" var="medicine" varStatus="loop">
 							<tr>
 								<td>${medicine.medicine_code}</td>
 								<td><a
 									href="<c:url value='detailMedicine?id=${medicine.id}'/>"
-									class="btn btn-info">${medicine.medicine_name}</a></td>
+									class="medicine-link">${medicine.medicine_name}</a></td>
 								<td>${medicine.medicine_description}</td>
 								<td>${medicine.category.category_name}</td>
 								<td>${medicine.amount}</td>
@@ -104,6 +101,7 @@
 									href="${pageContext.request.contextPath}/deleteMedicine?id=${medicine.id }"
 									class="cmn-link"
 									onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
+
 							</tr>
 						</c:forEach>
 					</c:if>
@@ -111,47 +109,46 @@
 						<tr>
 							<td colspan="7">No Data Available!</td>
 						</tr>
+
 					</c:if>
-					</table>
-				</div>
+				</table>
+			</div>
 
-
-				<c:if test="${noOfPages > 0}">
-					<div class="row">
-						<div class="col-sm-12 col-md-6">
-							<div class="dataTables_paginate paging_simple_numbers"
-								id="example1_paginate">
-								<ul class="pagination">
-									<c:if test="${currentPage != 1}">
-										<li class="page-item"><a class="page-link"
-											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
-										</li>
-									</c:if>
-									<c:forEach begin="1" end="${noOfPages }" var="i">
-										<c:choose>
-											<c:when test="${currentPage eq i}">
-												<li class="page-item active"><a class="page-link">
-														${i} <span class="sr-only">(current)</span>
-												</a></li>
-											</c:when>
-											<c:otherwise>
-												<li class="page-item"><a class="page-link"
-													href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
-														${i} </a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									<c:if test="${currentPage lt noOfPages}">
-										<li class="page-item"><a class="page-link"
-											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
-										</li>
-									</c:if>
-								</ul>
-							</div>
+			<c:if test="${noOfPages > 0}">
+				<div class="row">
+					<div class="col-sm-12 col-md-6">
+						<div class="dataTables_paginate paging_simple_numbers"
+							id="example1_paginate">
+							<ul class="pagination">
+								<c:if test="${currentPage != 1}">
+									<li class="page-item"><a class="page-link"
+										href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
+									</li>
+								</c:if>
+								<c:forEach begin="1" end="${noOfPages }" var="i">
+									<c:choose>
+										<c:when test="${currentPage eq i}">
+											<li class="page-item active"><a class="page-link">
+													${i} <span class="sr-only">(current)</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
+													${i} </a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:if test="${currentPage lt noOfPages}">
+									<li class="page-item"><a class="page-link"
+										href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
+									</li>
+								</c:if>
+							</ul>
 						</div>
 					</div>
-				</c:if>
-			</div>
+				</div>
+			</c:if>
 		</div>
 	</div>
 </body>
