@@ -46,11 +46,15 @@
             <div class="form-group w-75" style="margin: 0 auto;">
               <c:if test="${ userConfirmForm.type == 1}">
                 <label for="type">Type :</label>
-            Admin
+            ADMIN
             </c:if>
               <c:if test="${ userConfirmForm.type == 0}">
                 <label for="type">Type :</label>
             PHARMACIST
+            </c:if>
+              <c:if test="${ userConfirmForm.type == 2}">
+                <label for="type">Type :</label>
+            USER
             </c:if>
               <form:input type="hidden" class="form-control" id="type"
                 placeholder="Enter password" name="type" path="type"

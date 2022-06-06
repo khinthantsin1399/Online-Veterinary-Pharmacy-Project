@@ -58,22 +58,30 @@
                   value="${ userForm.type }">
                   <c:if test="${ userForm.type == null }">
                     <option value="0">PHARMACIST</option>
-                    <option value="1">Admin</option>
+                    <option value="1">ADMIN</option>
+                    <option value="2">USER</option>
                   </c:if>
                   <c:if test="${ userForm.type == 0 }">
                     <option value="0" selected>PHARMACIST</option>
-                    <option value="1">Admin</option>
+                    <option value="1">ADMIN</option>
+                    <option value="2">USER</option>
                   </c:if>
                   <c:if test="${ userForm.type == 1 }">
                     <option value="0">PHARMACIST</option>
-                    <option value="1" selected>Admin</option>
+                    <option value="1" selected>ADMIN</option>
+                    <option value="2">USER</option>
+                  </c:if>
+                  <c:if test="${ userForm.type == 2 }">
+                    <option value="0">PHARMACIST</option>
+                    <option value="1">ADMIN</option>
+                    <option value="2" selected>USER</option>
                   </c:if>
                 </form:select>
                 <form:errors path="type" style="color:red;" />
               </div>
             </c:if>
             <c:if test="${LOGIN_USER.type == null }">
-              <form:input type="hidden" path="type" value="0"
+              <form:input type="hidden" path="type" value="2"
                 name="type" />
             </c:if>
             <div class="form-group w-75" style="margin: 0 auto;">

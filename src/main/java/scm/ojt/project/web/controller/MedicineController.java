@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import scm.ojt.project.bl.dto.CategoryDto;
 import scm.ojt.project.bl.dto.MedicineDto;
+import scm.ojt.project.bl.service.CartService;
 import scm.ojt.project.bl.service.CategoryService;
 import scm.ojt.project.bl.service.MedicineService;
 import scm.ojt.project.persistence.entity.Medicine;
@@ -44,6 +45,9 @@ public class MedicineController {
 
     @Autowired
     private CategoryService categoryService;
+    
+    @Autowired
+    private CartService cartService;
 
     @Autowired
     private MessageSource messageSource;
@@ -456,10 +460,14 @@ public class MedicineController {
         }
         List<MedicineDto> searchMedicineList = this.medicineService.doSearchMedicineWithPagi(currentPage,
                 recordsPerPage, medicineForm);
+        int loginUserId = (int) session.getAttribute("loginUserId");
+        boolean isCart = this.cartService.isCreatedUserIdExist(loginUserId);
+        
         medicineListView.addObject("noOfPages", nOfPages);
         medicineListView.addObject("currentPage", currentPage);
         medicineListView.addObject("recordsPerPage", recordsPerPage);
         medicineListView.addObject("MedicineList", searchMedicineList);
+        medicineListView.addObject("isCart", isCart);
     }
 
     /**
