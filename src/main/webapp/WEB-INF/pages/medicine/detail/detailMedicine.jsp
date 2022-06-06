@@ -1,83 +1,76 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Online Veterinary Pharmacy | Medicine Create Confirm</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Online Veterinary Pharmacy | Category List</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container">
-			<div class="sec-form">
-				<h2 class="cmn-ttl">Medicine Create Confirm</h2>
-				<c:url var="createMedicineConfirm" value="/insertMedicine"></c:url>
-				<form:form class="form" action="insertMedicine" method="POST"
-					id="form" modelAttribute="medicineForm">
-
-					<c:if test="${errorMsg != null }">
-						<div class="alert alert-danger">
-							<strong>${errorMsg }</strong>
+		<div class="sec-list">
+			<div class="container">
+				<div class="detail-box">
+					<div class="content clearfix">
+						<div class="img-sec">
+							<c:if test="${empty detailMedicine.image }">
+								<img src="<c:url value='/resources/img/noimage.png'/>"
+									alt="User profile picture">
+							</c:if>
+							<c:if test="${not empty detailMedicine.image }">
+								<img src="${detailMedicine.image}" />
+							</c:if>
 						</div>
+						<div class="detail-sec clearfix">
+
+							<ul class="detail-list">
+								<li><p>
+										<span class="detail-label">Name</span>
+										${detailMedicine.medicine_name}
+									</p></li>
+
+								<li><p>
+										<span class="detail-label">Price</span>${detailMedicine.amount}
+									</p></li>
+
+								<li><p>
+										<span class="detail-label cat-label">Category</span>
+										${detailMedicine.category.category_name}
+									</p></li>
+							</ul>
+						</div>
+					</div>
+					<div class="description clearfix">
+						<span class="detail-label">Description</span>
+						<p>${detailMedicine.medicine_description}</p>
+					</div>
+
+					<c:if test="${ LOGIN_USER.type == '0' }">
+						<a href="${pageContext.request.contextPath}/medicineList"
+							class="cmn-link">Back</a>
 					</c:if>
-					<input type="hidden" name="id" value="${medicineForm.id }">
-
-					<ul class="list-group list-group-unbordered mb-3">
-						<li class="list-group-item"><b>Medicine Code</b> <a
-							class="float-right">${medicineForm.medicine_code } <form:input
-									path="medicine_code" type="hidden" name="medicine_code"
-									value="${medicineForm.medicine_code}" class="form-control" />
-						</a></li>
-						<li class="list-group-item"><b>Medicine Name</b> <a
-							class="float-right">${medicineForm.medicine_name } <form:input
-									path="medicine_name" type="hidden" name="medicine_name"
-									value="${medicineForm.medicine_name}" class="form-control" /></a></li>
-
-						<li class="list-group-item"><b>Medicine Description</b> <a
-							class="float-right">${medicineForm.medicine_description} <form:input
-									path="medicine_description" type="hidden"
-									name="medicine_description"
-									value="${medicineForm.medicine_description}"
-									class="form-control" /></a></li>
-
-						<li class="list-group-item"><b>Category Name</b> <a
-							class="float-right">${medicineForm.category.category_name} <form:input
-									path="category.category_id" type="hidden" name="category_id"
-									value="${medicineForm.category.category_id}"
-									class="form-control" /></a></li>
-
-						<li class="list-group-item"><b>Unit In Stock</b> <a
-							class="float-right">${medicineForm.unit_in_stock} <form:input
-									path="unit_in_stock" type="hidden" name="unit_in_stock"
-									value="${medicineForm.unit_in_stock}" class="form-control" /></a></li>
-
-						<li class="list-group-item"><b>Price</b> <a
-							class="float-right">${medicineForm.amount} <form:input
-									path="amount" type="hidden" name="amount"
-									value="${medicineForm.amount}" class="form-control" /></a></li>
-
-						<li class="list-group-item"><b>Image</b> <c:if
-								test="${medicineForm.image == ''}">
-								<form:input path="image" type="hidden" name="image"
-									value="${medicineForm.image}" class="form-control" />
-							</c:if> <c:if test="${medicineForm.image != ''}">
-								<a class="float-right"> <img src="${medicineForm.image}"
-									id="medicine_image"
-									class="profile-user-img img-fluid img-circle" /> <form:input
-										path="image" type="hidden" name="image"
-										value="${medicineForm.image}" class="form-control" /></a>
-							</c:if></li>
-					</ul>
-					<button type="submit" class="btn" name="addMedicine">Add</button>
-					<button type="submit" class="btn" name="cancel">Cancel</button>
-				</form:form>
+					<c:if test="${ LOGIN_USER.type == '1' }">
+						<a href="${pageContext.request.contextPath}/medicineList"
+							class="cmn-link">Back</a>
+					</c:if>
+					<c:if
+                          test="${ LOGIN_USER.type == '2' }">
+                          <a href="${pageContext.request.contextPath}/userMedicineList"
+							class="cmn-link">Back</a>
+                          </c:if>
+					<a class="cmn-link"
+						href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
+						TO CART</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	<script src="<c:url value="/resources/js/common.js"/>"></script>
 </body>
 </html>

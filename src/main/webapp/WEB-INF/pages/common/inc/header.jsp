@@ -1,121 +1,183 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="security"
-  uri="http://www.springframework.org/security/tags"%>
-<nav class="navbar navbar-expand-lg navbar-dark bg-info">
-  <div class="container">
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-      data-target="#navbarTogglerDemo01"
-      aria-controls="navbarTogglerDemo01" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#"> <i
-      class="fa-solid fa-shield-dog" style="font-size: 2em;"></i>
-    </a>
-    <security:authorize
-      access="hasAnyRole('PHARMACIST', 'ADMIN', 'USER')"
-      var="isLoggedin" />
-    <c:choose>
-      <c:when test="${isLoggedin}">
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <c:choose>
-            <c:when test="${LOGIN_USER.type == '2'}">
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active"><a class="nav-link"
-                  href="#">Home </a></li>
-              </ul>
-              <ul class="navbar-nav ">
-                <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-                <li class="nav-item dropdown"><a href="#"
-                  class="nav-link dropdown-toggle" id="navDropDownLink"
-                  data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false"><i class="fa-solid fa-user"></i>
-                    ${LOGIN_USER.username} </a>
-                  <div class="dropdown-menu"
-                    aria-labelledby="navDropDownLink">
-                    <c:url value="/profile/detail?id=${LOGIN_USER.id}"
-                      var="profileDetail" />
-                    <a class="dropdown-item" href="${profileDetail}">Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <c:url value="/logout" var="logoutUrl" />
-                    <a class="dropdown-item" href="${logoutUrl}">Logout</a>
-                  </div></li>
-              </ul>
-            </c:when>
-            <c:otherwise>
-              <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active"><a class="nav-link"
-                  href="#">Home </a></li>
-                <li class="nav-item active"><a class="nav-link"
-                  href="${pageContext.request.contextPath}/user/list">Users
-                </a></li>
-                <li class="nav-item dropdown active"><a href="#"
-                  class="nav-link dropdown-toggle" id="navDropDownLink"
-                  data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false"> Medicines </a>
-                  <div class="dropdown-menu"
-                    aria-labelledby="navDropDownLink">
-                    <c:url value="/medicineList" var="medicineList" />
-                    <a class="dropdown-item" href="${medicineList}">Medicine
-                      List</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item"
-                      href="${pageContext.request.contextPath}/categoryList">Category
-                      List</a>
-                  </div></li>
-                <li class="nav-item active"><a class="nav-link"
-                  href="${pageContext.request.contextPath}/orderList">Order
-                    Reports </a></li>
-              </ul>
-              <!-- <form id="searchForm" class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search"
-                  placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0"
-                  type="submit">Search</button>
-              </form> -->
-              <ul class="navbar-nav ">
-                <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-                <li class="nav-item dropdown active"><a href="#"
-                  class="nav-link dropdown-toggle" id="navDropDownLink"
-                  data-toggle="dropdown" aria-haspopup="true"
-                  aria-expanded="false"><i class="fa-solid fa-user"></i>
-                    ${LOGIN_USER.username} </a>
-                  <div class="dropdown-menu"
-                    aria-labelledby="navDropDownLink">
-                    <c:url value="/profile/detail?id=${LOGIN_USER.id}"
-                      var="profileDetail" />
-                    <a class="dropdown-item" href="${profileDetail}">Profile</a>
-                    <div class="dropdown-divider"></div>
-                    <c:url value="/logout" var="logoutUrl" />
-                    <a class="dropdown-item" href="${logoutUrl}">Logout</a>
-                  </div></li>
-              </ul>
-            </c:otherwise>
-          </c:choose>
-        </div>
-      </c:when>
-      <c:otherwise>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          </ul>
-          <ul class="navbar-nav ">
-            <!-- PROFILE DROPDOWN - scrolling off the page to the right -->
-            <li class="nav-item dropdown active"><a href="#"
-              class="nav-link dropdown-toggle" id="navDropDownLink"
-              data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false"><i
-                class="fa-solid fa-list-check"></i>Settings</a>
-              <div class="dropdown-menu"
-                aria-labelledby="navDropDownLink">
-                <a class="dropdown-item" href="#">Login</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Register</a>
-              </div></li>
-          </ul>
-        </div>
-      </c:otherwise>
-    </c:choose>
-  </div>
-</nav>
+	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE nav PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<nav class="navbar"> <security:authorize
+	access="hasAnyRole('PHARMACIST', 'ADMIN', 'USER')" var="isLoggedin" />
+<!-- NAVIGATION MENUS --> <c:choose>
+	<c:when test="${isLoggedin}">
+		<c:choose>
+			<c:when test="${LOGIN_USER.type == '2'}">
+				<ul class="nav-links">
+					<div class="logo">
+						<i class="fa-solid fa-shield-dog"></i>
+					</div>
+					<!-- USING CHECKBOX HACK -->
+					<input type="checkbox" id="checkbox_toggle" />
+					<label for="checkbox_toggle" class="hamburger">&#9776;</label>
+					<div class="menu menu-hide">
+						<li><a href="#">Home</a></li>
+						<li class="services"><a class="profileDropUserbtn"
+							onclick="myProfileUserFunction()"><i class="fa-solid fa-user"></i>
+								${LOGIN_USER.username} <i class="fa fa-caret-down"></i></a> <!-- DROPDOWN MENU -->
+							<ul class="dropdown-content" id="profileDropUserDown">
+								<li><c:url value="/profile/detail?id=${LOGIN_USER.id}"
+										var="profileDetail" /><a href="${profileDetail}">Profile</a></li>
+								<div class="dropdown-divider"></div>
+								<li><c:url value="/logout" var="logoutUrl" /> <a
+									href="${logoutUrl}">Logout</a></li>
+							</ul></li>
+					</div>
+				</ul>
+				<ul class="nav-profile">
+					<div class="menu">
+						<li class="services"><a class="profileDropbtn"
+							onclick="myProfileFunction()"><i class="fa-solid fa-user"></i>
+								${LOGIN_USER.username} <i class="fa fa-caret-down"></i></a> <!-- DROPDOWN MENU -->
+							<ul class="dropdown-content" id="profileDropDown">
+								<li><c:url value="/profile/detail?id=${LOGIN_USER.id}"
+										var="profileDetail" /><a href="${profileDetail}">Profile</a></li>
+								<div class="dropdown-divider"></div>
+								<li><c:url value="/logout" var="logoutUrl" /> <a
+									href="${logoutUrl}">Logout</a></li>
+							</ul></li>
+					</div>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				<ul class="nav-links">
+					<div class="logo">
+						<i class="fa-solid fa-shield-dog"></i>
+					</div>
+					<!-- USING CHECKBOX HACK -->
+					<input type="checkbox" id="checkbox_toggle" />
+					<label for="checkbox_toggle" class="hamburger">&#9776;</label>
+					<div class="menu">
+						<li><a href="#">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/user/list">Users</a></li>
+						<li class="services"><a class="dropbtn"
+							onclick="myFunction()">Medicines <i class="fa fa-caret-down"></i>
+						</a>
+							<ul class="dropdown-content" id="myDropdown">
+								<li><c:url value="/medicineList" var="medicineList" /><a
+									href="${medicineList}">Medicine List</a></li>
+								<div class="dropdown-divider-login"></div>
+								<li><a
+									href="${pageContext.request.contextPath}/categoryList">Category
+										List</a></li>
+							</ul></li>
+						<li><a href="${pageContext.request.contextPath}/orderList">Order
+								Reports</a></li>
+						<li class="services hide-hamburger"><a
+							class="profileHideDropbtn" onclick="myProfileHideFunction()"><i
+								class="fa-solid fa-user"></i> ${LOGIN_USER.username} <i
+								class="fa fa-caret-down"></i></a>
+							<ul class="dropdown-content" id="profileHideDropDown">
+								<li><c:url value="/profile/detail?id=${LOGIN_USER.id}"
+										var="profileDetail" /><a href="${profileDetail}">Profile</a></li>
+								<div class="dropdown-divider-login"></div>
+								<li><c:url value="/logout" var="logoutUrl" /> <a
+									href="${logoutUrl}">Logout</a></li>
+							</ul></li>
+					</div>
+				</ul>
+				<ul class="nav-profile">
+					<div class="menu">
+						<li class="services"><a class="profileDropbtn"
+							onclick="myProfileFunction()"><i class="fa-solid fa-user"></i>
+								${LOGIN_USER.username} <i class="fa fa-caret-down"></i></a>
+							<ul class="dropdown-content" id="profileDropDown">
+								<li><c:url value="/profile/detail?id=${LOGIN_USER.id}"
+										var="profileDetail" /><a href="${profileDetail}">Profile</a></li>
+								<div class="dropdown-divider-login"></div>
+								<li><c:url value="/logout" var="logoutUrl" /> <a
+									href="${logoutUrl}">Logout</a></li>
+							</ul></li>
+					</div>
+				</ul>
+			</c:otherwise>
+		</c:choose>
+	</c:when>
+	<c:otherwise>
+		<ul class="nav-links">
+			<div class="logo">
+				<i class="fa-solid fa-shield-dog"></i>
+			</div>
+			<!-- USING CHECKBOX HACK -->
+			<input type="checkbox" id="checkbox_toggle" />
+			<label for="checkbox_toggle" class="hamburger">&#9776;</label>
+			<div class="menu menu-hide">
+				<li><a href="/">Login</a></li>
+				<li><a href="/">Register</a></li>
+			</div>
+		</ul>
+		<ul class="nav-profile">
+			<div class="menu">
+				<li class="services"><a class="profileDropbtn"
+					onclick="myProfileFunction()"><i class="fa-solid fa-list-check"></i>
+						Settings <i class="fa fa-caret-down"></i></a>
+					<ul class="dropdown-content" id="profileDropDown">
+						<li><c:url value="/login" var="login" /><a href="${login }">Login</a></li>
+						<div class="dropdown-divider-login"></div>
+						<li><c:url value="/user/register" var="register" /><a
+							href="${register}">Register</a></li>
+					</ul></li>
+			</div>
+		</ul>
+	</c:otherwise>
+</c:choose> </nav>
+
+<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function myFunction() {
+		document.getElementById("myDropdown").classList.toggle("show");
+	}
+
+	function myProfileFunction() {
+		document.getElementById("profileDropDown").classList
+				.toggle("profileShow");
+	}
+
+	function myProfileHideFunction() {
+		document.getElementById("profileHideDropDown").classList
+				.toggle("profileHideShow");
+	}
+
+	function myProfileUserFunction() {
+		document.getElementById("profileDropUserDown").classList
+				.toggle("profileUserShow");
+	}
+	// Close the dropdown if the user clicks outside of it
+	window.onclick = function(e) {
+		if (!e.target.matches('.dropbtn')) {
+			var myDropdown = document.getElementById("myDropdown");
+			if (myDropdown.classList.contains('show')) {
+				myDropdown.classList.remove('show');
+			}
+		}
+		if (!e.target.matches('.profileDropbtn')) {
+			var profileDropDown = document.getElementById("profileDropDown");
+			if (profileDropDown.classList.contains('profileShow')) {
+				profileDropDown.classList.remove('profileShow');
+			}
+		}
+		if (!e.target.matches('.profileHideDropbtn')) {
+			var profileHideDropDown = document
+					.getElementById("profileHideDropDown");
+			if (profileHideDropDown.classList.contains('profileHideShow')) {
+				profileHideDropDown.classList.remove('profileHideShow');
+			}
+		}
+
+		if (!e.target.matches('.profileDropUserbtn')) {
+			var profileDropDown = document
+					.getElementById("profileDropUserDown");
+			if (profileDropDown.classList.contains('profileUserShow')) {
+				profileDropDown.classList.remove('profileUserShow');
+			}
+		}
+	}
+</script>

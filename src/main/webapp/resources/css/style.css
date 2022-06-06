@@ -11,7 +11,72 @@
 .menu-btn {
 	margin: 200px 300px;
 }
+/*Order Detail*/
+.order-detail-tbl {
+	
+	box-shadow: -4px -2px 13px -6px rgba(109, 110, 112, 0.84);
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 90%;
+	margin: 100px 100px 10px 50px;
+	
+}
+.order-detail-tbl th{
+background-color:#EBECF0;
+}
+.order-detail-tbl td, .order-detail-tbl th {
+	
+	padding: 25px;
+	text-align: center;
+	font-family: "Century Gothic";
+}
+.order-detail-tbl td{
+	text-align:left;
+}
+.order-detail-tbl th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: #32b3b8;
+	color: #fff;
+}
 
+.order-detail-tbl tr {
+	background-color: #fff;
+}
+.order-status{
+	color:#fff;
+	border-radius:10px;
+	padding:5px 7px;
+	font-size:12px;
+	background:#007F00;
+}
+.not-yet-status{
+	background:#F4BC1C;
+	
+}
+/*Login*/
+.sec-form .login{
+	width:620px;
+	margin-left:280px;
+}
+.login .cmn-btn{
+	width:500px;
+	margin-left:60px;
+}
+.login .input{
+	width:300px;
+	margin-left:30px;
+	
+}
+.login label{
+	width:100px;
+	text-align:center;
+}
+.login .medicine-link{
+	float:left;
+	margin-left:110px;
+	margin-top:50px;
+}
 /*Form*/
 .cmn-ttl {
 	text-align: center;
@@ -23,7 +88,7 @@
 
 .cmn-btn {
 	color: #fff;
-	background: #009688;
+	background: #32b3b8;
 	font-family: "Century Gothic";
 	font-size: 20px;
 	padding: 6px;
@@ -130,7 +195,7 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .tbl th {
 	padding-top: 12px;
 	padding-bottom: 12px;
-	background-color: #009688;
+	background-color: #32b3b8;
 	color: #fff;
 }
 
@@ -139,12 +204,12 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 
 .medicine-link {
-	color: #009688;
+	color: #32b3b8;
 }
 
 .cmn-link {
 	color: #fff;
-	background: #009688;
+	background: #32b3b8;
 	padding: 4px;
 	border-radius: 4px;
 	font-size: 13px;
@@ -178,9 +243,20 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .upload-sec {
 	margin-left: 70px;
 }
-
+.pagination-sec{
+	margin:50px 0 50px 550px;
+	
+}
+.pagination li a.active{
+	background-color:#32b3b8;
+	color:#fff;
+}
+.pagination li a{
+	color:#000;
+		padding:4px 10px;
+}
 .error {
-	color: red;
+	color: #ff0000;
 	font-size: 15px;
 	display: block;
 	margin-left: 320px;
@@ -277,7 +353,11 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .btn-list li a {
 	display: inline-block;
 }
-
+.search-msg{
+	text-align:center;
+	font-family:"Century Gothic";
+	font-size:23px;
+}
 /*Medicine Detail*/
 .img-sec {
 	float: left;
@@ -355,6 +435,28 @@ hr {
 	.container {
 		width: 700px;
 	}
+	/*Login*/
+.sec-form .login{
+	width:450px;
+	margin-left:130px;
+}
+.login .cmn-btn{
+	width:350px;
+	margin-left:60px;
+}
+.login .input{
+	width:200px;
+	margin-left:30px;
+	
+}
+.login label{
+	width:100px;
+	text-align:right;
+}
+.login .medicine-link{
+	margin-left:60px;
+	margin-top:50px;
+}
 	/*Form*/
 	.cmn-ttl {
 		text-align: center;
@@ -538,7 +640,7 @@ hr {
 	.tbl th {
 		padding-top: 12px;
 		padding-bottom: 12px;
-		background-color: #009688;
+		background-color: #32b3b8;
 		color: #fff;
 	}
 	.tbl tr:nth-child(even) {
@@ -554,17 +656,43 @@ hr {
 	}
 	.cmn-link {
 		color: #fff;
-		background: #009688;
 		padding: 4px;
 		border-radius: 4px;
 		font-size: 13px;
 	}
+	.pagination-sec{
+	margin:50px 0 50px 300px;
+}
 }
 /*  SP  */
 @media screen and (max-width:767.9px) {
 	.container {
 		width: 600px;
 	}
+	/*Login*/
+.sec-form .login{
+	width:350px;
+	margin-left:80px;
+}
+.login .cmn-btn{
+	width:290px;
+	margin-left:30px;
+}
+.login .input{
+	width:290px;
+	margin-left:30px;
+	float:none;
+}
+.login label{
+	width:300px;
+	text-align:left;
+	float:none;
+}
+.login .medicine-link{
+
+	margin-top:50px;
+margin-left:30px;
+}
 	/*Form*/
 	.cmn-ttl {
 		text-align: center;
@@ -587,7 +715,7 @@ hr {
 	.input, button, select {
 		width: 350px;
 		margin-top: 15px;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 		margin-left: 50px;
 		padding: 11px 0;
 		border: 1px solid #707070;
@@ -603,6 +731,7 @@ hr {
 	}
 	.form label, .confirm-list b {
 		float: none;
+		margin-top:30px;
 		margin-left: 30px;
 		margin-bottom: 10px;
 		font-family: 'Century Gothic', sans-serif;
@@ -761,8 +890,6 @@ hr {
 	.tbl th {
 		padding-top: 12px;
 		padding-bottom: 12px;
-		background-color: #009688;
-		color: #fff;
 	}
 	.tbl tr:nth-child(even) {
 		background-color: #fff;
@@ -782,12 +909,14 @@ hr {
 		text-align: 10px;
 	}
 	.cmn-link {
-		color: #fff;
-		background: #009688;
 		padding: 4px;
 		border-radius: 4px;
 		font-size: 13px;
 		display: block;
 		margin-bottom: 10px;
 	}
+	.pagination-sec{
+	margin:50px 0 50px 200px;
+	
+}
 }

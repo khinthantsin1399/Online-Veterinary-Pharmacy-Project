@@ -12,6 +12,7 @@
 <title>Online Veterinary Pharmacy | Category List</title>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+
 </head>
 <body>
 	<div class="wrapper">
@@ -63,43 +64,38 @@
 						</c:if>
 					</ul>
 					<c:if test="${empty MedicineList}">
-						<p>No Data Available!</p>
+						<p class="search-msg"><i class="fa fa-frown" aria-hidden="true"></i>No Product Found!</p>
 					</c:if>
 				</div>
-				<c:if test="${noOfPages > 0}">
-					<div class="row">
-						<div class="col-sm-12 col-md-6">
-							<div class="dataTables_paginate paging_simple_numbers"
-								id="example1_paginate">
+				<c:if test="${noOfPages > 0}">				
+							<div class="pagination-sec">
 								<ul class="pagination">
 									<c:if test="${currentPage != 1}">
-										<li class="page-item"><a class="page-link"
+										<li><a class="page-link"
 											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
 										</li>
 									</c:if>
 									<c:forEach begin="1" end="${noOfPages }" var="i">
 										<c:choose>
 											<c:when test="${currentPage eq i}">
-												<li class="page-item active"><a class="page-link">
+												<li><a class="page-link active">
 														${i} <span class="sr-only">(current)</span>
 												</a></li>
 											</c:when>
 											<c:otherwise>
-												<li class="page-item"><a class="page-link"
+												<li><a class="page-link"
 													href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
 														${i} </a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									<c:if test="${currentPage lt noOfPages}">
-										<li class="page-item"><a class="page-link"
+										<li><a class="page-link"
 											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
 										</li>
 									</c:if>
 								</ul>
-							</div>
-						</div>
-					</div>
+							</div>					
 				</c:if>
 			</div>
 		</div>

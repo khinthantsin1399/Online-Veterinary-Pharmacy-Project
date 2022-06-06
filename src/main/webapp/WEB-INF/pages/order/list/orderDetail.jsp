@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-  pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -8,75 +8,84 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card mt-5">
-          <h2 class="text-primary text-center mb-4">Order Detail
-            History Form</h2>
-          <input type=hidden name="id" value="" />
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="name">User Name :</label> ${order.u_name}
-          </div>
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="phone">Phone No:</label> ${order.u_phone}
-          </div>
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="address">Address :</label> ${order.u_address}
-          </div>
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="date">Order Date :</label>
-            <fmt:formatDate value="${order.date}" />
-          </div>
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="status">Status :</label>
-            <c:if test="${order.status}">
-              <span class="badge badge-success">Ordered</span>
-            </c:if>
-            <c:if test="${!order.status}">
-              <span class="badge badge-warning">Not yet</span>
-            </c:if>
-          </div>
-          <div class="form-group w-75" style="margin: 0 auto;">
-            <label for="status">Total Price :</label> ${order.amount}
-          </div>
-        </div>
-        <div class="card mt-5">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Medicine Name</th>
-                <th scope="col">Quantity</th>
-                <th scope="col">Total Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <c:forEach items="${orderDetail}" var="orderDetail"
-                varStatus="index">
-                <tr>
-                  <th scope="row">${index.index+1}</th>
-                  <td>${orderDetail.medicine.medicine_name}</td>
-                  <td>${orderDetail.m_quantity}</td>
-                  <td>${orderDetail.amount * orderDetail.m_quantity}</td>
-                </tr>
-              </c:forEach>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="4" align="center"><a
-                  class="btn btn-sm btn-secondary mr-1 text-white"
-                  onclick="history.back(2);">Back</a><a
-                  href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
-                  class="btn btn-sm btn-info text-white ${order.status ? 'disabled' : ''}">Accept</a></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="wrapper">
+		<div class="container">
+			<h2 class="cmn-ttl">Order Detail</h2>
+			<div class="order-detail-sec clearfix">
+				<input type=hidden name="id" value="" />
+				<table class="order-detail-tbl ">
+					<tr>
+						<th><label for="name" class="order-label">User Name</label></th>
+						<td>${order.u_name}</td>
+					</tr>
+					<tr>
+						<th><label for="phone" class="order-label">Phone No</label></th>
+						<td>${order.u_phone}</td>
+					</tr>
+					<tr>
+						<th><label for="address" class="order-label">Address</label></th>
+						<td>${order.u_address}</td>
+					</tr>
+					<tr>
+						<th><label for="date" class="order-label">Order Date</label></th>
+						<td><fmt:formatDate value="${order.date}" /></td>
+					</tr>
+					<tr>
+						<th><label for="status" class="order-label">Status</label></th>
+
+						<c:if test="${order.status}">
+							<td><span class="order-status">Ordered</span>
+							</td>
+						</c:if>
+						<c:if test="${!order.status}">
+							<td><span class="order-status not-yet-status">Not yet</span>
+							</td>
+						</c:if>
+					<tr>
+						<th><label for="status" class="order-label">Total
+								Price</label></th>
+						<td>${order.amount} MMK</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="card mt-5">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Medicine Name</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Total Price</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${orderDetail}" var="orderDetail"
+							varStatus="index">
+							<tr>
+								<th scope="row">${index.index+1}</th>
+								<td>${orderDetail.medicine.medicine_name}</td>
+								<td>${orderDetail.m_quantity}</td>
+								<td>${orderDetail.amount * orderDetail.m_quantity}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="4" align="center"><a
+								class="btn btn-sm btn-secondary mr-1 text-white"
+								onclick="history.back(2);">Back</a><a
+								href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
+								class="btn btn-sm btn-info text-white ${order.status ? 'disabled' : ''}">Accept</a></td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

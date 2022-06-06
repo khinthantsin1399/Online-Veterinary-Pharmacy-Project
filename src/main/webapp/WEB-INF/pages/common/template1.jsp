@@ -15,6 +15,9 @@ response.addDateHeader("Expires", 0);
 <title>Online Veterinary Pharmacy</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS only -->
+<link rel="stylesheet" href='<c:url value="/resources/css/reset.css"/>'>
+<link rel="stylesheet" href='<c:url value="/resources/css/menu.css"/>'>
+
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 <!-- Optional theme -->
@@ -29,8 +32,8 @@ response.addDateHeader("Expires", 0);
   href='<c:url value="/resources/plugins/fontawesome-free/css/all.min.css"/>'>
 <link rel="stylesheet"
   href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-<link rel="stylesheet"
-  href='<c:url value="/resources/css/adminlte.css"/>'>
+<!--  <link rel="stylesheet"
+  href='<c:url value="/resources/css/adminlte.css"/>'>-->
 <link rel="stylesheet" href='<c:url value="/resources/css/common.css"/>'>
 <link
   href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700"
@@ -53,6 +56,8 @@ response.addDateHeader("Expires", 0);
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/font-awesome-6.1.1-all.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini">

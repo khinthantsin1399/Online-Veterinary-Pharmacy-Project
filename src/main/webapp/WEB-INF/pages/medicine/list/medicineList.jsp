@@ -107,48 +107,43 @@
 					</c:if>
 					<c:if test="${empty MedicineList}">
 						<tr>
-							<td colspan="7">No Data Available!</td>
+							<td colspan="7">No Data Found!</td>
 						</tr>
 
 					</c:if>
 				</table>
 			</div>
 
-			<c:if test="${noOfPages > 0}">
-				<div class="row">
-					<div class="col-sm-12 col-md-6">
-						<div class="dataTables_paginate paging_simple_numbers"
-							id="example1_paginate">
-							<ul class="pagination">
-								<c:if test="${currentPage != 1}">
-									<li class="page-item"><a class="page-link"
-										href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
-									</li>
-								</c:if>
-								<c:forEach begin="1" end="${noOfPages }" var="i">
-									<c:choose>
-										<c:when test="${currentPage eq i}">
-											<li class="page-item active"><a class="page-link">
-													${i} <span class="sr-only">(current)</span>
-											</a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link"
-												href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
-													${i} </a></li>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:if test="${currentPage lt noOfPages}">
-									<li class="page-item"><a class="page-link"
-										href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
-									</li>
-								</c:if>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</c:if>
+			<c:if test="${noOfPages > 0}">				
+							<div class="pagination-sec">
+								<ul class="pagination">
+									<c:if test="${currentPage != 1}">
+										<li><a class="page-link"
+											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
+										</li>
+									</c:if>
+									<c:forEach begin="1" end="${noOfPages }" var="i">
+										<c:choose>
+											<c:when test="${currentPage eq i}">
+												<li><a class="page-link active">
+														${i} <span class="sr-only">(current)</span>
+												</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a class="page-link"
+													href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
+														${i} </a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${currentPage lt noOfPages}">
+										<li><a class="page-link"
+											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
+										</li>
+									</c:if>
+								</ul>
+							</div>					
+				</c:if>
 		</div>
 	</div>
 </body>
