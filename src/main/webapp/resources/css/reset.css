@@ -109,3 +109,7 @@ a:hover, a:active, a:focus {
   text-decoration: none;
   transition: 0.4s;
 }
+
+.menu li a {
+  text-decoration: none;
+}
