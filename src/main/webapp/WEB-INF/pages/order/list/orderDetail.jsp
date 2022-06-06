@@ -59,6 +59,7 @@
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">Medicine Name</th>
+                            <th scope="col">Unit Price</th>
 							<th scope="col">Quantity</th>
 							<th scope="col">Total Price</th>
 						</tr>
@@ -69,8 +70,9 @@
 							<tr>
 								<th scope="row">${index.index+1}</th>
 								<td>${orderDetail.medicine.medicine_name}</td>
+                                <td>${orderDetail.amount / orderDetail.m_quantity}</td>
 								<td>${orderDetail.m_quantity}</td>
-								<td>${orderDetail.amount * orderDetail.m_quantity}</td>
+								<td>${orderDetail.amount}</td>
 							</tr>
 						</c:forEach>
 					</tbody>

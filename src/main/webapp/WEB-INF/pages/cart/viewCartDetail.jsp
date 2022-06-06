@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+  pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
@@ -14,49 +14,57 @@
 
 </head>
 <body>
-	<div class="wrapper">
-		<div class="sec-list">
-			<div class="container">
-				<h2 class="cmn-ttl">Cart</h2>
-				<div class="cart-btn">
-					<a href="${pageContext.request.contextPath}/userMedicineList"
-						class="cmn-btn">Continue Shopping</a> <a class="cmn-btn"
-						href="${pageContext.request.contextPath}/cart/checkout?id=${cartDetail.cart.id}">Checkout</a>
-				</div>
-				<table class="tbl">
-					<tr>
-						<th>Name</th>
-						<th>Unit Price</th>
-						<th>Quantity</th>
-						<th>Price</th>
-						<th>Action</th>
-					</tr>
-					<c:forEach items="${cartDetails}" var="cartDetail" varStatus="loop">
-						<form action="${pageContext.request.contextPath}/updateQuantity">
-							<tr>
-								<td>${cartDetail.medicine.medicine_name}</td>
-								<td>${cartDetail.medicine.amount}</td>
-								<td><input type="hidden" name="id"
-									value="${ cartDetail.c_id}" /> <input type="number" min="1"
-									max="${cartDetail.medicine.unit_in_stock}" name="quantity"
-									value="${cartDetail.quantity}" onblur="this.form.submit()"
-									class="quantity-box" /></td>
-								<td>${cartDetail.medicine.amount * cartDetail.quantity}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/deleteCartItem?id=${cartDetail.c_id }"
-									class="cmn-link"
-									onclick="if (!(confirm('Are you sure you want to remove this item?'))) return false">Delete</a>
-							</tr>
-						</form>
-						<c:if test="${loop.index == 0}">
-							<p class="total">Total Amount : ${cartDetail.cart.amount} MMK
-							</p>
-						</c:if>
-					</c:forEach>
-				</table>
-			</div>
-		</div>
-	</div>
-	<script src="<c:url value="/resources/js/common.js"/>"></script>
+  <div class="wrapper">
+    <div class="sec-list">
+      <div class="container">
+        <h2 class="cmn-ttl">Cart</h2>
+        <div class="cart-btn">
+          <a href="${pageContext.request.contextPath}/userMedicineList"
+            class="cmn-btn">Continue Shopping</a>
+          <c:forEach items="${cartDetails}" var="cartDetail"
+            varStatus="loop">
+            <c:if test="${loop.index == 0}">
+              <a class="cmn-btn"
+                href="${pageContext.request.contextPath}/cart/checkout?id=${cartDetail.cart.id}">Checkout</a>
+            </c:if>
+          </c:forEach>
+        </div>
+        <table class="tbl">
+          <tr>
+            <th>Name</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Action</th>
+          </tr>
+          <c:forEach items="${cartDetails}" var="cartDetail"
+            varStatus="loop">
+            <form
+              action="${pageContext.request.contextPath}/updateQuantity">
+              <tr>
+                <td>${cartDetail.medicine.medicine_name}</td>
+                <td>${cartDetail.medicine.amount}</td>
+                <td><input type="hidden" name="id"
+                  value="${ cartDetail.c_id}" /> <input type="number"
+                  min="1" max="${cartDetail.medicine.unit_in_stock}"
+                  name="quantity" value="${cartDetail.quantity}"
+                  onblur="this.form.submit()" class="quantity-box" /></td>
+                <td>${cartDetail.medicine.amount * cartDetail.quantity}</td>
+                <td><a
+                  href="${pageContext.request.contextPath}/deleteCartItem?id=${cartDetail.c_id }"
+                  class="cmn-link"
+                  onclick="if (!(confirm('Are you sure you want to remove this item?'))) return false">Delete</a>
+              </tr>
+            </form>
+            <c:if test="${loop.index == 0}">
+              <p class="total">Total Amount :
+                ${cartDetail.cart.amount} MMK</p>
+            </c:if>
+          </c:forEach>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="<c:url value="/resources/js/common.js"/>"></script>
 </body>
 </html>

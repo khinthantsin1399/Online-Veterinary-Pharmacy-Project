@@ -145,4 +145,15 @@ public ByteArrayInputStream load();
     public boolean isMedicineCodeExist(String medCode);
 
     public void doUpdateMedicine(Medicine medicine);
+
+	/**
+	 * <h2>isMedicineNameExist</h2>
+	 * <p>
+	 * method to check medicine name exists or not
+	 * </p>
+	 * 
+	 * @param medName
+	 * @return
+	 */
+	boolean isMedicineNameExist(String medName);
 }

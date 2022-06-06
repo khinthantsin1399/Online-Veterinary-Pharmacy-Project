@@ -33,7 +33,7 @@
             </c:if>
             <c:if test="${ profileDetailForm.type == 2}">
               <label for="type">Type :</label>
-            User
+            USER
             </c:if>
           </div>
           <div class="form-group w-75" style="margin: 0 auto;">

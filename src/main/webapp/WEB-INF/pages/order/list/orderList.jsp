@@ -11,6 +11,20 @@
   float: none !important;
   text-align: center !important;
 }
+
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+  visibility: hidden;
+}
+
+.badge-success {
+  background-color: green;
+}
+
+.badge-warning {
+  background-color: burlywood;
+}
 </style>
 
 <link rel="stylesheet"
@@ -27,6 +41,18 @@
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script
   src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script
+  src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script
+  src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script
+  src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 </head>
 <body>
   <div class="page-content page-container justify-content-center"
@@ -36,7 +62,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body mt-3">
-              <h4 class="card-title">User List Table</h4>
+              <h4 class="card-title text-primary">Order List Table</h4>
               <c:if test="${errorMsg != null }">
                 <p class="card-description text-success text-center">
                   ${errorMsg }</p>
@@ -68,8 +94,10 @@
                       <th class="date">Order Date</th>
                       <th>Status</th>
                       <th>Total Price</th>
-                      <th>Order Details</th>
-                      <th>Action</th>
+                      <c:if test="${LOGIN_USER.type == 0 }">
+                        <th>Order Details</th>
+                        <th>Action</th>
+                      </c:if>
                     </tr>
                   </thead>
                   <tbody>
@@ -90,16 +118,18 @@
                             </a>
                           </c:if></td>
                         <td>${order.amount }</td>
-                        <td><a class=""
-                          href="${pageContext.request.contextPath}/order/detail?id=${order.id}">See
-                            Details</a></td>
-                        <td><a
-                          class="btn btn-sm btn-primary ${order.status ? 'disabled' : ''}"
-                          href="${pageContext.request.contextPath}/order/accept?id=${order.id}">Accept</a>
-                          <a
-                          class="btn btn-sm btn-danger ${order.status ? 'disabled' : ''}"
-                          href="${pageContext.request.contextPath}/order/cancel?id=${order.id}">Cancel</a>
-                        </td>
+                        <c:if test="${LOGIN_USER.type == 0 }">
+                          <td><a class=""
+                            href="${pageContext.request.contextPath}/order/detail?id=${order.id}">See
+                              Details</a></td>
+                          <td><a
+                            class="btn btn-sm btn-primary ${order.status ? 'disabled' : ''}"
+                            href="${pageContext.request.contextPath}/order/accept?id=${order.id}">Accept</a>
+                            <a
+                            class="btn btn-sm btn-danger ${order.status ? 'disabled' : ''}"
+                            href="${pageContext.request.contextPath}/order/cancel?id=${order.id}">Cancel</a>
+                          </td>
+                        </c:if>
                       </tr>
                     </c:forEach>
                   </tbody>
@@ -123,7 +153,13 @@
 			"pageLength" : 5,
 			"bLengthChange" : false,
 			"bAutoWidth" : false,
-			"dom" : 'rtp'
+			dom : 'Bfrtip',
+			buttons : [ {
+				extend : 'excel',
+				exportOptions : {
+					columns : [ 0, 1, 2, 3, 4, 5, 6 ]
+				}
+			}, 'colvis' ],
 		});
 		$('#orderTableSearch').keyup(function() {
 			table.columns('.date').search($(this).val()).draw();

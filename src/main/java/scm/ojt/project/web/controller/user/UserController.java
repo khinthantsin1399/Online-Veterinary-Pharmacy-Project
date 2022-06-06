@@ -125,12 +125,11 @@ public class UserController {
 		createUserListView.addObject("userList", userList);
 		if (isLoggedIn) {
 			session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
-             session.setAttribute("loginUserId", authService.doGetLoggedInUser().getId());
+			session.setAttribute("loginUserId", authService.doGetLoggedInUser().getId());
 			System.out.print(isLoggedIn + authService.doGetLoggedInUser().getType());
 			String type = authService.doGetLoggedInUser().getType();
 			if (Integer.parseInt(type) == 2) {
-				System.out.println("turee;;");
-				return new ModelAndView("redirect:/medicineList");
+				return new ModelAndView("redirect:/userMedicineList");
 			}
 		}
 		return createUserListView;

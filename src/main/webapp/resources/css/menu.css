@@ -182,6 +182,7 @@ input[type=checkbox] {
 
 .profileShow {
   display: block;
+  z-index: 3;
 }
 
 .profileUserShow {

@@ -371,5 +371,23 @@ public class MedicineServiceImpl implements MedicineService {
        this.medicineDao.dbUpdateMedicine(medicine);       
     }
 
-   
+    /**
+     * <h2>isMedicineNameExist</h2>
+     * <p>
+     * method to check medicine name exists or not
+     * </p>
+     * 
+     * @param medName
+     * @return
+     */
+    @Override
+    public boolean isMedicineNameExist(String medName) {
+        Medicine resultMedicine = this.medicineDao.isMedicineNameExist(medName);
+        boolean medicineNameExist = false;
+        if (resultMedicine != null) {
+            medicineNameExist = true;
+        }
+
+        return medicineNameExist;
+    }
 }

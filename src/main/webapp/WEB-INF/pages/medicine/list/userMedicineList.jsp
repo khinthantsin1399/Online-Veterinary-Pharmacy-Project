@@ -34,10 +34,11 @@
 									value="${searchData }"></label></li>
 							<li><input name="searchMedicine" type="submit"
 								value="Search" class="cmn-link"></li>
-
-							<li><a href="${pageContext.request.contextPath}/viewCart"
+                            <c:if test="${isCart}">
+							 <li><a href="${pageContext.request.contextPath}/viewCart"
 								class="cart cmn-link"><i class="fa fa-shopping-cart"
 									aria-hidden="true"></i></a></li>
+                            </c:if>
 						</ul>
 					</form:form>
 

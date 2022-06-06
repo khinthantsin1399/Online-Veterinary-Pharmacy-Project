@@ -129,10 +129,9 @@ public class OrderController {
 		Cart cart = this.orderService.doGetCartAndCheckOutByCartId(cartId);
 		if (cart != null) {
 			int orderId = this.orderService.doSaveOrder(cart);
-			System.out.println(orderId + "heloo");
 			List<OrderDetail> orderDetails = this.orderService.doGetCartDetail(cartId, orderId);
 			this.orderService.doSaveOrderDetail(orderDetails);
 		}
-		return new ModelAndView("redirect:/medicineList");
+		return new ModelAndView("redirect:/userMedicineList");
 	}
 }

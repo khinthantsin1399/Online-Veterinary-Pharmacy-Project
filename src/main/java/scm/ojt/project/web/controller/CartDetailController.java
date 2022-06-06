@@ -171,6 +171,7 @@ public class CartDetailController {
             Cart cart = new Cart();
             cart.setCreated_user_id(loginUserId);
             cart.setAmount(med.getAmount());
+            System.out.println(med.getAmount());
             cart.setCreatedAt(new Date());
             cartService.doAddCart(cart);
 
