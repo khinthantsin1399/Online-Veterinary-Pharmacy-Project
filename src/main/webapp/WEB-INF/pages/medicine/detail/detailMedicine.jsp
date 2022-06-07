@@ -67,7 +67,7 @@
                           </c:if>
                     <c:if test="${LOGIN_USER.type == '2' }">
     					<a class="cmn-link"
-    						href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
+    						href="${pageContext.request.contextPath}/addToCart?id=${detailMedicine.id}">ADD
     						TO CART</a>
                     </c:if>
 				</div>
