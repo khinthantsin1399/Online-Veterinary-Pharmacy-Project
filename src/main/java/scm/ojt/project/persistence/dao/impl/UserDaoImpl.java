@@ -155,4 +155,19 @@ public class UserDaoImpl implements UserDao {
 		User resultUser = (User) queryUserById.uniqueResult();
 		return resultUser;
 	}
+
+	/**
+	 * <h2>dbGetUserCount</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("rawtypes")
+	@Override
+	public long dbGetUserCount() {
+		Query query = this.sessionFactory.getCurrentSession().createQuery("SELECT COUNT(u) FROM User u");
+		return (long) query.getSingleResult();
+	}
 }

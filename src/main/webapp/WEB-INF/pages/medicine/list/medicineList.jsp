@@ -39,13 +39,14 @@
 									value="${searchData }" class="search-box"></label></li>
 							<li><input name="searchMedicine" type="submit"
 								value="Search" class="cmn-link"></li>
-
-							<li><a
-								href="${pageContext.request.contextPath}/createMedicine"
-								class="cmn-link">Add</a></li>
-
-							<li><a href="${pageContext.request.contextPath}/download"
-								class="cmn-link">Download</a></li>
+                            <c:if test="${LOGIN_USER.type == '0' }">
+    							<li><a
+    								href="${pageContext.request.contextPath}/createMedicine"
+    								class="cmn-link">Add</a></li>
+    
+    							<li><a href="${pageContext.request.contextPath}/download"
+    								class="cmn-link">Download</a></li>
+                            </c:if>
 						</ul>
 
 					</form:form>
@@ -58,20 +59,20 @@
 						</div>
 					</c:if>
 				</c:forEach>
-				<form:form
-					action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
-					method="POST" enctype="multipart/form-data" class="upload-sec">
-					<br />
-					<br />
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" />
-					<input type="file" name="file" value="Browse File" accept=".xlsx" />
-					<br />
-					<br />
-					<input type="submit" class="cmn-link" value="upload" />
-					<br />
-					<br />
-				</form:form>
+                <c:if test="${LOGIN_USER.type == '0' }">
+    				<form:form
+    					action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
+    					method="POST" enctype="multipart/form-data" class="upload-sec">
+    					<br />
+    					<br />
+    					<input type="hidden" name="${_csrf.parameterName}"
+    						value="${_csrf.token}" />
+                        <input type="file" name="file" value="Browse File" accept=".xlsx" class="browse-file"/>
+    					<input type="submit" class="cmn-link" value="upload" />
+    					<br />
+    					<br />
+    				</form:form>
+                </c:if>
 
 				<table class="tbl">
 					<tr>
@@ -81,7 +82,9 @@
 						<th>Category</th>
 						<th>Price</th>
 						<th>Unit In Stock</th>
-						<th>Action</th>
+                        <c:if test="${LOGIN_USER.type == '0' }">
+						  <th>Action</th>
+                        </c:if>
 					</tr>
 					<c:if test="${!empty MedicineList}">
 
@@ -95,13 +98,14 @@
 								<td>${medicine.category.category_name}</td>
 								<td>${medicine.amount}</td>
 								<td>${medicine.unit_in_stock}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/updateMedicine?id=${medicine.id}"
-									class="cmn-link">Update</a> <a
-									href="${pageContext.request.contextPath}/deleteMedicine?id=${medicine.id }"
-									class="cmn-link"
-									onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
-
+                                <c:if test="${LOGIN_USER.type == '0' }">
+    								<td><a
+    									href="${pageContext.request.contextPath}/updateMedicine?id=${medicine.id}"
+    									class="cmn-link">Update</a> <a
+    									href="${pageContext.request.contextPath}/deleteMedicine?id=${medicine.id }"
+    									class="cmn-link"
+    									onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
+                                </c:if>
 							</tr>
 						</c:forEach>
 					</c:if>

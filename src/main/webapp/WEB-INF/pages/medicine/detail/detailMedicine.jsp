@@ -65,9 +65,11 @@
                           <a href="${pageContext.request.contextPath}/userMedicineList"
 							class="cmn-link">Back</a>
                           </c:if>
-					<a class="cmn-link"
-						href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
-						TO CART</a>
+                    <c:if test="${LOGIN_USER.type == '2' }">
+    					<a class="cmn-link"
+    						href="${pageContext.request.contextPath}/addToCart?id=${medicine.id}">ADD
+    						TO CART</a>
+                    </c:if>
 				</div>
 			</div>
 		</div>

@@ -37,14 +37,16 @@
 									value="${searchData }"></label></li>
 							<li><input name="searchCategory" type="submit"
 								value="Search" class="cmn-link"></li>
-							<li><a
-								href="${pageContext.request.contextPath}/createCategory"
-								class="cmn-link">Add</a></li>
+                            <c:if test="${LOGIN_USER.type == '0' }">
+    							<li><a
+    								href="${pageContext.request.contextPath}/createCategory"
+    								class="cmn-link">Add</a></li>
+                            </c:if>
 
-							<c:if test="${!empty categoryList }">
+							<%-- <c:if test="${!empty CategoryList }">
 								<li><input type="submit" class="cmn-link" value="Download"
 									name="downloadExcel"></li>
-							</c:if>
+							</c:if> --%>
 						</ul>
 					</form:form>
 				</div>
@@ -58,18 +60,22 @@
 					<tr>
 						<th>Category Code</th>
 						<th>Category Name</th>
-						<th>Action</th>
+                        <c:if test="${LOGIN_USER.type == '0' }">
+						  <th>Action</th>
+                        </c:if>
 					</tr>
 					<c:forEach items="${CategoryList}" var="category" varStatus="loop">
 						<tr>
 							<td>${category.category_code}</td>
 							<td>${category.category_name}</td>
-							<td><a class="cmn-link"
-								href="${pageContext.request.contextPath}/updateCategory?id=${category.category_id}">Update</a>
-								<a
-								href="${pageContext.request.contextPath}/deleteCategory?id=${category.category_id}"
-								class="cmn-link"
-								onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
+                            <c:if test="${LOGIN_USER.type == '0' }">
+    							<td><a class="cmn-link"
+    								href="${pageContext.request.contextPath}/updateCategory?id=${category.category_id}">Update</a>
+    								<a
+    								href="${pageContext.request.contextPath}/deleteCategory?id=${category.category_id}"
+    								class="cmn-link"
+    								onclick="if (!(confirm('Are you sure you want to delete this item?'))) return false">Delete</a></td>
+                            </c:if>
 						</tr>
 					</c:forEach>
 				</table>

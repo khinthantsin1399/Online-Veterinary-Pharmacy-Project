@@ -149,12 +149,12 @@ public class User implements Serializable {
     @Column(name = "deleted_at")
     private Date deleted_at;
 
-    
-
-  
-  
-   
-
+    /**
+     * <h2> cart</h2>
+     * <p>
+     * cart
+     * </p>
+     */
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, targetEntity = Cart.class, fetch = FetchType.LAZY)
     private Cart cart = new Cart();
 

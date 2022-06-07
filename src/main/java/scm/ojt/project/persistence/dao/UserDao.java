@@ -99,4 +99,15 @@ public interface UserDao {
 	 * @return User
 	 */
 	public User dbFindByEmail(String email);
+
+	/**
+	 * <h2>dbGetUserCount</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 *
+	 * @return
+	 * @return int
+	 */
+	public long dbGetUserCount();
 }
