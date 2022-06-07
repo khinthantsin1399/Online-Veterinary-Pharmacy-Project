@@ -144,12 +144,16 @@ public class CartDetailController {
                         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
                         return medicineListView;
                     } else {
+                       // cartDetailResult.setAmount(0);
+                     //   cartList.setAmount(cartList.getAmount() - cartDetailResult.getAmount());
+                       // cartService.doUpdateCart(cartList);
                         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
                         medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                         return medicineListView;
                     }
                 }
             }
+          
             if (med.getUnit_in_stock() > 0) {
                 CartDetail cartDetail = new CartDetail();
                 cartDetail.setCart(cartList);
@@ -162,6 +166,8 @@ public class CartDetailController {
                 med.setUnit_in_stock(med.getUnit_in_stock() - cartDetail.getQuantity());
                 this.medicineService.doUpdateMedicine(med);
             } else {
+               // cartList.setAmount(cartList.getAmount() - cartDetail.getAmount());
+               // cartService.doUpdateCart(cartList);
                 this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
                 medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                 return medicineListView;
@@ -176,6 +182,7 @@ public class CartDetailController {
             cartService.doAddCart(cart);
 
             Cart cartList = this.cartService.doGetCart(loginUserId);
+           
             if (med.getUnit_in_stock() > 0) {
                 CartDetail cartDetail = new CartDetail();
                 cartDetail.setCart(cartList);
@@ -186,6 +193,8 @@ public class CartDetailController {
                 med.setUnit_in_stock(med.getUnit_in_stock() - cartDetail.getQuantity());
                 this.medicineService.doUpdateMedicine(med);
             } else {
+               // cartList.setAmount(0);
+               // cartService.doUpdateCart(cartList);
                 this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
                 medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                 return medicineListView;

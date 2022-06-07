@@ -31,7 +31,7 @@ public class MedicineDaoImpl implements MedicineDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public static String SELECT_MEDICINE_LIST_HQL = "FROM Medicine m " + "WHERE m.deletedAt IS NULL ";
+	public static String SELECT_MEDICINE_LIST_HQL = "FROM Medicine m " + "WHERE m.unit_in_stock > 0 AND m.deletedAt IS NULL ";
 
 	SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
