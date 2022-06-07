@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="wrapper">
-		<div class="sec-list">
+		<div class="sec-list userMedicine">
 			<div class="container">
 				<h2 class="cmn-ttl">Medicine List</h2>
 				<c:if test="${errorMsg != null }">
@@ -24,6 +24,12 @@
 						<strong>${errorMsg }</strong>
 					</div>
 				</c:if>
+				<c:if test="${completeMsg != null  && completeMsg != ''}">
+					<div class="alert alert-success">
+						<strong>${completeMsg }</strong>
+					</div>
+				</c:if>
+				<c:remove var="completeMsg" />
 				<div class="search-sec">
 					<c:url var="addAction" value="/searchMedicineUser"></c:url>
 					<form:form action="${addAction}" modelAtrribute="medicineForm"
@@ -34,11 +40,11 @@
 									value="${searchData }"></label></li>
 							<li><input name="searchMedicine" type="submit"
 								value="Search" class="cmn-link"></li>
-                            <c:if test="${isCart}">
-							 <li><a href="${pageContext.request.contextPath}/viewCart"
-								class="cart cmn-link"><i class="fa fa-shopping-cart"
-									aria-hidden="true"></i></a></li>
-                            </c:if>
+							<c:if test="${isCart}">
+								<li><a href="${pageContext.request.contextPath}/viewCart"
+									class="cart cmn-link"><i class="fa fa-shopping-cart"
+										aria-hidden="true"></i></a></li>
+							</c:if>
 						</ul>
 					</form:form>
 
@@ -65,38 +71,40 @@
 						</c:if>
 					</ul>
 					<c:if test="${empty MedicineList}">
-						<p class="search-msg"><i class="fa fa-frown" aria-hidden="true"></i>No Product Found!</p>
+						<p class="search-msg">
+							<i class="fa fa-frown" aria-hidden="true"></i>No Product Found!
+						</p>
 					</c:if>
 				</div>
-				<c:if test="${noOfPages > 0}">				
-							<div class="pagination-sec">
-								<ul class="pagination">
-									<c:if test="${currentPage != 1}">
+				<c:if test="${noOfPages > 0}">
+					<div class="pagination-sec">
+						<ul class="pagination">
+							<c:if test="${currentPage != 1}">
+								<li><a class="page-link"
+									href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
+								</li>
+							</c:if>
+							<c:forEach begin="1" end="${noOfPages }" var="i">
+								<c:choose>
+									<c:when test="${currentPage eq i}">
+										<li><a class="page-link active"> ${i} <span
+												class="sr-only">(current)</span>
+										</a></li>
+									</c:when>
+									<c:otherwise>
 										<li><a class="page-link"
-											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage - 1}&search_input=${searchData }">Previous</a>
-										</li>
-									</c:if>
-									<c:forEach begin="1" end="${noOfPages }" var="i">
-										<c:choose>
-											<c:when test="${currentPage eq i}">
-												<li><a class="page-link active">
-														${i} <span class="sr-only">(current)</span>
-												</a></li>
-											</c:when>
-											<c:otherwise>
-												<li><a class="page-link"
-													href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
-														${i} </a></li>
-											</c:otherwise>
-										</c:choose>
-									</c:forEach>
-									<c:if test="${currentPage lt noOfPages}">
-										<li><a class="page-link"
-											href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
-										</li>
-									</c:if>
-								</ul>
-							</div>					
+											href="?recordsPerPage=${recordsPerPage}&currentPage=${i}&search_input=${searchData }">
+												${i} </a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							<c:if test="${currentPage lt noOfPages}">
+								<li><a class="page-link"
+									href="?recordsPerPage=${recordsPerPage}&currentPage=${currentPage + 1}&search_input=${searchData }">Next</a>
+								</li>
+							</c:if>
+						</ul>
+					</div>
 				</c:if>
 			</div>
 		</div>

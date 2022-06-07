@@ -56,6 +56,12 @@
 .not-yet-status {
   background: #F4BC1C;
 }
+
+/*Profile Detail*/
+.profile-detail-tbl{
+	width:70%;
+	margin-left:170px;
+}
 /*Login*/
 .sec-form .login {
   width: 620px;
@@ -81,6 +87,9 @@
   float: left;
   margin-left: 110px;
   margin-top: 50px;
+}
+.profile-btn{
+	margin-left:230px;
 }
 /*Form*/
 .cmn-ttl {
@@ -358,11 +367,22 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .search-sec {
   margin-top: 100px;
 }
-
+.userMedicine .search-sec {
+  margin-left: 80px;
+  margin-bottom:60px;
+}
+.user .search-sec {
+ 
+  margin-bottom:60px;
+}
 .btn-list li {
   float: left;
 }
-
+.user-btn button{
+		width:80px;
+		margin-top: 0px;
+		
+}
 .btn-list li a {
   display: inline-block;
 }

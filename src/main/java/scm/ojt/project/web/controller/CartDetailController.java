@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -50,6 +51,9 @@ public class CartDetailController {
     @Autowired
     private MessageSource messageSource;
 
+    @Autowired
+    private HttpSession session;
+
     /**
      * <h2>getCart</h2>
      * <p>
@@ -89,8 +93,8 @@ public class CartDetailController {
         List<CartDetail> cartDetails = this.cartDetailService.doGetCartDetailListById();
         List<CartDetail> cd = new ArrayList<>();
         for (CartDetail cartDetailResult : cartDetails) {
-           if (cartDetailResult.getCart().getId() == cartId && cartDetailResult.getCart().getCheckout_flg() == null) {
-               cd.add(cartDetailResult);
+            if (cartDetailResult.getCart().getId() == cartId && cartDetailResult.getCart().getCheckout_flg() == null) {
+                cd.add(cartDetailResult);
             }
         }
         cartView.addObject("cartDetails", cd);
@@ -113,7 +117,7 @@ public class CartDetailController {
      * @return ModelAndView
      */
     @SuppressWarnings("deprecation")
-	@RequestMapping(value = "/addToCart", method = { RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/addToCart", method = { RequestMethod.GET, RequestMethod.POST })
     public ModelAndView addToCart(@RequestParam("id") Integer medicineId, HttpServletRequest request,
             MedicineForm medicineForm) throws IOException {
         ModelAndView medicineListView = new ModelAndView("redirect:/userMedicineList");
@@ -142,18 +146,15 @@ public class CartDetailController {
                         med.setUnit_in_stock(med.getUnit_in_stock() - cartDetailResult.getQuantity());
                         this.medicineService.doUpdateMedicine(med);
                         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
+                        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0011", null, null));
                         return medicineListView;
                     } else {
-                       // cartDetailResult.setAmount(0);
-                     //   cartList.setAmount(cartList.getAmount() - cartDetailResult.getAmount());
-                       // cartService.doUpdateCart(cartList);
                         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
-                        medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                         return medicineListView;
                     }
                 }
             }
-          
+
             if (med.getUnit_in_stock() > 0) {
                 CartDetail cartDetail = new CartDetail();
                 cartDetail.setCart(cartList);
@@ -166,10 +167,7 @@ public class CartDetailController {
                 med.setUnit_in_stock(med.getUnit_in_stock() - cartDetail.getQuantity());
                 this.medicineService.doUpdateMedicine(med);
             } else {
-               // cartList.setAmount(cartList.getAmount() - cartDetail.getAmount());
-               // cartService.doUpdateCart(cartList);
                 this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
-                medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                 return medicineListView;
             }
 
@@ -182,7 +180,6 @@ public class CartDetailController {
             cartService.doAddCart(cart);
 
             Cart cartList = this.cartService.doGetCart(loginUserId);
-           
             if (med.getUnit_in_stock() > 0) {
                 CartDetail cartDetail = new CartDetail();
                 cartDetail.setCart(cartList);
@@ -193,14 +190,15 @@ public class CartDetailController {
                 med.setUnit_in_stock(med.getUnit_in_stock() - cartDetail.getQuantity());
                 this.medicineService.doUpdateMedicine(med);
             } else {
-               // cartList.setAmount(0);
-               // cartService.doUpdateCart(cartList);
+                // cartList.setAmount(0);
+                // cartService.doUpdateCart(cartList);
                 this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
                 medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0011", null, null));
                 return medicineListView;
             }
         }
         this.getPagination(medicineListView, currentPage, recordsPerPage, false, medicineForm);
+        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0011", null, null));
         return medicineListView;
     }
 
@@ -248,8 +246,7 @@ public class CartDetailController {
                 med.setImage(medicineImagePath);
                 this.medicineService.doUpdateMedicine(med);
             }
-        } 
-        else {
+        } else {
             return new ModelAndView("redirect:/viewCart");
         }
         return new ModelAndView("redirect:/viewCart");

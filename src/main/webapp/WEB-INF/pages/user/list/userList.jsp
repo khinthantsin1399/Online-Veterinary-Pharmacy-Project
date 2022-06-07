@@ -13,6 +13,9 @@
 }
 </style>
 <!-- datatable -->
+<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+
 <link
   href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
   type="text/css" rel="stylesheet" />
@@ -21,44 +24,35 @@
   src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-  <div class="page-content page-container justify-content-center"
-    id="page-content">
-    <div class="padding justify-content-center">
-      <div class="container d-flex justify-content-center">
-        <div class="col-lg-12 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body mt-3">
-              <h4 class="card-title">User List Table</h4>
+  <div class="wrapper">
+		<div class="sec-list user">
+			<div class="container">
+              <h4 class="cmn-ttl">User List Table</h4>
               <c:if test="${errorMsg != null }">
                 <p class="card-description text-success text-center">
                   ${errorMsg }</p>
               </c:if>
-              <div class="table-responsive">
+             
                 <c:url value="/logout" var="logoutUrl" />
                 <%-- <a href="${logoutUrl}">Log out</a> --%>
-                <div class="margin-right mb-5">
-                  <div class="col-lg-3" style="float: right;">
-                    <div class="input-group">
-                      <input type="text" class="form-control"
+               <div class="search-sec">
+               <ul class="btn-list clearfix">
+                    <li>  <input type="text" class="search-box"
                         id="userTableSearch"
-                        placeholder="Search user..."> <span
-                        class="input-group-btn">
-                        <button class="btn btn-info btn-flat"
-                          type="button">Search</button> <c:if
+                        placeholder="Search user..."> </li>
+                      <li class="user-btn">  <button class="cmn-link"
+                          type="button">Search</button> </li><c:if
                           test="${ LOGIN_USER.type == '1' }">
-                          <a
+                       <li class="user-btn">   <a
                             href="${pageContext.request.contextPath}/user/create"><button
-                              class="btn btn-info btn-flat button-leftList"
-                              type="button">Add</button></a>
+                              class="cmn-link"
+                              type="button">Add</button></a></li>
                         </c:if>
-                      </span>
+                     </ul>
                     </div>
-                    <!-- /input-group -->
-                  </div>
-                  <!-- /.col-lg-6 -->
-                </div>
+               
                 <table id="userTable"
-                  class="table table-bordered table-striped">
+                  class="tbl">
                   <thead>
                     <tr>
                       <th>No</th>
@@ -91,10 +85,10 @@
                         <c:if test="${ LOGIN_USER.type == '1' }">
                           <td><a
                             href="<c:url value='/user/update/?id=${user.id}'/>"
-                            class="btn btn-sm btn btn-outline-primary">Edit</a>
+                            class="cmn-link">Edit</a>
                             <a
                             href="${pageContext.request.contextPath}/user/delete/?id=${user.id }"
-                            class="btn btn-sm btn btn-outline-danger">Delete</a></td>
+                          class="cmn-link">Delete</a></td>                  
                         </c:if>
                       </tr>
                     </c:forEach>
@@ -102,11 +96,8 @@
                 </table>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+            </div>
+          
 </body>
 </html>
 <script type="text/javascript">
