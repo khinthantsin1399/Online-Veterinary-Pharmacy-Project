@@ -100,7 +100,7 @@ public interface CategoryService {
 	/**
 	 * <h2>isCategoryCodeExist</h2>
 	 * <p>
-	 * 
+	 *  method to check category code exists or not
 	 * </p>
 	 *
 	 * @param catCode
@@ -108,4 +108,14 @@ public interface CategoryService {
 	 * @return boolean
 	 */
 	public boolean isCategoryCodeExist(String catCode);
+	/**
+     * <h2>isCategoryNameExist</h2>
+     * <p>
+     * method to check category name exists or not
+     * </p>
+     * 
+     * @param catName
+     * @return
+     */
+    boolean isCategoryNameExist(String catName);
 }

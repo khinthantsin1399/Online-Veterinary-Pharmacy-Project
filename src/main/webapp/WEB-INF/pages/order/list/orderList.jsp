@@ -56,7 +56,7 @@
 <script
 	src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
 </head>
-<body>
+<body style=" background-color:#b2dfdb;">
 	<div class="wrapper">
 		<div class="sec-list user">
 			<div class="container">

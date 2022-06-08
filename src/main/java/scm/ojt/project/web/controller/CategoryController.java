@@ -98,15 +98,16 @@ public class CategoryController {
         ModelAndView ConfirmView = new ModelAndView("createCategoryConfirm");
         if (result.hasErrors()) {
             ConfirmView = new ModelAndView("createCategory");
-
             ConfirmView.addObject("createCategoryForm", categoryForm);
             ConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0001", null, null));
-
         } else if (this.categoryService.isCategoryCodeExist(categoryForm.getCategory_code())) {
             ConfirmView = new ModelAndView("createCategory");
-            // Category category = new Category();
             ConfirmView.addObject("createCategoryForm", categoryForm);
             ConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0003", null, null));
+        } else if (this.categoryService.isCategoryNameExist(categoryForm.getCategory_name())) {
+            ConfirmView = new ModelAndView("createCategory");
+            ConfirmView.addObject("createCategoryForm", categoryForm);
+            ConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0008", null, null));
         } else {
             ConfirmView.addObject("categoryForm", categoryForm);
             ConfirmView.setViewName("createCategoryConfirm");
@@ -215,8 +216,16 @@ public class CategoryController {
             updateConfirmView = new ModelAndView("updateCategory");
             updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0002", null, null));
             return updateConfirmView;
-        }
+        } else if (this.categoryService.isCategoryCodeExist(updateCategoryForm.getCategory_code())) {
+            updateConfirmView = new ModelAndView("updateCategory");
+            updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0003", null, null));
+            return updateConfirmView;
 
+        } else if (this.categoryService.isCategoryNameExist(updateCategoryForm.getCategory_name())) {
+            updateConfirmView = new ModelAndView("updateCategory");
+            updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0008", null, null));
+            return updateConfirmView;
+        }
         return updateConfirmView;
     }
 
