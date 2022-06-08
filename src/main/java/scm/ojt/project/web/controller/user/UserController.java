@@ -75,6 +75,12 @@ public class UserController {
 	 */
 	@RequestMapping(value = "/userLogin", method = RequestMethod.GET)
 	public ModelAndView viewLogin(ModelAndView model) {
+		if (authService.doIsLoggedIn()) {
+			if (Integer.parseInt(authService.doGetLoggedInUser().getType()) == 2) {
+				return new ModelAndView("redirect:/userMedicineList");
+			}
+			return new ModelAndView("redirect:/medicineList");
+		}
 		ModelAndView mv = new ModelAndView("userLogin");
 		return mv;
 	}
@@ -418,6 +424,7 @@ public class UserController {
 	public ModelAndView profileUpdate(@ModelAttribute("profileEditForm") UserForm profileForm, HttpSession session,
 	        RedirectAttributes redirectAttributes) {
 		this.userService.doUpdateUser(profileForm);
+		session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
 		redirectAttributes.addFlashAttribute("errorMsg", messageSource.getMessage("M_SC_USR_0004", null, null));
 		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 		if (Integer.parseInt(user.getType()) == 2) {

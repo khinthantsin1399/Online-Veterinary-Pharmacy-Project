@@ -31,7 +31,7 @@
             placeholder="Enter user name" name="username"
             path="username" value="${ userConfirmForm.username }" />
 
-          <label for="email">Email :</label>
+          <label for="email">Email</label>
           <span class="input">${ userConfirmForm.email }</span>
           <form:input type="hidden" id="email" placeholder="Enter email"
             name="email" path="email" value="${ userConfirmForm.email }" />
@@ -41,28 +41,28 @@
             value="${ userConfirmForm.password }" />
 
           <c:if test="${ userConfirmForm.type == 1}">
-            <label for="type">Type :</label>
+            <label for="type">Type</label>
             <span class="input"> ADMIN</span>
           </c:if>
           <c:if test="${ userConfirmForm.type == 0}">
-            <label for="type">Type :</label>
+            <label for="type">Type</label>
             <span class="input"> PHARMACIST</span>
           </c:if>
           <c:if test="${ userConfirmForm.type == 2}">
-            <label for="type">Type :</label>
+            <label for="type">Type</label>
             <span class="input"> USER</span>
           </c:if>
           <form:input type="hidden" id="type"
             placeholder="Enter password" name="type" path="type"
             value="${ userConfirmForm.type }" />
 
-          <label for="phone">Phone No:</label>
+          <label for="phone">Phone No</label>
           <span class="input">${ userConfirmForm.phone }</span>
           <form:input type="hidden" id="phone"
             placeholder="Enter phone no" name="phone" path="phone"
             value="${ userConfirmForm.phone }" />
 
-          <label for="address">Address :</label>
+          <label for="address">Address</label>
           <span class="input"> ${ userConfirmForm.address }</span>
           <form:input type="hidden" id="address"
             placeholder="Enter address" name="address" path="address"

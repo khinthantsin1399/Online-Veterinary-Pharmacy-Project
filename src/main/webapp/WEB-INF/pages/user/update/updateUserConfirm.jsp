@@ -31,7 +31,7 @@
             placeholder="Enter user name" name="username"
             path="username" value="${ updateUserConfirmForm.username }" />
 
-          <label for="email">Email :</label>
+          <label for="email">Email</label>
           <span class="input"> ${ updateUserConfirmForm.email }</span>
           <form:input type="hidden" class="form-control" id="email"
             placeholder="Enter email" name="email" path="email"

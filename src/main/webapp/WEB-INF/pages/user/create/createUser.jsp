@@ -89,14 +89,14 @@
                 name="type" />
             </c:if>
            
-              <label for="phone" class="required">Phone No:</label>
+              <label for="phone" class="required">Phone No</label>
               <form:input type="text" class="input" id="phone"
                 placeholder="Enter phone no" name="phone" path="phone"
                 value="${ userForm.phone }" />
               <form:errors path="phone"  class="text-danger error"/>
            
            
-              <label for="address" class="required">Address :</label>
+              <label for="address" class="required">Address</label>
               <form:textarea type="text" class="input"
                 id="address" placeholder="Enter address" name="address"
                 path="address" value="${ userForm.address }" />

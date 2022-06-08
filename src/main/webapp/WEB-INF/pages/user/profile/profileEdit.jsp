@@ -45,7 +45,7 @@
                 value="${ profileEditForm.email }" />
               <form:errors path="email"  class="text-danger error" />
            
-            <!--   <label for="password">Password :</label>--> 
+            <!--   <label for="password">Password</label>--> 
               <form:input type="hidden" class="form-control"
                 id="password" placeholder="Enter password"
                 name="password" path="password"
