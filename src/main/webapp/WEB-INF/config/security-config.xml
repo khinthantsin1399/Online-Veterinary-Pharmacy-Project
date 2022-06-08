@@ -18,7 +18,8 @@
         <intercept-url pattern="/detailMedicine/*" access="hasAnyRole('PHARMACIST', 'ADMIN', 'USER')"/>
         <intercept-url pattern="/medicineList" access="hasAnyRole('PHARMACIST', 'ADMIN')"/>
         <intercept-url pattern="/categoryList" access="hasAnyRole('PHARMACIST', 'ADMIN')"/>
-        <intercept-url pattern="/orderList" access="hasAnyRole('PHARMACIST', 'ADMIN')"/>
+        <intercept-url pattern="/orderList" access="hasAnyRole('PHARMACIST', 'ADMIN', 'USER')"/>
+        <intercept-url pattern="/order/**" access="hasAnyRole('PHARMACIST', 'USER')"/>
         <intercept-url pattern="/createMedicine" access="hasRole('PHARMACIST')"/>
         <intercept-url pattern="/createMedicineConfirm" access="hasRole('PHARMACIST')"/>
         <intercept-url pattern="/updateMedicine" access="hasRole('PHARMACIST')"/>
@@ -29,7 +30,6 @@
         <intercept-url pattern="/updateCategory" access="hasRole('PHARMACIST')"/>
         <intercept-url pattern="/updateCategoryConfirm" access="hasRole('PHARMACIST')"/>
         <intercept-url pattern="/deleteCategory" access="hasRole('PHARMACIST')"/>
-        <intercept-url pattern="/order/**" access="hasRole('PHARMACIST')"/>
         <intercept-url pattern="/user/create" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/user/update/*" access="hasRole('ADMIN')"/>
         <intercept-url pattern="/user/delete/*" access="hasRole('ADMIN')"/>

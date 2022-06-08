@@ -29,9 +29,6 @@ dl, ol, ul {
   padding: 0 auto;
 }
 
-
-
-
 .navbar {
   display: flex;
   align-items: center;
@@ -225,7 +222,6 @@ input[type=checkbox] {
     padding: 16px 0;
     z-index: 10;
   }
-  
   .menu li+li {
     margin-top: 12px;
   }
@@ -252,8 +248,17 @@ input[type=checkbox] {
   }
 }
 
-@media ( max-width : 640px) {
+@media screen and (max-width: 640px) {
   .container {
     width: 600px;
+  }
+  .wrapper {
+    width: 600px !important;
+  }
+  .navbar {
+    padding: 10px 50px;
+  }
+  .nav-links {
+    width: 100%;
   }
 }

@@ -78,11 +78,15 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="4" align="center"><a
-								class="btn btn-sm btn-secondary mr-1 text-white"
-								onclick="history.back(2);">Back</a><a
-								href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
-								class="btn btn-sm btn-info text-white ${order.status ? 'disabled' : ''}">Accept</a></td>
+							<td colspan="5" align="center"><a
+								class="btn btn-sm btn-secondary mr-1 text-white btn-margin-right"
+								onclick="history.back(2);">Back</a>
+                                <c:if test="${LOGIN_USER.type == 0 }">
+                                    <a
+    								href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
+    								class="btn btn-sm btn-info text-white ${order.status ? 'disabled' : ''}">Accept</a>
+                                </c:if>
+                            </td>
 						</tr>
 					</tfoot>
 				</table>

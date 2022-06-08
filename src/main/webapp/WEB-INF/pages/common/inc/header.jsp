@@ -17,9 +17,11 @@
 					<!-- USING CHECKBOX HACK -->
 					<input type="checkbox" id="checkbox_toggle" />
 					<label for="checkbox_toggle" class="hamburger">&#9776;</label>
-					<div class="menu menu-hide">
+					<div class="menu">
 						<li><a href="#">Home</a></li>
-						<li class="services"><a class="profileDropUserbtn"
+                        <li><a href="${pageContext.request.contextPath}/userMedicineList">Medicine List</a></li>
+                        <li><a href="${pageContext.request.contextPath}/orderList">Order History</a></li>
+						<li class="services menu-hide"><a class="profileDropUserbtn"
 							onclick="myProfileUserFunction()"><i class="fa-solid fa-user"></i>
 								${LOGIN_USER.username} <i class="fa fa-caret-down"></i></a> <!-- DROPDOWN MENU -->
 							<ul class="dropdown-content" id="profileDropUserDown">

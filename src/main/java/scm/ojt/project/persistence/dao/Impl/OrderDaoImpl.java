@@ -3,6 +3,8 @@ package scm.ojt.project.persistence.dao.Impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import scm.ojt.project.bl.dto.OrderDTO;
+import scm.ojt.project.bl.dto.UserDTO;
 import scm.ojt.project.persistence.dao.OrderDao;
 import scm.ojt.project.persistence.entity.Cart;
 import scm.ojt.project.persistence.entity.CartDetail;
@@ -36,6 +39,9 @@ public class OrderDaoImpl implements OrderDao {
 	 */
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	@Autowired
+	private HttpSession session;
 
 	/**
 	 * <h2>dbGetOrderList</h2>
@@ -45,9 +51,16 @@ public class OrderDaoImpl implements OrderDao {
 	 * 
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public List<OrderDTO> dbGetOrderList() {
+		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
+		if (Integer.parseInt(user.getType()) == 2) {
+			Query queryOrderId = this.sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.created_user_id = :id AND o.deleted_at = null");
+			queryOrderId.setParameter("id", user.getId());
+			List<OrderDTO> orderList = (List<OrderDTO>) queryOrderId.list();
+			return orderList;
+		}
 		return sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.deleted_at = null").list();
 	}
 
