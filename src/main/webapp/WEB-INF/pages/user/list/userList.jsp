@@ -24,7 +24,7 @@
   src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper clearfix">
     <div class="sec-list user">
       <div class="container">
         <h4 class="cmn-ttl">User List Table</h4>

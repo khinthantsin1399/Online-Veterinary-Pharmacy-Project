@@ -37,7 +37,7 @@
 									</p></li>
 
 								<li><p>
-										<span class="detail-label">Price</span>${detailMedicine.amount}
+										<span class="detail-label price-label">Price</span>${detailMedicine.amount}MMK
 									</p></li>
 
 								<li><p>

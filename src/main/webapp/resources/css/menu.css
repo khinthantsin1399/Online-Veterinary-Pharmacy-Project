@@ -249,11 +249,11 @@ input[type=checkbox] {
 }
 
 @media screen and (max-width: 640px) {
-  .container {
+  /* .container {
     width: 600px;
-  }
+  } */
   .wrapper {
-    width: 600px !important;
+    width: 640px !important;
   }
   .navbar {
     padding: 10px 50px;

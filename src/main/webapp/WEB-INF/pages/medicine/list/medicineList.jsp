@@ -78,7 +78,6 @@
 					<tr>
 						<th>Code</th>
 						<th>Name</th>
-						<th>Description</th>
 						<th>Category</th>
 						<th>Price</th>
 						<th>Unit In Stock</th>
@@ -94,7 +93,6 @@
 								<td><a
 									href="<c:url value='detailMedicine?id=${medicine.id}'/>"
 									class="medicine-link">${medicine.medicine_name}</a></td>
-								<td>${medicine.medicine_description}</td>
 								<td>${medicine.category.category_name}</td>
 								<td>${medicine.amount}</td>
 								<td>${medicine.unit_in_stock}</td>

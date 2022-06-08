@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.sec-list {
+  padding-bottom: 17%;
+}
+
 .container {
   width: 1120px;
 }
@@ -211,6 +215,32 @@ button:hover, .add-btn:hover, .cmn-link:hover {
   font-size: 15px;
 }
 
+.banner {
+  width: 100%;
+  background: url(../img/baner-header.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 300px;
+}
+
+.sec-copyright {
+  padding: 18px 0;
+  text-align: center;
+  border-top: 1px solid #fff;
+  background-color: #32b3b8;
+  bottom: 0;
+  /* position: fixed; */
+  width: 100%;
+}
+
+.sec-copyright .copyright-txt {
+  color: #fff;
+}
+
+.sec-copyright span {
+  color: #f5ff7f;
+}
+
 .tbl td, .tbl th {
   border: 1px solid #333;
   padding: 8px;
@@ -283,7 +313,9 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 
 .pagination-sec {
-  margin: 50px 0 50px 550px;
+    /* margin: 50px 0 50px 550px; */
+  display: flex;
+  justify-content: space-around;
 }
 
 .pagination li a.active {
@@ -312,7 +344,11 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 /*User Medicine View*/
 .sec-medicine {
-  padding: 50px 0px;
+  padding: 0px 0px;
+}
+
+.user-sec-medicine {
+  padding: 15px 0px;
 }
 
 .medicine-list img {
@@ -355,7 +391,7 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 
 .medicine-list {
-  padding: 40px 0;
+  padding: 0px 0;
   margin-left: 70px;
 }
 
@@ -386,7 +422,7 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 .userMedicine .search-sec {
   margin-left: 80px;
-  margin-bottom:60px;
+  margin-bottom: 60px;
 }
 .user .search-sec {
   margin-bottom:50px;
@@ -471,6 +507,10 @@ hr {
   margin-right: 50px;
 }
 
+.price-label {
+  margin-right: 62px;
+}
+
 .cat-label {
   margin-right: 25px;
 }
@@ -549,6 +589,15 @@ hr {
     width: 150px;
     font-size: 15px;
   }
+  
+  .sec-medicine {
+    padding: 0px;
+  }
+  
+  .user-sec-medicine {
+    padding: 15px 0px;
+  }
+  
   .medicine-img {
     margin-left: 300px;
     width: 150px;
@@ -594,7 +643,7 @@ hr {
     margin-right: 0;
   }
   .medicine-list {
-    padding: 40px 0;
+    padding: 0px 0;
     margin-left: 70px;
   }
   .medicine-list .cmn-link {
@@ -721,9 +770,9 @@ hr {
     width: 200px;
     margin-right: 16px;
   }
-  .pagination-sec {
+  /* .pagination-sec {
     margin: 50px 0 50px 300px;
-  }
+  } */
 }
 /**  SP  **/
 @media screen and (max-width:767.9px) {
@@ -783,6 +832,15 @@ hr {
     font-size: 15px;
     float: none;
   }
+  
+  .sec-medicine {
+    padding: 0px;
+  }
+  
+  .sec-medicine {
+    padding: 15px 0px;
+  }
+  
   .image-input, .medicine-img {
     border: none;
   }
@@ -849,7 +907,7 @@ hr {
     margin-right: 0px;
   }
   .medicine-list {
-    padding: 40px 0;
+    padding: 0px 0;
     margin-left: 70px;
   }
   .medicine-list .cmn-link {
@@ -985,7 +1043,7 @@ hr {
     width: 200px;
     margin-bottom: 15px;
   }
-  .pagination-sec {
+  /* .pagination-sec {
     margin: 50px 0 50px 200px;
-  }
+  } */
 }

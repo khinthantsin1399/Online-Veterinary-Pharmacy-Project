@@ -17,8 +17,9 @@
 <body>
 	<div class="wrapper">
 		<div class="sec-list userMedicine">
+          <div class="banner"></div>
 			<div class="container">
-				<h2 class="cmn-ttl">Medicine List</h2>
+				<!-- <h2 class="cmn-ttl">Medicine List</h2> -->
 				<c:if test="${errorMsg != null }">
 					<div class="alert alert-danger">
 						<strong>${errorMsg }</strong>
@@ -49,7 +50,7 @@
 					</form:form>
 
 				</div>
-				<div class="sec-medicine clearfix">
+				<div class="sec-medicine user-sec-medicine clearfix">
 					<ul class="medicine-list clearfix">
 						<c:if test="${!empty MedicineList}">
 							<c:forEach items="${MedicineList}" var="medicine"
