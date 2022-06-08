@@ -5,7 +5,7 @@
 
 <tiles-definitions>
     <!-- UserLogin Page -->
-    <definition name="userLogin" extends="template1">
+    <definition name="userLogin" extends="template2">
         <put-attribute name="title" value="userLogin" />
         <put-attribute name="body"
             value="/WEB-INF/pages/user/login/userLogin.jsp" />

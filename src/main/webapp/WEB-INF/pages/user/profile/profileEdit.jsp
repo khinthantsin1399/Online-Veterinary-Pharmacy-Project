@@ -17,7 +17,7 @@
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
 </head>
-<body  style="background:pink">
+<body  style="background:#b2dfdb">
  <div class="wrapper">
 		<div class="container">
 			<div class="sec-form">
@@ -25,7 +25,7 @@
             Form</h2>
           <c:url var="addAction" value="/profile/update"></c:url>
           <form:form action="${addAction}"
-            modelAttribute="profileEditForm" method="POST" class="form clearfix" style="margin-left:300px;">
+            modelAttribute="profileEditForm" method="POST" class="form clearfix profile-form" >
             <c:if test="${errorMsg != null }">
               <div class="text-center">
                 <strong class="text-danger">${errorMsg }</strong>

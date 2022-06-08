@@ -156,4 +156,30 @@ public ByteArrayInputStream load();
 	 * @return
 	 */
 	boolean isMedicineNameExist(String medName);
+
+    /**
+     * <h2> isUpdateMedicineCodeExist</h2>
+     * <p>
+     *  method to check updated medicine code exists or not
+     * </p>
+     *
+     * @param medicineCode
+     * @param medicineId
+     * @return
+     * @return boolean
+     */
+    boolean isUpdateMedicineCodeExist(String medicineCode, int medicineId);
+
+    /**
+     * <h2> isUpdateMedicineNameExist</h2>
+     * <p>
+     *  method to check updated medicine name exists or not
+     * </p>
+     *
+     * @param medicine_name
+     * @param id
+     * @return
+     * @return boolean
+     */
+    public boolean isUpdateMedicineNameExist(String medicineName, Integer medicineId);
 }

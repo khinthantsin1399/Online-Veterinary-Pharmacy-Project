@@ -10,4 +10,9 @@
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/pages/common/inc/footer.jsp" />
     </definition>
+    <definition name="template2" template="/WEB-INF/pages/common/template2.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/pages/common/inc/header.jsp" />
+        <put-attribute name="body" value="" />
+    </definition>
 </tiles-definitions>

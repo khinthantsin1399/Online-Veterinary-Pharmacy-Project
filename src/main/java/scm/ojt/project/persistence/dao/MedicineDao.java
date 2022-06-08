@@ -126,7 +126,7 @@ public interface MedicineDao {
 	/**
 	 * <h2>isMedicineNameExist</h2>
 	 * <p>
-	 * 
+	 *  Method to check  medicine name exists or not
 	 * </p>
 	 *
 	 * @param medName
@@ -134,4 +134,29 @@ public interface MedicineDao {
 	 * @return Medicine
 	 */
 	public Medicine isMedicineNameExist(String medName);
+
+    /**
+     * <h2> dbUpdatedMedicineExistList</h2>
+     * <p>
+     * Method to check updated medicine code exists or not
+     * </p>
+     *
+     * @param medicineCode
+     * @return
+     * @return List<Medicine>
+     */
+    public List<Medicine> dbUpdatedMedicineExistList(String medicineCode);
+
+    /**
+     * <h2> dbUpdatedMedicineNameExistList</h2>
+     * <p>
+     *  Method to check updated medicine Name exists or not
+     * </p>
+     * </p>
+     *
+     * @param medicineName
+     * @return
+     * @return List<Medicine>
+     */
+    public List<Medicine> dbUpdatedMedicineNameExistList(String medicineName);
 }
