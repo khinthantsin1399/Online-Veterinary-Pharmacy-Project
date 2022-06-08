@@ -328,13 +328,13 @@ public class MedicineController {
 			updateConfirmView = new ModelAndView("updateMedicine");
 			updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0002", null, null));
 			return updateConfirmView;
-		} else if (this.medicineService.isMedicineCodeExist(updateMedicineForm.getMedicine_code())) {
+		} else if (this.medicineService.isUpdateMedicineCodeExist(updateMedicineForm.getMedicine_code(),updateMedicineForm.getId())) {
 			updateConfirmView = new ModelAndView("updateMedicine");
 			updateConfirmView.addObject("CategoryList", CategoryList);
 			updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0004", null, null));
 			return updateConfirmView;
 
-		} else if (this.medicineService.isMedicineNameExist(updateMedicineForm.getMedicine_name())) {
+		} else if (this.medicineService.isUpdateMedicineNameExist(updateMedicineForm.getMedicine_name(),updateMedicineForm.getId())) {
 			updateConfirmView = new ModelAndView("updateMedicine");
 			updateConfirmView.addObject("CategoryList", CategoryList);
 			updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0016", null, null));
@@ -455,7 +455,6 @@ public class MedicineController {
 		ModelAndView medicineListView = new ModelAndView("medicineList");
 		if (search_input.isEmpty()) {
 			this.getPagination(medicineListView, 1, 6, false, medicineForm);
-			medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0013", null, null));
 		} else {
 			medicineForm.setMedicine_name(search_input);
 			this.getPagination(medicineListView, 1, 6, true, medicineForm);
@@ -484,7 +483,6 @@ public class MedicineController {
 		ModelAndView medicineListView = new ModelAndView("userMedicineList");
 		if (search_input.isEmpty()) {
 			this.getPagination(medicineListView, 1, 6, false, medicineForm);
-			medicineListView.addObject("errorMsg", messageSource.getMessage("M_SC_0013", null, null));
 		} else {
 			medicineForm.setMedicine_name(search_input);
 			this.getPagination(medicineListView, 1, 6, true, medicineForm);

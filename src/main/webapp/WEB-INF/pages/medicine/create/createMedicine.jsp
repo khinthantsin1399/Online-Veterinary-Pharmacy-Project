@@ -38,7 +38,7 @@
 
 					<label for="medicine_description" class="required">Medicine
 						Description</label>
-					<form:textarea path="medicine_description"
+					<form:textarea path="medicine_description" 
 						value="${createMedicineForm.medicine_description}" class="input"
 						placeholder="Enter Medicine Description" />
 					<form:errors path="medicine_description"

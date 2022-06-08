@@ -31,19 +31,32 @@
 						<div class="detail-sec clearfix">
 
 							<ul class="detail-list">
-								<li><p>
-										<span class="detail-label">Name</span>
-										${detailMedicine.medicine_name}
-									</p></li>
+								<li>
+								<table class="detail-tbl">
+								<tr>
+										<th><span class="detail-label">Name</span></th>
+										<td>${detailMedicine.medicine_name}</td>
+										</tr>
+									</table>
+									</li>
 
-								<li><p>
-										<span class="detail-label price-label">Price</span>${detailMedicine.amount}MMK
-									</p></li>
+								<li>
+								<table class="detail-tbl">
+								<tr>
+										<th><span class="detail-label price-label">Price</span></th>
+										<td>${detailMedicine.amount}MMK</td>
+										</tr>
+									</table>
+								</li>
 
-								<li><p>
-										<span class="detail-label cat-label">Category</span>
-										${detailMedicine.category.category_name}
-									</p></li>
+								<li>
+							<table class="detail-tbl">
+								<tr>
+										<th><span class="detail-label cat-label">Category</span></th>
+										<td>${detailMedicine.category.category_name}</td>
+										</tr>
+									</table>
+								</li>
 							</ul>
 						</div>
 					</div>

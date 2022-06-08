@@ -390,4 +390,58 @@ public class MedicineServiceImpl implements MedicineService {
 
         return medicineNameExist;
     }
+    
+    /**
+     * <h2> isUpdateMedicineCodeExist </h2>
+     * <p>
+     * method to check update medicine code exists or not
+     * </p>
+     * 
+     * @param medicineCode
+     * @param medicineId
+     * @return
+     */
+    @Override
+    public boolean isUpdateMedicineCodeExist(String medicineCode, int medicineId) {
+        boolean updateMedicineCodeExist = false;
+        List<Medicine> medicineList = medicineDao.dbUpdatedMedicineExistList(medicineCode);
+        Medicine medicineById = medicineDao.getMedicineById(medicineId);
+        if (medicineList != null) {
+            for (Medicine medicine : medicineList) {
+                if (medicineById != null) {
+                    if (medicine.getMedicine_code() != medicineById.getMedicine_code()) {
+                        updateMedicineCodeExist = true;
+                    }
+                }
+            }
+        }
+        return updateMedicineCodeExist;
+    }
+
+    /**
+     * <h2> isUpdateMedicineNameExist </h2>
+     * <p>
+     * method to check update medicine name exists or not
+     * </p>
+     * 
+     * @param medicine_name
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean isUpdateMedicineNameExist(String medicineName, Integer medicineId) {
+        boolean updateMedicineNameExist = false;
+        List<Medicine> medicineList = medicineDao.dbUpdatedMedicineNameExistList(medicineName);
+        Medicine medicineById = medicineDao.getMedicineById(medicineId);
+        if (medicineList != null) {
+            for (Medicine medicine : medicineList) {
+                if (medicineById != null) {
+                    if (medicine.getMedicine_name() != medicineById.getMedicine_name()) {
+                        updateMedicineNameExist = true;
+                    }
+                }
+            }
+        }
+        return updateMedicineNameExist;
+    }
 }

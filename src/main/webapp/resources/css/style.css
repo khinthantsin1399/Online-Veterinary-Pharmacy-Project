@@ -1,1049 +1,1102 @@
 @charset "UTF-8";
 
 .wrapper {
-  width: 100%;
+	width: 100%;
 }
 
 .sec-list {
-  padding-bottom: 17%;
+	padding-bottom: 25%;
 }
 
 .container {
-  width: 1120px;
+	width: 1120px;
 }
 
 .menu-btn {
-  margin: 200px 300px;
+	margin: 200px 300px;
 }
 /*Order Detail*/
 .order-detail-tbl {
-  box-shadow: -4px -2px 13px -6px rgba(109, 110, 112, 0.84);
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 90%;
-  margin: 100px 100px 10px 50px;
+	box-shadow: -4px -2px 13px -6px rgba(109, 110, 112, 0.84);
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 90%;
+	margin: 100px 100px 10px 50px;
 }
 
 .order-detail-tbl th {
-  background-color: #EBECF0;
+	background-color: #EBECF0;
 }
 
 .order-detail-tbl td, .order-detail-tbl th {
-  padding: 25px;
-  text-align: center;
-  font-family: "Century Gothic";
+	padding: 25px;
+	text-align: center;
+	font-family: "Century Gothic";
 }
 
 .order-detail-tbl td {
-  text-align: left;
+	text-align: left;
 }
 
 .order-detail-tbl th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #32b3b8;
-  color: #fff;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: #32b3b8;
+	color: #fff;
 }
 
 .order-detail-tbl tr {
-  background-color: #fff;
+	background-color: #fff;
 }
 
 .order-status {
-  color: #fff;
-  border-radius: 10px;
-  padding: 5px 7px;
-  font-size: 12px;
-  background: #007F00;
+	color: #fff;
+	border-radius: 10px;
+	padding: 5px 7px;
+	font-size: 12px;
+	background: #007F00;
 }
 
 .not-yet-status {
-  background: #F4BC1C;
+	background: #F4BC1C;
 }
 
 /*Profile Detail*/
-.profile-detail-tbl{
-	width:70%;
-	margin-left:170px;
+.profile-detail-tbl {
+	width: 70%;
+	margin-left: 200px;
+}
+
+.profile-detail-tbl th {
+	width: 50%;
+}
+
+.profile-btn {
+	margin-left: 250px;
+}
+
+.profile-form {
+	margin-left: 280px;
 }
 /*Login*/
 .sec-form .login {
-  width: 620px;
-  margin-left: 250px;
+	width: 620px;
+	margin-left: 250px;
 }
 
 .login .cmn-btn {
-  width: 500px;
-  margin-left: 60px;
+	width: 500px;
+	margin-left: 60px;
 }
 
 .login .input {
-  width: 300px;
-  margin-left: 30px;
+	width: 300px;
+	margin-left: 30px;
 }
 
 .login label {
-  width: 100px;
-  text-align: center;
+	width: 100px;
+	text-align: center;
 }
 
 .login .medicine-link {
-  float: left;
-  margin-left: 110px;
-  margin-top: 50px;
+	float: left;
+	margin-left: 110px;
+	margin-top: 50px;
 }
-.profile-btn{
-	margin-left:230px;
-}
+
 /*Form*/
 .cmn-ttl {
-  text-align: center;
-  font-size: 30px;
-  margin-left: 50px;
-  font-family: 'Century Gothic', sans-serif;
-  padding-top: 50px;
+	text-align: center;
+	font-size: 30px;
+	margin-left: 50px;
+	font-family: 'Century Gothic', sans-serif;
+	padding-top: 50px;
 }
 
 .cmn-btn {
-  color: #fff;
-  background: #32b3b8;
-  font-family: "Century Gothic";
-  font-size: 20px;
-  padding: 6px;
-  width: 250px;
-  text-align: center;
-  box-sizing: border-box;
-  margin-top: 50px;
-  float: left;
-  margin-left: 50px;
-  border-radius: 5px;
-  border: none;
+	color: #fff;
+	background: #32b3b8;
+	font-family: "Century Gothic";
+	font-size: 20px;
+	padding: 6px;
+	width: 250px;
+	text-align: center;
+	box-sizing: border-box;
+	margin-top: 50px;
+	float: left;
+	margin-left: 50px;
+	border-radius: 5px;
+	border: none;
 }
 
 .update-btn .cmn-btn {
-  width: 160px;
-  border: none;
+	width: 160px;
+	border: none;
 }
 
 .input, button, select {
-  display: block;
-  width: 350px;
-  margin-top: 50px;
-  margin-left: 80px;
-  padding: 11px 0;
-  border: 1px solid #707070;
-  box-sizing: border-box;
-  background: transparent;
-  border-radius: 5px;
-  font-size: 15px;
-  font-family: 'Century Gothic', sans-serif;
-  float: left;
+	display: block;
+	width: 350px;
+	margin-top: 50px;
+	margin-left: 80px;
+	padding: 11px 0;
+	border: 1px solid #707070;
+	box-sizing: border-box;
+	background: transparent;
+	border-radius: 5px;
+	font-size: 15px;
+	font-family: 'Century Gothic', sans-serif;
+	float: left;
 }
 
 .image-input, .medicine-img {
-  border: none;
+	border: none;
 }
 
 .input::placeholder {
-  padding-left: 10px;
+	padding-left: 10px;
 }
 
 .form label, .confirm-list b {
-  float: left;
-  margin-top: 60px;
-  margin-left: 30px;
-  font-family: 'Century Gothic', sans-serif;
-  width: 200px;
+	float: left;
+	margin-top: 60px;
+	margin-left: 30px;
+	font-family: 'Century Gothic', sans-serif;
+	width: 200px;
 }
 
 .required::after {
-  content: "*";
-  color: #ff0000;
+	content: "*";
+	color: #ff0000;
 }
 
 .medicine-img {
-  margin-left: 320px;
-  width: 250px;
-  margin-bottom: 30px;
-  margin-right: 50px;
-  margin-top: 0;
+	margin-left: 320px;
+	width: 250px;
+	margin-bottom: 30px;
+	margin-right: 50px;
+	margin-top: 0;
 }
 
 .form-cmn-txt {
-  margin-left: 38px;
-  color: #000;
-  font-size: 16px;
+	margin-left: 38px;
+	color: #000;
+	font-size: 16px;
 }
 
 .form {
-  margin: 60px 200px;
-  border: 1px solid #f5f5f5;
-  width: 700px;
-  padding: 30px 0 60px 0;
-  background: #fff;
-  box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
+	margin: 60px 200px;
+	border: 1px solid #f5f5f5;
+	width: 700px;
+	padding: 30px 0 60px 0;
+	background: #fff;
+	box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
 }
 
 button:hover, .add-btn:hover, .cmn-link:hover {
-  background-color: #04AA6D;
-  color: #333;
+	background-color: #04AA6D;
+	color: #333;
 }
 
 .back-btn {
-  margin-left: 210px;
-  color: #000;
-  padding-bottom: 100px;
+	margin-left: 210px;
+	color: #000;
+	padding-bottom: 100px;
 }
 
 .btn-margin-right {
-  margin-right: 10px;
+	margin-right: 10px;
 }
 
 /*table*/
 .tbl {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 1120px;
-  margin: 50px 100px 10px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 1120px;
+	margin: 50px 100px 10px 0px;
 }
 
 .tbl-font {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 15px;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+	font-size: 15px;
 }
 
 .banner {
-  width: 100%;
-  background: url(../img/baner-header.jpg) no-repeat;
-  background-size: cover;
-  background-position: center;
-  padding-bottom: 300px;
+	width: 100%;
+	background: url(../img/baner-header.jpg) no-repeat;
+	background-size: cover;
+	background-position: center;
+	padding-bottom: 300px;
 }
 
 .sec-copyright {
-  padding: 18px 0;
-  text-align: center;
-  border-top: 1px solid #fff;
-  background-color: #32b3b8;
-  bottom: 0;
-  /* position: fixed; */
-  width: 100%;
+	padding: 18px 0;
+	text-align: center;
+	border-top: 1px solid #fff;
+	background-color: #32b3b8;
+	bottom: 0;
+	/*position: fixed;*/
+	width: 100%;
 }
 
 .sec-copyright .copyright-txt {
-  color: #fff;
+	color: #fff;
 }
 
 .sec-copyright span {
-  color: #f5ff7f;
+	color: #f5ff7f;
 }
 
 .tbl td, .tbl th {
-  border: 1px solid #333;
-  padding: 8px;
-  text-align: center;
-  font-family: "Century Gothic";
+	border: 1px solid #333;
+	padding: 8px;
+	text-align: center;
+	font-family: "Century Gothic";
 }
 
 .tbl th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #32b3b8;
-  color: #fff;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	background-color: #32b3b8;
+	color: #fff;
 }
 
 .tbl tr:nth-child(even) {
-  background-color: #fff;
+	background-color: #fff;
 }
 
 .medicine-link {
-  color: #32b3b8;
+	color: #32b3b8;
 }
 
 .cmn-link {
-  color: #fff;
-  background: #32b3b8;
-  padding: 4px;
-  border-radius: 4px;
-  font-size: 13px;
+	color: #fff;
+	background: #32b3b8;
+	padding: 4px;
+	border-radius: 4px;
+	font-size: 13px;
 }
 
 .cmk-block {
-  display: block;
-  margin-bottom: 5px;
+	display: block;
+	margin-bottom: 5px;
 }
 
 .upload-sec .cmn-link {
-  border: none;
-  margin-left: 0;
-  padding: 7px 12px;
-  font-family: "Century Gothic";
+	border: none;
+	margin-left: 0;
+	padding: 7px 12px;
+	font-family: "Century Gothic";
 }
 
 .upload-sec .browse-file {
-  width: 230px;
+	width: 230px;
 }
 
 .search-sec .cmn-btn {
-  width: 100px;
-  border: none;
+	width: 100px;
+	border: none;
 }
 
 .cart-btn .cmn-btn {
-  font-size: 15px;
-  padding: 10px 10px;
-  width: 180px;
-  margin: 80px 15px 30px 0;
+	font-size: 15px;
+	padding: 10px 10px;
+	width: 180px;
+	margin: 80px 15px 30px 0;
 }
 
 .quantity-box {
-  width: 50px;
-  text-align: center;
+	width: 50px;
+	text-align: center;
 }
 
 .total {
-  font-family: "Century Gothic";
-  font-size: 1em;
-  float: right;
-  margin-top: 170px;
-  margin-bottom: 40px;
+	font-family: "Century Gothic";
+	font-size: 1em;
+	float: right;
+	margin-top: 170px;
+	margin-bottom: 40px;
 }
 
 .pagination-sec {
-    /* margin: 50px 0 50px 550px; */
-  display: flex;
-  justify-content: space-around;
+	/* margin: 50px 0 50px 550px; */
+	display: flex;
+	justify-content: space-around;
 }
 
 .pagination li a.active {
-  background-color: #32b3b8;
-  color: #fff;
+	background-color: #32b3b8;
+	color: #fff;
 }
 
 .pagination li a {
-  color: #000;
-  padding: 4px 10px;
+	color: #000;
+	padding: 4px 10px;
 }
 
 .error {
-  color: #ff0000;
-  font-size: 15px;
-  display: block;
-  margin-left: 320px;
+	color: #ff0000;
+	font-size: 15px;
+	display: block;
+	margin-left: 320px;
 }
 
 .errorblock {
-  color: #000;
-  background-color: #ffEEEE;
-  border: 3px solid #ff0000;
-  padding: 8px;
-  margin: 16px;
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
 }
 /*User Medicine View*/
 .sec-medicine {
-  padding: 0px 0px;
+	padding: 0px 0px;
 }
 
 .user-sec-medicine {
-  padding: 15px 0px;
+	padding: 15px 0px;
 }
 
 .medicine-list img {
-  vertical-align: bottom;
-  width: 290px;
-  height: 250px;
-  margin-bottom: 20px;
+	vertical-align: bottom;
+	width: 290px;
+	height: 250px;
+	margin-bottom: 20px;
 }
 
 .medicine-list {
-  margin-left: 60px;
+	margin-left: 60px;
 }
 
 .medicine-list li {
-  float: left;
-  width: 300px;
-  margin-top: 50px;
-  margin-right: 25px;
-  border: 5px solid #fff;
-  background-color: #fff;
-  padding-bottom: 50px;
+	float: left;
+	width: 300px;
+	margin-top: 50px;
+	margin-right: 25px;
+	border: 5px solid #fff;
+	background-color: #fff;
+	padding-bottom: 50px;
 }
 
 .medicine-list 
 .medicine-list li:hover {
-  border-color: #76c38f;
+	border-color: #76c38f;
 }
 
 .medicine-txt {
-  padding: 8px 0px;
-  color: #3d3d3d;
-  font-size: 1.3em;
-  text-align: center;
-  margin-bottom: 30px;
-  font-family: "Century Gothic";
+	padding: 8px 0px;
+	color: #3d3d3d;
+	font-size: 1.3em;
+	text-align: center;
+	margin-bottom: 30px;
+	font-family: "Century Gothic";
 }
 
 .medicine-list li:nth-child(3n) {
-  margin-right: 0;
+	margin-right: 0;
 }
 
 .medicine-list {
-  padding: 0px 0;
-  margin-left: 70px;
+	padding: 0px 0;
+	margin-left: 70px;
 }
 
 .medicine-list .cmn-link {
-  padding: 10px 12px;
-  margin-left: 15px;
-  font-size: 1em;
-  font-family: "Century Gothic";
+	padding: 10px 12px;
+	margin-left: 15px;
+	font-size: 1em;
+	font-family: "Century Gothic";
 }
 
 .search-box {
-  width: 300px;
-  padding: 8px 0;
-  border: none;
-  border-radius: 5px;
+	width: 300px;
+	padding: 8px 0;
+	border: none;
+	border-radius: 5px;
 }
 
 .search-sec .cmn-link {
-  border: none;
-  padding: 10px 10px;
-  font-size: 1em;
-  font-family: "Century Gothic";
-  margin-left: 20px;
+	border: none;
+	padding: 10px 10px;
+	font-size: 1em;
+	font-family: "Century Gothic";
+	margin-left: 20px;
 }
 
 .search-sec {
-  margin-top: 50px;
+	margin-top: 50px;
 }
+
 .userMedicine .search-sec {
-  margin-left: 80px;
-  margin-bottom: 60px;
+	margin-left: 80px;
+	margin-bottom: 60px;
 }
+
 .user .search-sec {
-  margin-bottom:50px;
+	margin-bottom: 50px;
 }
+
 .btn-list li {
-  float: left;
+	float: left;
 }
-.user-btn button{
-		width:80px;
-		margin-top: 0px;
-		
+
+.user-btn button {
+	width: 80px;
+	margin-top: 0px;
 }
+
 .btn-list li a {
-  display: inline-block;
+	display: inline-block;
 }
 
 .search-msg {
-  text-align: center;
-  font-family: "Century Gothic";
-  font-size: 23px;
+	text-align: center;
+	font-family: "Century Gothic";
+	font-size: 23px;
 }
 /*Medicine Detail*/
 .img-sec {
-  float: left;
-  width: 300px;
+	float: left;
+	width: 250px;
 }
 
 .img-sec img {
-  width: 350px;
+	width: 300px;
+	height: 250px;
 }
 
 .detail-sec {
-  float: right;
-  width: 400px;
+	float: right;
+	width: 480px;
 }
 
 .detail-box {
-  margin: 100px 100px 100px 50px;
-  padding: 20px 50px 100px 50px;
-  font-size: 1.3em;
-  font-family: "Century Gothic";
-  box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
-  -webkit-box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
-  -moz-box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
+	margin: 100px 50px 100px 50px;
+	padding: 20px 50px 100px 50px;
+	font-size: 18px;
+	font-family: "Century Gothic";
+	box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
+	-webkit-box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
+	-moz-box-shadow: -1px 0px 22px -3px rgba(166, 154, 154, 0.9);
 }
 
 .content {
-  margin: 80px 0;
+	margin: 80px 0;
+}
+
+.detail-list {
+	margin-left: 60px;
 }
 
 .detail-list li {
-  padding: 20px 0px;
+	padding: 20px 0px;
 }
 
 .description {
-  margin-bottom: 100px;
+	margin-bottom: 100px;
 }
 
 .description p {
-  margin-top: 25px;
+	margin-top: 25px;
 }
 
 .detail-box .cmn-link {
-  font-size: 1em;
-  padding: 10px 15px;
-  float: right;
-  margin-right: 30px;
-  border-radius: none;
+	font-size: 1em;
+	padding: 10px 15px;
+	float: right;
+	margin-right: 30px;
+	border-radius: none;
 }
 
 hr {
-  background-color: #707070;
+	background-color: #707070;
 }
 
 .detail-label {
-  font-weight: normal;
-  border: 1px solid black;
-  border-radius: 30px;
-  font-size: 15px;
-  padding: 5px 15px;
-  text-align: right;
-  margin-right: 50px;
+	font-weight: normal;
+	border: 1px solid black;
+	border-radius: 30px;
+	font-size: 15px;
+	padding: 5px 15px;
+	text-align: right;
+	margin-right: 50px;
+}
+
+.detail-line li {
+	float: left
 }
 
 .price-label {
-  margin-right: 62px;
+	margin-right: 62px;
 }
 
 .cat-label {
-  margin-right: 25px;
+	margin-right: 25px;
 }
 
 .clearfix::after {
-  display: table;
-  clear: both;
-  content: "";
+	display: table;
+	clear: both;
+	content: "";
 }
 
 @media screen and (min-width: 768px) and (max-width: 1040px) {
-  .container {
-    width: 700px;
-  }
-  /*Login*/
-  .sec-form .login {
-    width: 450px;
-    margin-left: 130px;
-  }
-  .login .cmn-btn {
-    width: 350px;
-    margin-left: 60px;
-  }
-  .login .input {
-    width: 200px;
-    margin-left: 30px;
-  }
-  .login label {
-    width: 100px;
-    text-align: right;
-  }
-  .login .medicine-link {
-    margin-left: 60px;
-    margin-top: 50px;
-  }
-  /*Form*/
-  .cmn-ttl {
-    text-align: center;
-    font-size: 30px;
-    margin-left: 50px;
-    font-family: 'Century Gothic', sans-serif;
-    padding-top: 50px;
-  }
-  .cmn-btn {
-    font-size: 15px;
-    padding: 6px;
-    width: 170px;
-    margin-top: 50px;
-    margin-left: 70px;
-  }
-  .update-btn .cmn-btn {
-    width: 100px;
-    border: none;
-  }
-  .input, button, select {
-    width: 220px;
-    margin-top: 50px;
-    margin-left: 100px;
-    padding: 11px 0;
-    border: 1px solid #707070;
-    border-radius: 5px;
-    font-size: 15px;
-    font-family: 'Century Gothic', sans-serif;
-  }
-  .image-input, .medicine-img {
-    border: none;
-  }
-  .input::placeholder {
-    padding-left: 10px;
-  }
-  .form label, .confirm-list b {
-    float: left;
-    margin-top: 60px;
-    margin-left: 30px;
-    font-family: 'Century Gothic', sans-serif;
-    width: 150px;
-    font-size: 15px;
-  }
-  
-  .sec-medicine {
-    padding: 0px;
-  }
-  
-  .user-sec-medicine {
-    padding: 15px 0px;
-  }
-  
-  .medicine-img {
-    margin-left: 300px;
-    width: 150px;
-    margin-bottom: 30px;
-    margin-right: 50px;
-    margin-top: 0;
-  }
-  .form-cmn-txt {
-    margin-left: 38px;
-    color: #000;
-    font-size: 16px;
-  }
-  .form {
-    margin: 60px 70px;
-    border: 1px solid #f5f5f5;
-    width: 550px;
-    padding: 30px 0 60px 0;
-    background: #fff;
-    box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
-  }
+	.container {
+		width: 700px;
+	}
+	/*Login*/
+	.sec-form .login {
+		width: 450px;
+		margin-left: 130px;
+	}
+	.login .cmn-btn {
+		width: 350px;
+		margin-left: 60px;
+	}
+	.login .input {
+		width: 200px;
+		margin-left: 30px;
+	}
+	.login label {
+		width: 100px;
+		text-align: right;
+	}
+	.login .medicine-link {
+		margin-left: 60px;
+		margin-top: 50px;
+	}
+	/*Form*/
+	.cmn-ttl {
+		text-align: center;
+		font-size: 30px;
+		margin-left: 50px;
+		font-family: 'Century Gothic', sans-serif;
+		padding-top: 50px;
+	}
+	.cmn-btn {
+		font-size: 15px;
+		padding: 6px;
+		width: 170px;
+		margin-top: 50px;
+		margin-left: 70px;
+	}
+	.update-btn .cmn-btn {
+		width: 100px;
+		border: none;
+	}
+	.input, button, select {
+		width: 220px;
+		margin-top: 50px;
+		margin-left: 100px;
+		padding: 11px 0;
+		border: 1px solid #707070;
+		border-radius: 5px;
+		font-size: 15px;
+		font-family: 'Century Gothic', sans-serif;
+	}
+	.image-input, .medicine-img {
+		border: none;
+	}
+	.input::placeholder {
+		padding-left: 10px;
+	}
+	.form label, .confirm-list b {
+		float: left;
+		margin-top: 60px;
+		margin-left: 30px;
+		font-family: 'Century Gothic', sans-serif;
+		width: 150px;
+		font-size: 15px;
+	}
+	.sec-medicine {
+		padding: 0px;
+	}
+	.user-sec-medicine {
+		padding: 15px 0px;
+	}
+	.medicine-img {
+		margin-left: 300px;
+		width: 150px;
+		margin-bottom: 30px;
+		margin-right: 50px;
+		margin-top: 0;
+	}
+	.form-cmn-txt {
+		margin-left: 38px;
+		color: #000;
+		font-size: 16px;
+	}
+	.form {
+		margin: 60px 70px;
+		border: 1px solid #f5f5f5;
+		width: 550px;
+		padding: 30px 0 60px 0;
+		background: #fff;
+		box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
+	}
 
-  /*User Medicine List*/
-  .medicine-list img {
-    vertical-align: bottom;
-    width: 180px;
-    height: 190px;
-    margin-bottom: 20px;
-  }
-  .medicine-list li {
-    float: left;
-    width: 190px;
-    margin-top: 30px;
-    margin-right: 20px;
-    border: 5px solid #fff;
-    background-color: #fff;
-    padding-bottom: 20px;
-  }
-  .medicine-txt {
-    font-size: 0.7em;
-    margin-bottom: 15px;
-  }
-  .medicine-list li:nth-child(3n) {
-    margin-right: 0;
-  }
-  .medicine-list {
-    padding: 0px 0;
-    margin-left: 70px;
-  }
-  .medicine-list .cmn-link {
-    padding: 5px 9px;
-    margin-left: 12px;
-    font-size: 0.5em;
-    font-family: "Century Gothic";
-  }
-  .search-box {
-    width: 200px;
-    padding: 4px 0;
-    border: none;
-    border-radius: 5px;
-  }
-  .search-sec .cmn-link {
-    border: none;
-    padding: 10px 7px;
-    font-size: 0.5em;
-    font-family: "Century Gothic";
-    margin-left: 20px;
-  }
-  .search-sec {
-    margin-top: 60px;
-  }
-  .btn-list li {
-    float: left;
-  }
-  /*Medicine Detail*/
-  .img-sec {
-    float: left;
-    width: 300px;
-  }
-  .img-sec img {
-    width: 300px;
-  }
-  .detail-sec {
-    float: right;
-    width: 200px;
-  }
-  .detail-box {
-    margin: 70px 0px 70px 50px;
-    padding: 10px 20px 60px 20px;
-    font-size: 1em;
-    width: 600px;
-  }
-  .detail-list li {
-    padding: 20px 0px;
-    margin-left: 0;
-  }
-  .detail-list li p {
-    font-size: 14px;
-  }
-  .description {
-    margin-bottom: 50px;
-  }
-  .description p {
-    margin-top: 20px;
-    font-size: 14px;
-  }
-  .detail-label {
-    font-weight: normal;
-    border: 1px solid black;
-    border-radius: 30px;
-    font-size: 12px;
-    padding: 5px 10px;
-    text-align: right;
-    margin-right: 25px;
-  }
-  .cat-label {
-    margin-right: 12px;
-  }
-  .detail-box .cmn-link {
-    font-size: 12px;
-    padding: 5px 7px;
-    float: right;
-    margin-right: 15px;
-    border-radius: none;
-  }
-  .scroll-bar {
-    overflow-x: auto;
-  }
-  /*table*/
-  .tbl {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 50px 0px 10px 0px;
-  }
-  .tbl td, .tbl th {
-    border: 1px solid #333;
-    padding: 8px;
-    text-align: center;
-    font-size: 15px;
-  }
-  .tbl th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    background-color: #32b3b8;
-    color: #fff;
-  }
-  .tbl tr:nth-child(even) {
-    background-color: #fff;
-  }
-  .quantity-box {
-    width: 30px;
-  }
-  .total {
-    margin-top: 150px;
-    font-size: 15px;
-    margin-bottom: 40px;
-  }
-  .cmn-link {
-    color: #fff;
-    padding: 4px;
-    border-radius: 4px;
-    font-size: 11px;
-  }
-  .upload-sec .cmn-link {
-    border: none;
-    margin-left: 0;
-    padding: 5px 8px;
-  }
-  .upload-sec .browse-file {
-    width: 200px;
-    margin-right: 16px;
-  }
-  /* .pagination-sec {
+	/*User Medicine List*/
+	.medicine-list img {
+		vertical-align: bottom;
+		width: 180px;
+		height: 190px;
+		margin-bottom: 20px;
+	}
+	.medicine-list li {
+		float: left;
+		width: 190px;
+		margin-top: 30px;
+		margin-right: 20px;
+		border: 5px solid #fff;
+		background-color: #fff;
+		padding-bottom: 20px;
+	}
+	.medicine-txt {
+		font-size: 0.7em;
+		margin-bottom: 15px;
+	}
+	.medicine-list li:nth-child(3n) {
+		margin-right: 0;
+	}
+	.medicine-list {
+		padding: 0px 0;
+		margin-left: 70px;
+	}
+	.medicine-list .cmn-link {
+		padding: 5px 9px;
+		margin-left: 12px;
+		font-size: 0.5em;
+		font-family: "Century Gothic";
+	}
+	.search-box {
+		width: 200px;
+		padding: 4px 0;
+		border: none;
+		border-radius: 5px;
+	}
+	.search-sec .cmn-link {
+		border: none;
+		padding: 10px 7px;
+		font-size: 0.5em;
+		font-family: "Century Gothic";
+		margin-left: 20px;
+	}
+	.search-sec {
+		margin-top: 60px;
+	}
+	.btn-list li {
+		float: left;
+	}
+	/*Medicine Detail*/
+	.img-sec {
+		float: left;
+		width: 250px;
+	}
+	.img-sec img {
+		width: 200px;
+		height: 200px;
+	}
+	.detail-sec {
+		float: right;
+		width: 300px;
+	}
+	.detail-box {
+		margin: 70px 0px 70px 50px;
+		padding: 10px 20px 60px 20px;
+		font-size: 1em;
+		width: 600px;
+	}
+	.detail-list {
+		margin-left: 20px;
+	}
+	.detail-list li {
+		padding: 20px 0px;
+		margin-left: 0;
+	}
+	.detail-list li p {
+		font-size: 14px;
+	}
+	.description {
+		margin-bottom: 50px;
+	}
+	.description p {
+		margin-top: 20px;
+		font-size: 14px;
+	}
+	.detail-label {
+		font-weight: normal;
+		border: 1px solid black;
+		border-radius: 30px;
+		font-size: 12px;
+		padding: 5px 10px;
+		text-align: right;
+		margin-right: 25px;
+	}
+	.cat-label {
+		margin-right: 12px;
+	}
+	.detail-box .cmn-link {
+		font-size: 12px;
+		padding: 5px 7px;
+		float: right;
+		margin-right: 15px;
+		border-radius: none;
+	}
+	.scroll-bar {
+		overflow-x: auto;
+	}
+	/*table*/
+	.tbl {
+		font-family: Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+		margin: 50px 0px 10px 0px;
+	}
+	.tbl td, .tbl th {
+		border: 1px solid #333;
+		padding: 8px;
+		text-align: center;
+		font-size: 15px;
+	}
+	.tbl th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		background-color: #32b3b8;
+		color: #fff;
+	}
+	.tbl tr:nth-child(even) {
+		background-color: #fff;
+	}
+	.quantity-box {
+		width: 30px;
+	}
+	.total {
+		margin-top: 150px;
+		font-size: 15px;
+		margin-bottom: 40px;
+	}
+	.cmn-link {
+		color: #fff;
+		padding: 4px;
+		border-radius: 4px;
+		font-size: 11px;
+	}
+	.upload-sec .cmn-link {
+		border: none;
+		margin-left: 0;
+		padding: 5px 8px;
+	}
+	.upload-sec .browse-file {
+		width: 200px;
+		margin-right: 16px;
+	}
+	/*Profile Detail*/
+	.profile-detail-tbl {
+		width: 70%;
+		margin-left: 70px;
+	}
+	.profile-detail-tbl th {
+		width: 50%;
+	}
+	.profile-btn {
+		margin-left: 50px;
+	}
+	.profile-form {
+		margin-left: 80px;
+	}
+	/* .pagination-sec {
     margin: 50px 0 50px 300px;
   } */
 }
 /**  SP  **/
 @media screen and (max-width:767.9px) {
-  .container {
-    width: 600px;
-  }
-  /*Login*/
-  .sec-form .login {
-    width: 350px;
-    margin-left: 130px;
-  }
-  .login .cmn-btn {
-    width: 290px;
-    margin-left: 30px;
-  }
-  .login .input {
-    width: 290px;
-    margin-left: 30px;
-    float: none;
-  }
-  .login label {
-    width: 300px;
-    text-align: left;
-    float: none;
-  }
-  .login .medicine-link {
-    margin-top: 50px;
-    margin-left: 30px;
-  }
-  /*Form*/
-  .cmn-ttl {
-    text-align: center;
-    font-size: 30px;
-    margin-left: 50px;
-    font-family: 'Century Gothic', sans-serif;
-    padding-top: 50px;
-  }
-  .cmn-btn {
-    font-size: 15px;
-    padding: 6px;
-    width: 300px;
-    margin-top: 50px;
-    margin-left: 70px;
-  }
-  .update-btn .cmn-btn {
-    width: 300px;
-    border: none;
-  }
-  .input, button, select {
-    width: 350px;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    margin-left: 50px;
-    padding: 11px 0;
-    border: 1px solid #707070;
-    border-radius: 5px;
-    font-size: 15px;
-    float: none;
-  }
-  
-  .sec-medicine {
-    padding: 0px;
-  }
-  
-  .sec-medicine {
-    padding: 15px 0px;
-  }
-  
-  .image-input, .medicine-img {
-    border: none;
-  }
-  .input::placeholder {
-    padding-left: 10px;
-  }
-  .form label, .confirm-list b {
-    float: none;
-    margin-top: 30px;
-    margin-left: 30px;
-    margin-bottom: 10px;
-    font-family: 'Century Gothic', sans-serif;
-    width: 150px;
-    font-size: 15px;
-  }
-  .medicine-img {
-    margin-left: 50px;
-    width: 150px;
-    margin-bottom: 30px;
-    margin-right: 50px;
-    margin-top: 0;
-  }
-  .form-cmn-txt {
-    margin-left: 38px;
-    color: #000;
-    font-size: 16px;
-  }
-  .form {
-    margin: 60px 50px;
-    border: 1px solid #f5f5f5;
-    width: 450px;
-    padding: 30px 0 60px 0;
-    background: #fff;
-    box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
-  }
+	.container {
+		width: 600px;
+	}
+	/*Login*/
+	.sec-form .login {
+		width: 350px;
+		margin-left: 130px;
+	}
+	.login .cmn-btn {
+		width: 290px;
+		margin-left: 30px;
+	}
+	.login .input {
+		width: 290px;
+		margin-left: 30px;
+		float: none;
+	}
+	.login label {
+		width: 300px;
+		text-align: left;
+		float: none;
+	}
+	.login .medicine-link {
+		margin-top: 50px;
+		margin-left: 30px;
+	}
+	/*Form*/
+	.cmn-ttl {
+		text-align: center;
+		font-size: 30px;
+		margin-left: 10px;
+		font-family: 'Century Gothic', sans-serif;
+		padding-top: 50px;
+	}
+	.cmn-btn {
+		font-size: 15px;
+		padding: 6px;
+		width: 300px;
+		margin-top: 50px;
+		margin-left: 70px;
+	}
+	.update-btn .cmn-btn {
+		width: 300px;
+		border: none;
+	}
+	.input, button, select {
+		width: 350px;
+		margin-top: 15px;
+		margin-bottom: 10px;
+		margin-left: 50px;
+		padding: 11px 0;
+		border: 1px solid #707070;
+		border-radius: 5px;
+		font-size: 15px;
+		float: none;
+	}
+	.sec-medicine {
+		padding: 0px;
+	}
+	.sec-medicine {
+		padding: 15px 0px;
+	}
+	.image-input, .medicine-img {
+		border: none;
+	}
+	.input::placeholder {
+		padding-left: 10px;
+	}
+	.form label, .confirm-list b {
+		float: none;
+		margin-top: 30px;
+		margin-left: 30px;
+		margin-bottom: 10px;
+		font-family: 'Century Gothic', sans-serif;
+		width: 150px;
+		font-size: 15px;
+	}
+	.medicine-img {
+		margin-left: 50px;
+		width: 150px;
+		margin-bottom: 30px;
+		margin-right: 50px;
+		margin-top: 0;
+	}
+	.form-cmn-txt {
+		margin-left: 38px;
+		color: #000;
+		font-size: 16px;
+	}
+	.form {
+		margin: 60px 50px;
+		border: 1px solid #f5f5f5;
+		width: 450px;
+		padding: 30px 0 60px 0;
+		background: #fff;
+		box-shadow: -4px -2px 23px -6px rgba(109, 110, 112, 0.84);
+	}
 
-  /*User Medicine List*/
-  .medicine-list img {
-    vertical-align: bottom;
-    width: 200px;
-    height: 190px;
-    margin-bottom: 20px;
-  }
-  .medicine-list li {
-    float: left;
-    width: 210px;
-    margin-top: 30px;
-    margin-right: 20px;
-    border: 5px solid #fff;
-    background-color: #fff;
-    padding-bottom: 20px;
-  }
-  .medicine-txt {
-    font-size: 0.7em;
-    margin-bottom: 15px;
-  }
-  .medicine-list li:nth-child(2n) {
-    margin-right: 0;
-  }
-  .medicine-list li:nth-child(3n) {
-    margin-right: 20px;
-  }
-  .medicine-list li:nth-child(6n) {
-    margin-right: 0px;
-  }
-  .medicine-list {
-    padding: 0px 0;
-    margin-left: 70px;
-  }
-  .medicine-list .cmn-link {
-    padding: 5px 7px;
-    margin-left: 20px;
-    font-size: 0.5em;
-    font-family: "Century Gothic";
-    width: 140px;
-    text-align: center;
-  }
-  .search-box {
-    width: 200px;
-    padding: 4px 0;
-    border: none;
-    border-radius: 5px;
-  }
-  .search-sec .cmn-link {
-    border: none;
-    padding: 9px 15px;
-    font-size: 0.5em;
-    font-family: "Century Gothic";
-    margin-left: 10px;
-  }
-  .search-sec {
-    margin-top: 60px;
-  }
-  .btn-list li {
-    float: left;
-  }
+	/*User Medicine List*/
+	.medicine-list img {
+		vertical-align: bottom;
+		width: 200px;
+		height: 190px;
+		margin-bottom: 20px;
+	}
+	.medicine-list li {
+		float: left;
+		width: 210px;
+		margin-top: 30px;
+		margin-right: 20px;
+		border: 5px solid #fff;
+		background-color: #fff;
+		padding-bottom: 20px;
+	}
+	.medicine-txt {
+		font-size: 0.7em;
+		margin-bottom: 15px;
+	}
+	.medicine-list li:nth-child(2n) {
+		margin-right: 0;
+	}
+	.medicine-list li:nth-child(3n) {
+		margin-right: 20px;
+	}
+	.medicine-list li:nth-child(6n) {
+		margin-right: 0px;
+	}
+	.medicine-list {
+		padding: 0px 0;
+		margin-left: 70px;
+	}
+	.medicine-list .cmn-link {
+		padding: 5px 7px;
+		margin-left: 20px;
+		font-size: 0.5em;
+		font-family: "Century Gothic";
+		width: 140px;
+		text-align: center;
+	}
+	.search-box {
+		width: 200px;
+		padding: 4px 0;
+		border: none;
+		border-radius: 5px;
+	}
+	.search-sec .cmn-link {
+		border: none;
+		padding: 9px 15px;
+		font-size: 0.5em;
+		font-family: "Century Gothic";
+		margin-left: 10px;
+	}
+	.search-sec {
+		margin-top: 60px;
+	}
+	.btn-list li {
+		float: left;
+	}
 
-  /*Medicine Detail*/
-  .img-sec {
-    float: left;
-    width: 200px;
-  }
-  .img-sec img {
-    width: 200px;
-  }
-  .detail-sec {
-    float: right;
-    width: 200px;
-  }
-  .detail-box {
-    margin: 40px 0px 40px 0px;
-    padding: 20px 50px 100px 50px;
-    font-size: 0.9em;
-    width: 530px;
-  }
-  .detail-list li {
-    padding: 20px 0px;
-    margin-left: 0;
-  }
-  .description {
-    margin-bottom: 100px;
-  }
-  .detail-box .cmn-link {
-    font-size: 0.8em;
-    padding: 7px 10px;
-    float: right;
-    margin-right: 20px;
-    border-radius: none;
-  }
-  .detail-list li p {
-    font-size: 12px;
-  }
-  hr {
-    background-color: #707070;
-  }
-  .description p {
-    margin-top: 20px;
-    font-size: 12px;
-  }
-  .detail-label {
-    font-weight: normal;
-    border: 1px solid black;
-    border-radius: 30px;
-    font-size: 10px;
-    padding: 5px 10px;
-    text-align: right;
-    margin-right: 25px;
-  }
-  .cat-label {
-    margin-right: 12px;
-  }
-  .scroll-bar {
-    overflow-x: auto;
-  }
-  /*table*/
-  .tbl {
-    font-family: Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin: 50px 0px 10px 0px;
-  }
-  .tbl td, .tbl th {
-    border: 1px solid #333;
-    padding: 8px;
-    text-align: center;
-    font-size: 15px;
-  }
-  .tbl th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-  .tbl tr:nth-child(even) {
-    background-color: #fff;
-  }
-  .cart-btn .cmn-btn {
-    font-size: 11px;
-    padding: 10px 10px;
-    width: 150px;
-    margin: 80px 15px 30px 0;
-  }
-  .quantity-box {
-    width: 30px;
-  }
-  .total {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: 10px;
-  }
-  .cmn-link {
-    padding: 4px;
-    border-radius: 4px;
-    font-size: 13px;
-    display: block;
-    margin-bottom: 10px;
-  }
-  .upload-sec .cmn-link {
-    padding: 4px 5px;
-  }
-  .upload-sec .browse-file {
-    width: 200px;
-    margin-bottom: 15px;
-  }
-  /* .pagination-sec {
+	/*Medicine Detail*/
+	.img-sec {
+		float: left;
+		width: 180px;
+	}
+	.img-sec img {
+		width: 180px;
+		height: 180px;
+	}
+	.detail-sec {
+		float: right;
+		width: 300px;
+	}
+	.detail-box {
+		margin: 40px 0px 40px 0px;
+		padding: 20px 20px 100px 20px;
+		font-size: 0.9em;
+		width: 530px;
+	}
+	.detail-list {
+		margin-left: 15px;
+	}
+	.detail-list li {
+		padding: 20px 0px;
+		margin-left: 0;
+	}
+	.description {
+		margin-bottom: 100px;
+	}
+	.detail-box .cmn-link {
+		font-size: 0.8em;
+		padding: 7px 10px;
+		float: right;
+		margin-right: 20px;
+		border-radius: none;
+	}
+	.detail-list li p {
+		font-size: 12px;
+	}
+	hr {
+		background-color: #707070;
+	}
+	.description p {
+		margin-top: 20px;
+		font-size: 12px;
+	}
+	.detail-label {
+		font-weight: normal;
+		border: 1px solid black;
+		border-radius: 30px;
+		font-size: 10px;
+		padding: 5px 10px;
+		text-align: right;
+		margin-right: 25px;
+	}
+	.cat-label {
+		margin-right: 12px;
+	}
+	.scroll-bar {
+		overflow-x: auto;
+	}
+	/*table*/
+	.tbl {
+		font-family: Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+		margin: 50px 0px 10px 0px;
+	}
+	.tbl td, .tbl th {
+		border: 1px solid #333;
+		padding: 8px;
+		text-align: center;
+		font-size: 15px;
+	}
+	.tbl th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+	.tbl tr:nth-child(even) {
+		background-color: #fff;
+	}
+	.cart-btn .cmn-btn {
+		font-size: 11px;
+		padding: 10px 10px;
+		width: 150px;
+		margin: 80px 15px 30px 0;
+	}
+	.quantity-box {
+		width: 30px;
+	}
+	.total {
+		margin-top: 30px;
+		margin-bottom: 20px;
+		text-align: 10px;
+	}
+	.cmn-link {
+		padding: 4px;
+		border-radius: 4px;
+		font-size: 13px;
+		display: block;
+		margin-bottom: 10px;
+	}
+	.upload-sec .cmn-link {
+		padding: 4px 5px;
+	}
+	.upload-sec .browse-file {
+		width: 200px;
+		margin-bottom: 15px;
+	}
+	/*Profile Detail*/
+	.profile-detail-tbl {
+		width: 70%;
+		margin-left: 70px;
+	}
+	.profile-detail-tbl th {
+		width: 50%;
+	}
+	.profile-btn {
+		margin-left: 25px;
+	}
+	.profile-form {
+		margin-left: 40px;
+	}
+	/* .pagination-sec {
     margin: 50px 0 50px 200px;
   } */
 }
