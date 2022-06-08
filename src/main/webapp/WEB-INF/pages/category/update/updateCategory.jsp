@@ -19,6 +19,11 @@
 				<c:url var="updateCategory" value="/updateCategoryConfirm"></c:url>
 				<form:form class="form clearfix" action="updateCategoryConfirm"
 					method="POST" id="form" modelAttribute="category">
+					<c:if test="${errorMsg != null }">
+						<div class="alert alert-danger">
+							<strong>${errorMsg }</strong>
+						</div>
+					</c:if>
 					<form:input type="hidden" path="category_id"
 						value="${category.category_id}" />
 					<label for="category_code">Category Code</label>

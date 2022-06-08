@@ -144,7 +144,6 @@ public class CategoryServiceImpl implements CategoryService {
         return resultCategoryform;
     }
 
-    
     @Override
     public void updateCategory(CategoryForm categoryForm) {
         Category category = new Category(categoryForm);
@@ -157,15 +156,25 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryDao.updateCategory(updateCategory);
     }
 
-    
-      @Override public boolean isCategoryCodeExist(String catCode) { Category
-      resultCategory = this.categoryDao.isCategoryCodeExist(catCode); boolean
-      categoryCodeExist = false; 
-      if (resultCategory != null) { 
-          categoryCodeExist = true;
-     }
-     
-     return categoryCodeExist;
-     }
-     
+    @Override
+    public boolean isCategoryCodeExist(String catCode) {
+        Category resultCategory = this.categoryDao.isCategoryCodeExist(catCode);
+        boolean categoryCodeExist = false;
+        if (resultCategory != null) {
+            categoryCodeExist = true;
+        }
+
+        return categoryCodeExist;
+    }
+
+    @Override
+    public boolean isCategoryNameExist(String catName) {
+        Category resultCategory = this.categoryDao.isCategoryNameExist(catName);
+        boolean categoryNameExist = false;
+        if (resultCategory != null) {
+            categoryNameExist = true;
+        }
+
+        return categoryNameExist;
+    }
 }

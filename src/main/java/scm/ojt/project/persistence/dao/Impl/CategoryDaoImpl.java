@@ -53,11 +53,11 @@ public class CategoryDaoImpl implements CategoryDao {
         Query queryCategoryList = dbCreateQueryList(categoryForm);
         queryCategoryList.setFirstResult(start);
         queryCategoryList.setMaxResults(noOfCategory);
-       
+
         List<Category> categoryList = (List<Category>) queryCategoryList.list();
-       
+
         return categoryList;
-        
+
     }
 
     /**
@@ -189,7 +189,7 @@ public class CategoryDaoImpl implements CategoryDao {
             queryCategoryList.setParameter("category_code", "%" + categoryForm.getCategory_code() + "%");
             queryCategoryList.setParameter("category_name", "%" + categoryForm.getCategory_name() + "%");
 
-        } 
+        }
         return queryCategoryList;
     }
 
@@ -224,4 +224,14 @@ public class CategoryDaoImpl implements CategoryDao {
         return resultCategory;
     }
 
+    @SuppressWarnings("rawtypes")
+    @Override
+    public Category isCategoryNameExist(String catName) {
+        String HqlQuery = "SELECT c FROM Category c where c.category_name = :category_name";
+        Query queryisExist = this.sessionFactory.getCurrentSession().createQuery(HqlQuery);
+        queryisExist.setParameter("category_name", catName);
+        Category resultCategory = (Category) queryisExist.uniqueResult();
+
+        return resultCategory;
+    }
 }

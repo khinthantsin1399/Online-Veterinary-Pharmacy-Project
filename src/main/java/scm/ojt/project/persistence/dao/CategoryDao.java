@@ -111,5 +111,27 @@ public interface CategoryDao {
      */
     public String getCategoryName(CategoryForm categoryForm);
 
-     public Category isCategoryCodeExist(String catCode);
+     /**
+     * <h2> isCategoryCodeExist</h2>
+     * <p>
+     *  method to check category code exists or not
+     * </p>
+     *
+     * @param catCode
+     * @return
+     * @return Category
+     */
+    public Category isCategoryCodeExist(String catCode);
+
+    /**
+     * <h2> isCategoryNameExist</h2>
+     * <p>
+     *  method to check category name exists or not
+     * </p>
+     *
+     * @param catName
+     * @return
+     * @return Category
+     */
+    public Category isCategoryNameExist(String catName);
 }
