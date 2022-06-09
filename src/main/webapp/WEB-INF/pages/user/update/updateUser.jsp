@@ -35,14 +35,14 @@
               <form:input type="text" class="input" id="username"
                 placeholder="Enter user name" name="username"
                 path="username" value="${ oldUserForm.username }" />
-              <form:errors path="username" class="text-danger error" />
+              <form:errors path="username" class="text-danger user-error" />
             
            
               <label for="email">Email</label>
               <form:input type="text" class="input" id="email"
                 placeholder="Enter email" name="email" path="email"
                 value="${ oldUserForm.email }" />
-              <form:errors path="email" class="text-danger error" />
+              <form:errors path="email" class="text-danger user-error" />
             
           
             <!--   <label for="password">Password</label>
@@ -53,7 +53,7 @@
                 id="password" placeholder="Enter password"
                 name="password" path="password"
                 value="${ oldUserForm.password }" />
-              <form:errors path="password" class="text-danger error" />
+              <form:errors path="password" class="text-danger user-error" />
            
            
               <label for="type">Type </label>
@@ -81,19 +81,19 @@
                   <option value="2" selected>USER</option>
                 </c:if>
               </form:select>
-              <form:errors path="type" style="color:red;" />
+              <form:errors path="type" class="text-danger user-error" />
            
               <label for="phone">Phone No</label>
               <form:input type="text" class="input" id="phone"
                 placeholder="Enter phone no" name="phone" path="phone"
                 value="${ oldUserForm.phone }" />
-              <form:errors path="phone" class="text-danger error" />
+              <form:errors path="phone" class="text-danger user-error" />
            
               <label for="address">Address</label>
               <form:textarea type="text" class="input"
                 id="address" placeholder="Enter address" name="address"
                 path="address" value="${ oldUserForm.address }" />
-              <form:errors path="address" class="text-danger error"/>
+              <form:errors path="address" class="text-danger user-error"/>
          
             <div class="clearfix">
               <button type="submit" name="updateConfirm"
