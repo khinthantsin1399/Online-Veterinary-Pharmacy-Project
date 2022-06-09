@@ -22,6 +22,10 @@ $('#myModal').on(
 $(".alert").delay(3000).addClass("in").fadeOut(2000);
 
 
+$(".heightline-medicine").heightLine({
+    fontSizeCheck: true
+});
+
 
 $('#quantity').change(function() {
    var theme = $(this).val();

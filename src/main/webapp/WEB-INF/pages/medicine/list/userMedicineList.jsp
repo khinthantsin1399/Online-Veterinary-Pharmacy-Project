@@ -17,7 +17,7 @@
 <body>
 	<div class="wrapper">
 		<div class="sec-list userMedicine">
-          <div class="banner"></div>
+			<div class="banner"></div>
 			<div class="container">
 				<!-- <h2 class="cmn-ttl">Medicine List</h2> -->
 				<c:if test="${errorMsg != null }">
@@ -55,7 +55,8 @@
 						<c:if test="${!empty MedicineList}">
 							<c:forEach items="${MedicineList}" var="medicine"
 								varStatus="loop">
-								<li><c:if test="${empty medicine.image }">
+								<li class="heightline-medicine"><c:if
+										test="${empty medicine.image }">
 										<img src="<c:url value='/resources/img/noimage.png'/>"
 											alt="Medicine picture">
 									</c:if> <c:if test="${not empty medicine.image }">
@@ -110,5 +111,8 @@
 			</div>
 		</div>
 	</div>
+	<script src="<c:url value="/resources/js/lib/jquery.min.js"/>"></script>
+	<script src="<c:url value="/resources/js/lib/jquery.heightLine.js"/>"></script>
+	<script src="<c:url value="/resources/js/common.js"/>"></script>
 </body>
 </html>

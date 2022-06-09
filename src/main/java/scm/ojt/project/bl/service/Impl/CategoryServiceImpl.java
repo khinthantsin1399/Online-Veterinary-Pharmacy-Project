@@ -177,4 +177,58 @@ public class CategoryServiceImpl implements CategoryService {
 
         return categoryNameExist;
     }
+
+    /**
+     * <h2>isUpdateCategoryCodeExist</h2>
+     * <p>
+     * method to check update category code exists or not
+     * </p>
+     * 
+     * @param categoryCode
+     * @param categoryId
+     * @return
+     */
+    @Override
+    public boolean isUpdateCategoryCodeExist(String categoryCode, int categoryId) {
+        boolean updateCategoryCodeExist = false;
+        List<Category> categoryList = categoryDao.dbUpdatedCategoryExistList(categoryCode);
+        Category categoryById = categoryDao.getCategoryById(categoryId);
+        if (categoryList != null) {
+            for (Category category : categoryList) {
+                if (categoryById != null) {
+                    if (category.getCategory_code() != categoryById.getCategory_code()) {
+                        updateCategoryCodeExist = true;
+                    }
+                }
+            }
+        }
+        return updateCategoryCodeExist;
+    }
+
+    /**
+     * <h2>isUpdateCategoryNameExist</h2>
+     * <p>
+     * method to check update category name exists or not
+     * </p>
+     * 
+     * @param category_name
+     * @param id
+     * @return
+     */
+    @Override
+    public boolean isUpdateCategoryNameExist(String categoryName, Integer categoryId) {
+        boolean updateCategoryNameExist = false;
+        List<Category> categoryList = categoryDao.dbUpdatedCategoryNameExistList(categoryName);
+        Category categoryById = categoryDao.getCategoryById(categoryId);
+        if (categoryList != null) {
+            for (Category category : categoryList) {
+                if (categoryById != null) {
+                    if (category.getCategory_name() != categoryById.getCategory_name()) {
+                        updateCategoryNameExist = true;
+                    }
+                }
+            }
+        }
+        return updateCategoryNameExist;
+    }
 }
