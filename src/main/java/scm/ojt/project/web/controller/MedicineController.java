@@ -185,7 +185,6 @@ public class MedicineController {
         ModelAndView ConfirmView = new ModelAndView("createMedicineConfirm");
         if (result.hasErrors()) {
             ConfirmView = new ModelAndView("createMedicine");
-            // Medicine medicine = new Medicine();
             ConfirmView.addObject("CategoryList", CategoryList);
             ConfirmView.addObject("createMedicineForm", medicineForm);
             ConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0001", null, null));

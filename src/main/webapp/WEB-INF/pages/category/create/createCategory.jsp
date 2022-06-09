@@ -39,13 +39,14 @@
 						placeholder="Enter Category Name" />
 					<form:errors path="category_name" class="text-danger error" />
 
-					<div class="clearfix">
+					<div class="form-cmn-btn clearfix">
 						<button type="submit" class="cmn-btn" name="confirmCategory">Confirm</button>
 						<button type="reset" class="cmn-btn" name="clear">Reset</button>
+						<a href="${pageContext.request.contextPath}/categoryList"
+					class="cmn-btn ">BACK</a>
 					</div>
 				</form:form>
-				<a href="${pageContext.request.contextPath}/categoryList"
-					class="back-btn ">&larr; BACK</a>
+				
 			</div>
 		</div>
 	</div>

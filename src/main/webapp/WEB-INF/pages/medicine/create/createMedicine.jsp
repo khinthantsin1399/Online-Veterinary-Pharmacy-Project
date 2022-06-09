@@ -39,7 +39,7 @@
 					<label for="medicine_description" class="required">Medicine
 						Description</label>
 					<form:textarea path="medicine_description" 
-						value="${createMedicineForm.medicine_description}" class="input"
+						value="${createMedicineForm.medicine_description}" class="input description-txt"
 						placeholder="Enter Medicine Description" />
 					<form:errors path="medicine_description"
 						cssClass="text-danger error" />
@@ -55,15 +55,15 @@
 					<br>
 
 					<label for="unit_in_stock" class="required">Unit In Stock</label>
-					<input name="unit_in_stock" type="number" min="0"
+					<input name="unit_in_stock" type="number"
 						value="${createMedicineForm.unit_in_stock}" class="input"
 						placeholder="Enter Unit In Stock" />
-					<form:errors path="unit_in_stock" cssClass="text-danger error" />
+					<form:errors path="unit_in_stock" class="text-danger unit-error" />
 
 					<label for="amount" class="required">Price</label>
-					<input name="amount" type="number" min="0"
-						value="${createMedicineForm.amount}" class="input"
-						placeholder="Enter Price" />
+					<form:input path="amount" type="number" min="0"
+						value="${createMedicineForm.amount}" class="input description-txt"
+						placeholder="Enter Price" id="price" />
 					<form:errors path="amount" class="text-danger error" />
 
 					<label for="image">Image</label>
@@ -74,18 +74,21 @@
 					<img src="${createMedicineForm.image}" id="medicine_image"
 						class="medicine-img" />
 					<form:input path="image" type="hidden" value="${imageData}" />
-					<div class="clearfix">
+					<div class="form-cmn-btn clearfix">
 						<button type="submit" class="cmn-btn" name="confirmMedicine">Confirm</button>
 
 						<button type="reset" class="cmn-btn" name="clear">Reset</button>
+						
+						<a href="${pageContext.request.contextPath}/medicineList"
+					class="cmn-btn ">BACK</a>
 
 					</div>
 				</form:form>
-				<a href="${pageContext.request.contextPath}/medicineList"
-					class="back-btn ">&larr; BACK</a>
+				
 			</div>
 		</div>
 	</div>
+	
 	<script src="<c:url value="/resources/js/common.js"/>"></script>
 	<script src="<c:url value="/resources/js/imagePreview.js"/>"></script>
 </body>

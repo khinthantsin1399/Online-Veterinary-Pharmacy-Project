@@ -19,6 +19,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Range;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -84,8 +88,10 @@ public class Medicine implements Serializable {
      * unit_in_stock
      * </p>
      */
-    @Min(value = 0, message = "Unit In Stock must be numbers!")
+   
     @Column(name = "unit_in_stock")
+    @Range(min=1, message="Unit In Stock must be positive number!")
+    @NotNull
     private Integer unit_in_stock;
 
     /**
@@ -96,6 +102,7 @@ public class Medicine implements Serializable {
      */
     @Column(name = "amount")
     @Min(value = 0, message = "Price must be numbers!")
+    @NotNull(message="Unit In Stock must be numbers!")
     private double amount;
 
 	/**

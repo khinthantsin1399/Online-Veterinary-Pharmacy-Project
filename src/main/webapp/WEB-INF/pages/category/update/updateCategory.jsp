@@ -34,10 +34,11 @@
 						value="${category.category_name}">
 					<div class="clearfix update-btn">
 						<button type="submit" class="cmn-btn">Update</button>
-						<a class="cmn-btn"
-							href="${pageContext.request.contextPath}/categoryList">Back</a> <a
+						 <a
 							class="cmn-btn"
 							href="${pageContext.request.contextPath}/updateCategory?id=${category.category_id}">Reset</a>
+					<a class="cmn-btn"
+							href="${pageContext.request.contextPath}/categoryList">Back</a>
 					</div>
 				</form:form>
 			</div>

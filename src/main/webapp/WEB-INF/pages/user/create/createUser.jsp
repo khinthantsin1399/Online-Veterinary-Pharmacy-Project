@@ -8,13 +8,14 @@
 <html>
 <head>
 <!-- CSS only -->
+<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 <!-- Optional theme -->
 <link rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css">
-  <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
+  
   
 </head>
 <body>
@@ -38,21 +39,21 @@
               <form:input type="text" class="input" id="username"
                 placeholder="Enter user name" name="username"
                 path="username" value="${ userForm.username }" />
-              <form:errors path="username"  class="text-danger error"/>
+              <form:errors path="username"  class="text-danger user-error"/>
             
            
               <label for="email" class="required">Email</label>
               <form:input type="text" class="input" id="email"
                 placeholder="Enter email" name="email" path="email"
                 value="${ userForm.email }" />
-              <form:errors path="email"  class="text-danger error"/>
+              <form:errors path="email"  class="text-danger user-error"/>
            
            
               <label for="password" class="required">Password</label>
-              <form:input type="password" class="input"
+              <form:input type="password" class="input description-txt"
                 id="password" placeholder="Enter password"
                 name="password" path="password" />
-              <form:errors path="password" class="text-danger error" />
+              <form:errors path="password" class="text-danger user-error" />
            
             <c:if test="${LOGIN_USER.type == 1 }">
           
@@ -81,7 +82,7 @@
                     <option value="2" selected>USER</option>
                   </c:if>
                 </form:select>
-                <form:errors path="type" class="text-danger error" />
+                <form:errors path="type" class="text-danger user-error" />
              
             </c:if>
             <c:if test="${LOGIN_USER.type == null }">
@@ -93,14 +94,14 @@
               <form:input type="text" class="input" id="phone"
                 placeholder="Enter phone no" name="phone" path="phone"
                 value="${ userForm.phone }" />
-              <form:errors path="phone"  class="text-danger error"/>
+              <form:errors path="phone"  class="text-danger user-error"/>
            
            
               <label for="address" class="required">Address</label>
               <form:textarea type="text" class="input"
                 id="address" placeholder="Enter address" name="address"
                 path="address" value="${ userForm.address }" />
-              <form:errors path="address"  class="text-danger error" />
+              <form:errors path="address"  class="text-danger user-error" />
             
             <div class="clearfix">
               <button type="submit" class="cmn-btn">Confirm</button>

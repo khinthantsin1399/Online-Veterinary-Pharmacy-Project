@@ -123,7 +123,7 @@
   background: #32b3b8;
   font-family: "Century Gothic";
   font-size: 20px;
-  padding: 6px;
+  padding: 12px;
   width: 250px;
   text-align: center;
   box-sizing: border-box;
@@ -133,7 +133,10 @@
   border-radius: 5px;
   border: none;
 }
-
+.form-cmn-btn .cmn-btn{
+	width:150px;
+	margin-left:60px;
+}
 .update-btn .cmn-btn {
   width: 160px;
   border: none;
@@ -158,10 +161,12 @@
   border: none;
 }
 
-.input::placeholder {
-  padding-left: 10px;
+.input[type=text]{
+	text-indent:10px;
 }
-
+.description-txt{
+	text-indent:10px;
+}
 .form label, .confirm-list b {
   float: left;
   margin-top: 60px;
@@ -360,7 +365,20 @@ button:hover, .add-btn:hover, .cmn-link:hover {
   display: block;
   margin-left: 320px;
 }
-
+.user-error{
+	 color: #ff0000;
+  font-size: 15px;
+  display: block;
+	margin-left:320px;
+	margin-top:100px;
+}
+.unit-error{
+	 color: #ff0000;
+  font-size: 15px;
+  display: block;
+	margin-left:320px;
+	margin-top:180px;
+}
 .errorblock {
   color: #000;
   background-color: #ffEEEE;

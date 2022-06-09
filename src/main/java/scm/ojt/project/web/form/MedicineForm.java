@@ -5,9 +5,13 @@ import java.util.Date;
 import java.util.List;
 
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
+import org.hibernate.validator.constraints.Range;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
@@ -72,6 +76,9 @@ public class MedicineForm {
 	 * unit_in_stock
 	 * </p>
 	 */
+	
+	 @Range(min=1, message="Unit In Stock must be positive number!")
+	  @NotNull
 	private Integer unit_in_stock;
 
 	/**
@@ -81,6 +88,7 @@ public class MedicineForm {
 	 * </p>
 	 */
 	@Digits(integer = 10, fraction = 2)
+	 @NotNull(message="Unit In Stock must be numbers!")
 	private double amount;
 
 	/**
