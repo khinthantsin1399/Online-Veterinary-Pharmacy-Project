@@ -6,43 +6,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
-<style>
-.dataTables_wrapper .dataTables_paginate {
-  float: none !important;
-  text-align: center !important;
-}
-
-.dataTables_wrapper .dataTables_filter {
-  float: right;
-  text-align: right;
-  visibility: hidden;
-}
-
-.buttons-html5 {
-  margin: 30px;
-}
-
-.badge-success {
-  background-color: green;
-}
-
-.badge-warning {
-  background-color: burlywood;
-}
-
-.input, button, select {
-  width: 140px !important;
-  margin-left: 0px !important;
-}
-
-.btn-excel-down {
-  background-color: #32b3b8;
-  color: #fff;
-}
-</style>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-
 <!-- datatable -->
 <link
   href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
@@ -114,11 +79,14 @@
                       value="${order.date}" /></td>
                   <td><c:if test="${order.status}">
                       <span class="badge badge-success">Success</span>
-                    </c:if> <c:if test="${!order.status}">
+                    </c:if> <c:if test="${!order.status && order.deleted_at == null}">
                       <a href="#"> <span class="badge badge-warning">Not
                           yet</span>
                       </a>
-                    </c:if></td>
+                    </c:if><c:if test="${order.deleted_at != null}">
+                    <a href="#"> <span class="badge badge-reject">Reject</span>
+                      </a>
+                    </c:if> </td>
                   <td>${order.amount }</td>
                   <c:if test="${LOGIN_USER.type != 1 }">
                     <td><a class="cmn-link"
@@ -126,10 +94,10 @@
                         Details</a></td>
                     <c:if test="${LOGIN_USER.type == 0 }">
                       <td><a
-                        class="cmn-link ${order.status ? 'disabled' : ''}"
+                        class="btn cmn-link ${(order.status || order.deleted_at != null) ? 'disabled' : ''}"
                         href="${pageContext.request.contextPath}/order/accept?id=${order.id}">Accept</a>
                         <a
-                        class="cmn-link ${order.status ? 'disabled' : ''}"
+                        class="btn cmn-cancel ${(order.status || order.deleted_at != null) ? 'disabled' : ''}"
                         href="${pageContext.request.contextPath}/order/cancel?id=${order.id}">Cancel</a>
                       </td>
                     </c:if>

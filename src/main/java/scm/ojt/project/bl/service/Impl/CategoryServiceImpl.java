@@ -144,6 +144,14 @@ public class CategoryServiceImpl implements CategoryService {
         return resultCategoryform;
     }
 
+    /**
+     * <h2>updateCategory</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param categoryForm
+     */
     @Override
     public void updateCategory(CategoryForm categoryForm) {
         Category category = new Category(categoryForm);
@@ -156,6 +164,15 @@ public class CategoryServiceImpl implements CategoryService {
         this.categoryDao.updateCategory(updateCategory);
     }
 
+    /**
+     * <h2>isCategoryCodeExist</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param catCode
+     * @return
+     */
     @Override
     public boolean isCategoryCodeExist(String catCode) {
         Category resultCategory = this.categoryDao.isCategoryCodeExist(catCode);
@@ -167,6 +184,15 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryCodeExist;
     }
 
+    /**
+     * <h2>isCategoryNameExist</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param catName
+     * @return
+     */
     @Override
     public boolean isCategoryNameExist(String catName) {
         Category resultCategory = this.categoryDao.isCategoryNameExist(catName);
@@ -177,4 +203,17 @@ public class CategoryServiceImpl implements CategoryService {
 
         return categoryNameExist;
     }
+
+	/**
+	 * <h2>dbGetCategoryCount</h2>
+	 * <p>
+	 * 
+	 * </p>
+	 * 
+	 * @return
+	 */
+	@Override
+	public long doGetCategoryCount() {
+		return this.categoryDao.dbGetCategoryCount();
+	}
 }

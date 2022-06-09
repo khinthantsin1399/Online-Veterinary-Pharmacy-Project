@@ -56,12 +56,12 @@ public class OrderDaoImpl implements OrderDao {
 	public List<OrderDTO> dbGetOrderList() {
 		UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
 		if (Integer.parseInt(user.getType()) == 2) {
-			Query queryOrderId = this.sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.created_user_id = :id AND o.deleted_at = null");
+			Query queryOrderId = this.sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.created_user_id = :id");
 			queryOrderId.setParameter("id", user.getId());
 			List<OrderDTO> orderList = (List<OrderDTO>) queryOrderId.list();
 			return orderList;
 		}
-		return sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o WHERE o.deleted_at = null").list();
+		return sessionFactory.getCurrentSession().createQuery("SELECT o FROM Order o").list();
 	}
 
 	/**

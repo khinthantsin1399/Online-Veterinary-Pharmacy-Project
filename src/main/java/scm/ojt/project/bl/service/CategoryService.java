@@ -118,4 +118,15 @@ public interface CategoryService {
      * @return
      */
     boolean isCategoryNameExist(String catName);
+    
+    /**
+     * <h2>dbGetCategoryCount</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @return
+     * @return long
+     */
+    public long doGetCategoryCount();
 }

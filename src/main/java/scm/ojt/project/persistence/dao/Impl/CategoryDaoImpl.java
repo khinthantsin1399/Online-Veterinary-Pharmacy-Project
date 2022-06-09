@@ -213,6 +213,15 @@ public class CategoryDaoImpl implements CategoryDao {
         return resultCategory;
     }
 
+    /**
+     * <h2>isCategoryCodeExist</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param catCode
+     * @return
+     */
     @SuppressWarnings("rawtypes")
     @Override
     public Category isCategoryCodeExist(String catCode) {
@@ -224,6 +233,15 @@ public class CategoryDaoImpl implements CategoryDao {
         return resultCategory;
     }
 
+    /**
+     * <h2>isCategoryNameExist</h2>
+     * <p>
+     * 
+     * </p>
+     * 
+     * @param catName
+     * @return
+     */
     @SuppressWarnings("rawtypes")
     @Override
     public Category isCategoryNameExist(String catName) {
@@ -234,4 +252,20 @@ public class CategoryDaoImpl implements CategoryDao {
 
         return resultCategory;
     }
+    
+    /**
+     * <h2>dbGetUserCount</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @return
+     * @return long
+     */
+    @SuppressWarnings("rawtypes")
+    @Override
+	public long dbGetCategoryCount() {
+		Query query = this.sessionFactory.getCurrentSession().createQuery("SELECT COUNT(u) FROM Category u");
+		return (long) query.getSingleResult();
+	}
 }

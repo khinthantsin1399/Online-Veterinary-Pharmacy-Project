@@ -134,4 +134,15 @@ public interface CategoryDao {
      * @return Category
      */
     public Category isCategoryNameExist(String catName);
+    
+    /**
+     * <h2>dbGetCategoryCount</h2>
+     * <p>
+     * 
+     * </p>
+     *
+     * @return
+     * @return long
+     */
+    public long dbGetCategoryCount();
 }

@@ -54,11 +54,15 @@
 	border-radius: 10px;
 	padding: 5px 7px;
 	font-size: 12px;
-	background: #007F00;
+	background: #66FF66;
 }
 
 .not-yet-status {
 	background: #F4BC1C;
+}
+
+.reject-status {
+  background: #FF6666;
 }
 
 /*Profile Detail*/
@@ -210,6 +214,9 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 }
 
 /*table*/
+.table .thead-dark {
+  background-color: #32b3b8;
+}
 .tbl {
 	font-family: Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
@@ -279,6 +286,14 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 	padding: 4px;
 	border-radius: 4px;
 	font-size: 13px;
+}
+
+.cmn-cancel {
+  color: #fff;
+  background: #FF6666;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 13px;
 }
 
 .cmk-block {
@@ -544,6 +559,44 @@ hr {
 	content: "";
 }
 
+/* order detail jsp */
+.dataTables_wrapper .dataTables_paginate {
+  float: none !important;
+  text-align: center !important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+  visibility: hidden;
+}
+
+.buttons-html5 {
+  margin: 30px;
+}
+
+.badge-success {
+  background-color: #66FF66;
+}
+
+.badge-warning {
+  background-color: #FFB266;
+}
+
+.badge-reject {
+  background-color: #FF6666;
+}
+
+.input, button, select {
+  width: 140px !important;
+  margin-left: 0px !important;
+}
+
+.btn-excel-down {
+  background-color: #32b3b8;
+  color: #fff;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1040px) {
 	.container {
 		width: 700px;
@@ -780,6 +833,12 @@ hr {
 		margin-bottom: 40px;
 	}
 	.cmn-link {
+		color: #fff;
+		padding: 4px;
+		border-radius: 4px;
+		font-size: 11px;
+	}
+	.cmn-cancel {
 		color: #fff;
 		padding: 4px;
 		border-radius: 4px;
@@ -1069,6 +1128,13 @@ hr {
 		text-align: 10px;
 	}
 	.cmn-link {
+		padding: 4px;
+		border-radius: 4px;
+		font-size: 13px;
+		display: block;
+		margin-bottom: 10px;
+	}
+	.cmn-cancel {
 		padding: 4px;
 		border-radius: 4px;
 		font-size: 13px;

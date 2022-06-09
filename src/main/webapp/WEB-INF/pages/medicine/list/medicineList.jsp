@@ -28,6 +28,11 @@
 						<strong>${completeMsg }</strong>
 					</div>
 				</c:if>
+                <c:if test="${noCategoryMsg != null}">
+                  <div class="alert alert-danger">
+                    <span>${noCategoryMsg}</span>
+                  </div>
+                </c:if>
 				<c:remove var="completeMsg" />
 				<div class="search-sec">
 					<c:url var="addAction" value="/searchMedicine"></c:url>
@@ -52,18 +57,21 @@
 					</form:form>
 				</div>
 
-				<c:forEach items="${uploadErrorMsg}" var="err" varStatus="loop">
+				<%-- <c:forEach items="${uploadErrorMsg}" var="err" varStatus="loop">
 					<c:if test="${err != null }">
 						<div class="alert alert-danger">
 							<strong>${err }</strong>
 						</div>
 					</c:if>
-				</c:forEach>
+				</c:forEach> --%>
+                <br />
+                <c:if test="${uploadErrorMsg != null}">
+                  <span class="text-danger">${uploadErrorMsg}</span>
+                </c:if>
                 <c:if test="${LOGIN_USER.type == '0' }">
     				<form:form
     					action="${pageContext.request.contextPath}/uploadExcel?${_csrf.parameterName}=${_csrf.token}"
     					method="POST" enctype="multipart/form-data" class="upload-sec">
-    					<br />
     					<br />
     					<input type="hidden" name="${_csrf.parameterName}"
     						value="${_csrf.token}" />

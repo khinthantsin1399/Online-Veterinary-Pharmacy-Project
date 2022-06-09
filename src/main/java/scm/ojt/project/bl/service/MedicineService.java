@@ -129,8 +129,9 @@ public ByteArrayInputStream load();
      * 
      * @param file
      * @return void
+     * @throws IOException 
      */
-    public void save(MultipartFile file)throws EncryptedDocumentException, InvalidFormatException;
+    public String save(MultipartFile file)throws EncryptedDocumentException, InvalidFormatException, IOException;
 
     /**
      * <h2> isMedicineCodeExist</h2>

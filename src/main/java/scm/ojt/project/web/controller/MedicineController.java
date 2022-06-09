@@ -1,5 +1,6 @@
 package scm.ojt.project.web.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import scm.ojt.project.bl.dto.CategoryDto;
 import scm.ojt.project.bl.dto.MedicineDto;
@@ -63,6 +65,8 @@ public class MedicineController {
 
 	@Autowired
 	private HttpSession session;
+	
+	private String fileLocation;
 
 	/**
 	 * <h2>getMedicineList</h2>
@@ -142,7 +146,13 @@ public class MedicineController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/createMedicine", method = RequestMethod.GET)
-	public ModelAndView newMedicine(ModelAndView model) {
+	public ModelAndView newMedicine(ModelAndView model, RedirectAttributes redirectAttributes) {
+		long count = this.categoryService.doGetCategoryCount();
+		if (count <= 0) {
+			ModelAndView mv = new ModelAndView("redirect:/medicineList");
+			redirectAttributes.addFlashAttribute("noCategoryMsg", messageSource.getMessage("M_SC_0020", null, null));
+			return mv;
+		}
 		Medicine medicine = new Medicine();
 		ModelAndView createMedicine = new ModelAndView("createMedicine");
 		List<CategoryDto> CategoryList = categoryService.doGetCategoryList();
@@ -630,10 +640,18 @@ public class MedicineController {
 		if (file.getSize() == 0) {
 			uploadView.addObject("uploadErrorMsg", messageSource.getMessage("M_SC_0010", null, null));
 			return uploadView;
+		} else {
+			File currDir = new File(".");
+			String path = currDir.getAbsolutePath();
+			fileLocation = path.substring(0, path.length() - 1) + file.getOriginalFilename();
+			if (fileLocation.endsWith(".xlsx") || fileLocation.endsWith(".xls")) {
+//				this.medicineService.save(file);
+				uploadView.addObject("uploadErrorMsg", this.medicineService.save(file));
+				session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0017", null, null));
+			} else {
+				uploadView.addObject("uploadErrorMsg", messageSource.getMessage("M_SC_0019", null, null));
+			}
 		}
-		this.medicineService.save(file);
-		// uploadView = new ModelAndView("redirect:/medicineList");
-		session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0017", null, null));
 		return uploadView;
 	}
 }

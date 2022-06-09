@@ -41,10 +41,14 @@
 							<td><span class="order-status">Ordered</span>
 							</td>
 						</c:if>
-						<c:if test="${!order.status}">
+						<c:if test="${!order.status && order.deleted_at == null}">
 							<td><span class="order-status not-yet-status">Not yet</span>
 							</td>
 						</c:if>
+                        <c:if test="${order.deleted_at != null}">
+                          <td><span class="order-status reject-status">Reject</span>
+                          </td>
+                        </c:if>
 					<tr>
 						<th><label for="status" class="order-label">Total
 								Price</label></th>
@@ -55,9 +59,9 @@
 
 			<div class="card mt-5">
 				<table class="table table-hover">
-					<thead>
+					<thead class="thead-dark">
 						<tr>
-							<th scope="col">#</th>
+							<th scope="col">No.</th>
 							<th scope="col">Medicine Name</th>
                             <th scope="col">Unit Price</th>
 							<th scope="col">Quantity</th>
@@ -84,7 +88,7 @@
                                 <c:if test="${LOGIN_USER.type == 0 }">
                                     <a
     								href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
-    								class="btn btn-sm btn-info text-white ${order.status ? 'disabled' : ''}">Accept</a>
+    								class="btn btn-sm btn-info text-white ${(order.status || order.deleted_at != null) ? 'disabled' : ''}">Accept</a>
                                 </c:if>
                             </td>
 						</tr>
