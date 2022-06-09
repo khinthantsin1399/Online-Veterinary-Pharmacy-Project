@@ -6,6 +6,45 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
+<style type="text/css">
+/* order detail jsp */
+.dataTables_wrapper .dataTables_paginate {
+  float: none !important;
+  text-align: center !important;
+}
+
+.dataTables_wrapper .dataTables_filter {
+  float: right;
+  text-align: right;
+  visibility: hidden;
+}
+
+.buttons-html5 {
+  margin: 30px;
+}
+
+.badge-success {
+  background-color: #66FF66;
+}
+
+.badge-warning {
+  background-color: #FFB266;
+}
+
+.badge-reject {
+  background-color: #FF6666;
+}
+
+.input, button, select {
+  width: 140px !important;
+  margin-left: 0px !important;
+}
+
+.btn-excel-down {
+  background-color: #32b3b8;
+  color: #fff;
+}
+</style>
 <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 <!-- datatable -->
