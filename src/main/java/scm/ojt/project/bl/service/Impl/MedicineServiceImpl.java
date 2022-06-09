@@ -486,7 +486,7 @@ public class MedicineServiceImpl implements MedicineService {
 			for (int j = row.getFirstCellNum(); j < row.getLastCellNum(); j++) {
 				Cell cell = row.getCell(j);
 				if (cell == null) {
-					return "There is null in the file";
+					return "Wrong Data Entries!";
 				}
 			}
 		}

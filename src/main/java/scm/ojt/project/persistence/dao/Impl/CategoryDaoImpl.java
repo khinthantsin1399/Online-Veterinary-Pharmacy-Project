@@ -98,7 +98,7 @@ public class CategoryDaoImpl implements CategoryDao {
     public List<Category> doGetCategoryList() {
 
         @SuppressWarnings("rawtypes")
-        Query query = sessionFactory.getCurrentSession().createQuery("from Category");
+        Query query = sessionFactory.getCurrentSession().createQuery(SELECT_CATEGORY_LIST_HQL);
         return query.getResultList();
 
     }
@@ -133,7 +133,8 @@ public class CategoryDaoImpl implements CategoryDao {
     public void deleteCategory(Integer catId) {
         Category category = (Category) sessionFactory.getCurrentSession().load(Category.class, catId);
         if (null != category) {
-            this.sessionFactory.getCurrentSession().delete(category);
+           category.setDeletedAt(new Date());
+           this.sessionFactory.getCurrentSession().update(category);
         }
     }
 
@@ -270,7 +271,7 @@ public class CategoryDaoImpl implements CategoryDao {
     @SuppressWarnings("rawtypes")
     @Override
 	public long dbGetCategoryCount() {
-		Query query = this.sessionFactory.getCurrentSession().createQuery("SELECT COUNT(u) FROM Category u");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("SELECT COUNT(c) FROM Category c where c.deletedAt IS NULL");
 		return (long) query.getSingleResult();
 	}
 
