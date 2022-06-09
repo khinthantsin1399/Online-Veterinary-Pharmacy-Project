@@ -78,9 +78,9 @@
         </c:if>
         <div class="search-sec order-sec">
           <ul class="btn-list clearfix">
-            <li><input type="text" class="search-box description-txt"
-              id="orderTableSearch" placeholder="Search order date...">
-            </li>
+            <li><input type="text"
+              class="search-box description-txt" id="orderTableSearch"
+              placeholder="Search order date..."></li>
             <li class="user-btn">
               <button class="cmn-link" type="button">Search</button>
             <li>
@@ -101,7 +101,7 @@
                 <c:if test="${LOGIN_USER.type != 1 }">
                   <th>Order Details</th>
                   <c:if test="${LOGIN_USER.type == 0 }">
-                  <th>Action</th>
+                    <th>Action</th>
                   </c:if>
                 </c:if>
               </tr>
@@ -118,14 +118,15 @@
                       value="${order.date}" /></td>
                   <td><c:if test="${order.status}">
                       <span class="badge badge-success">Success</span>
-                    </c:if> <c:if test="${!order.status && order.deleted_at == null}">
+                    </c:if> <c:if
+                      test="${!order.status && order.deleted_at == null}">
                       <a href="#"> <span class="badge badge-warning">Not
                           yet</span>
                       </a>
-                    </c:if><c:if test="${order.deleted_at != null}">
-                    <a href="#"> <span class="badge badge-reject">Reject</span>
+                    </c:if> <c:if test="${order.deleted_at != null}">
+                      <a href="#"> <span class="badge badge-reject">Reject</span>
                       </a>
-                    </c:if> </td>
+                    </c:if></td>
                   <td>${order.amount }</td>
                   <c:if test="${LOGIN_USER.type != 1 }">
                     <td><a class="cmn-link"
@@ -134,10 +135,12 @@
                     <c:if test="${LOGIN_USER.type == 0 }">
                       <td><a
                         class="btn cmn-link ${(order.status || order.deleted_at != null) ? 'disabled' : ''}"
-                        href="${pageContext.request.contextPath}/order/accept?id=${order.id}">Accept</a>
+                        href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
+                        onclick="if (!(confirm('Are you sure you want to accept this order?'))) return false">Accept</a>
                         <a
                         class="btn cmn-cancel ${(order.status || order.deleted_at != null) ? 'disabled' : ''}"
-                        href="${pageContext.request.contextPath}/order/cancel?id=${order.id}">Cancel</a>
+                        href="${pageContext.request.contextPath}/order/cancel?id=${order.id}"
+                        onclick="if (!(confirm('Are you sure you want to cancel this order?'))) return false">Cancel</a>
                       </td>
                     </c:if>
                   </c:if>
@@ -160,8 +163,8 @@
 			"paging" : true,
 			"pageLength" : 5,
 			"bLengthChange" : false,
-			"bFilter": true,
-		    "bInfo": false,
+			"bFilter" : true,
+			"bInfo" : false,
 			"bAutoWidth" : false,
 			dom : 'Bfrtip',
 			buttons : [ {

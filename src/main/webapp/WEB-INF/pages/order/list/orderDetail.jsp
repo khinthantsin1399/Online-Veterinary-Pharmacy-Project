@@ -96,7 +96,8 @@
         <c:if test="${LOGIN_USER.type == 0 }">
           <a
             href="${pageContext.request.contextPath}/order/accept?id=${order.id}"
-            class="btn btn-sm btn-info text-white ${(order.status || order.deleted_at != null) ? 'disabled' : ''}">Accept</a>
+            class="btn btn-sm btn-info text-white ${(order.status || order.deleted_at != null) ? 'disabled' : ''}"
+            onclick="if (!(confirm('Are you sure you want to accept this order?'))) return false">Accept</a>
         </c:if>
       </div>
     </div>
