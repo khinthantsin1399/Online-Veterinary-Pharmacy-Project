@@ -18,8 +18,8 @@
 					<input type="checkbox" id="checkbox_toggle" />
 					<label for="checkbox_toggle" class="hamburger">&#9776;</label>
 					<div class="menu">
-						<li><a href="#">Home</a></li>
-                        <li><a href="${pageContext.request.contextPath}/userMedicineList">Medicine List</a></li>
+						<li><a href="${pageContext.request.contextPath}/userMedicineList">Home</a></li>
+                        <%-- <li><a href="${pageContext.request.contextPath}/userMedicineList">Medicine List</a></li> --%>
                         <li><a href="${pageContext.request.contextPath}/orderList">Order History</a></li>
 						<li class="services menu-hide"><a class="profileDropUserbtn"
 							onclick="myProfileUserFunction()"><i class="fa-solid fa-user"></i>

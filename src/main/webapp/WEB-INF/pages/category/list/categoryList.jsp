@@ -32,9 +32,9 @@
 						method="post" id="form">
 						<ul class="btn-list clearfix">
 							<li><label><input type="text"
-									class="form-control form-control-sm search-text-pd"
-									aria-controls="example1" name="search-input" class="search-box"
-									value="${searchData }"></label></li>
+									class="search-box description-txt"
+									aria-controls="example1" name="search-input"
+									value="${searchData }" placeholder="Search..."></label></li>
 							<li><input name="searchCategory" type="submit"
 								value="Search" class="cmn-link"></li>
                             <c:if test="${LOGIN_USER.type == '0' }">

@@ -36,9 +36,9 @@
 					<form:form action="${addAction}" modelAtrribute="medicineForm"
 						method="post" id="form" class="searchForm-mr">
 						<ul class="btn-list clearfix">
-							<li><label><input type="text" class="search-box"
+							<li><label><input type="text" class="search-box description-txt"
 									aria-controls="example1" name="search-input"
-									value="${searchData }"></label></li>
+									value="${searchData }" placeholder="Search..."></label></li>
 							<li><input name="searchMedicine" type="submit"
 								value="Search" class="cmn-link"></li>
 							<c:if test="${isCart}">

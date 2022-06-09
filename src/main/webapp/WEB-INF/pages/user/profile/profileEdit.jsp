@@ -37,20 +37,20 @@
               <form:input type="text" class="input" id="username"
                 placeholder="Enter user name" name="username"
                 path="username" value="${ profileEditForm.username }" />
-              <form:errors path="username" class="text-danger error" />
+              <form:errors path="username" class="text-danger user-error" />
           
               <label for="email">Email</label>
               <form:input type="text" class="input" id="email"
                 placeholder="Enter email" name="email" path="email"
                 value="${ profileEditForm.email }" />
-              <form:errors path="email"  class="text-danger error" />
+              <form:errors path="email"  class="text-danger user-error" />
            
             <!--   <label for="password">Password</label>--> 
               <form:input type="hidden" class="form-control"
                 id="password" placeholder="Enter password"
                 name="password" path="password"
                 value="${ profileEditForm.password }" />
-              <form:errors path="password"  class="text-danger error"/>
+              <form:errors path="password"  class="text-danger user-error"/>
             
               <label for="type">Type</label>
               <form:select path="type" id="type" class="input"
@@ -84,19 +84,19 @@
                   </c:otherwise>
                 </c:choose>
               </form:select>
-              <form:errors path="type"  class="text-danger error" />
+              <form:errors path="type"  class="text-danger user-error" />
            
               <label for="phone">Phone No</label>
               <form:input type="text" class="input" id="phone"
                 placeholder="Enter phone no" name="phone" path="phone"
                 value="${ profileEditForm.phone }" />
-              <form:errors path="phone"  class="text-danger error" />
+              <form:errors path="phone"  class="text-danger user-error" />
            
               <label for="address">Address</label>
               <form:textarea type="text" class="input"
                 id="address" placeholder="Enter address" name="address"
                 path="address" value="${ profileEditForm.address }" />
-              <form:errors path="address"  class="text-danger error" />
+              <form:errors path="address"  class="text-danger user-error" />
           <div class="clearfix">
               <button type="submit" name="editProfile"
                 class="cmn-btn">Edit</button>

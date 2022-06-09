@@ -25,7 +25,8 @@
             varStatus="loop">
             <c:if test="${loop.index == 0}">
               <a class="cmn-btn"
-                href="${pageContext.request.contextPath}/cart/checkout?id=${cartDetail.cart.id}">Checkout</a>
+                href="${pageContext.request.contextPath}/cart/checkout?id=${cartDetail.cart.id}"
+                onclick="if (!(confirm('Are you sure you want to checkout this items?'))) return false">Checkout</a>
             </c:if>
           </c:forEach>
         </div>

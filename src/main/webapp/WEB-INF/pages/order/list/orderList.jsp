@@ -76,9 +76,9 @@
           <p class="card-description text-success text-center">
             ${errorMsg }</p>
         </c:if>
-        <div class="search-sec">
+        <div class="search-sec order-sec">
           <ul class="btn-list clearfix">
-            <li><input type="text" class="search-box"
+            <li><input type="text" class="search-box description-txt"
               id="orderTableSearch" placeholder="Search order date...">
             </li>
             <li class="user-btn">

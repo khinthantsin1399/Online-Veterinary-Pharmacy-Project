@@ -17,7 +17,7 @@
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 </head>
 <body>
-  <div class="wrapper">
+  <div class="wrapper" style="padding-bottom: 6%;">
     <div class="container">
       <h2 class="cmn-ttl">Order Detail</h2>
       <div class="order-detail-sec clearfix">

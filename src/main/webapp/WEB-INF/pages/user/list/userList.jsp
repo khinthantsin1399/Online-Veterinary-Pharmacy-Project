@@ -37,7 +37,7 @@
         <%-- <a href="${logoutUrl}">Log out</a> --%>
         <div class="search-sec">
           <ul class="btn-list clearfix">
-            <li><input type="text" class="search-box"
+            <li><input type="text" class="search-box description-txt"
               id="userTableSearch" placeholder="Search user...">
             </li>
             <li class="user-btn">

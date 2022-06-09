@@ -58,7 +58,7 @@
             <c:if test="${LOGIN_USER.type == 1 }">
           
                 <label for="type" class="required">Type</label>
-                <form:select path="type" id="type" class="form-select input"
+                <form:select path="type" id="type" class="form-select input description-txt"
                   aria-label="Default select example"
                   value="${ userForm.type }">
                   <c:if test="${ userForm.type == null }">

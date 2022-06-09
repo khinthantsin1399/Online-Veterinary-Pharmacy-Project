@@ -421,8 +421,12 @@ public class UserController {
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/profile/update", params = "editProfile", method = RequestMethod.POST)
-	public ModelAndView profileUpdate(@ModelAttribute("profileEditForm") UserForm profileForm, HttpSession session,
+	public ModelAndView profileUpdate(@ModelAttribute("profileEditForm") @Valid UserForm profileForm, BindingResult result, HttpSession session,
 	        RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("profileEdit");
+			return modelAndView;
+		}
 		this.userService.doUpdateUser(profileForm);
 		session.setAttribute("LOGIN_USER", authService.doGetLoggedInUser());
 		redirectAttributes.addFlashAttribute("errorMsg", messageSource.getMessage("M_SC_USR_0004", null, null));
@@ -430,7 +434,7 @@ public class UserController {
 		if (Integer.parseInt(user.getType()) == 2) {
 			return new ModelAndView("redirect:/userMedicineList");
 		}
-		ModelAndView updateUserView = new ModelAndView("redirect:/medicineList");
+		ModelAndView updateUserView = new ModelAndView("redirect:/user/list");
 		return updateUserView;
 	}
 

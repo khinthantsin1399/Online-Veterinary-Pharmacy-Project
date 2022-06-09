@@ -5,7 +5,7 @@
 }
 
 .sec-list {
-  padding-bottom: 25%;
+  padding-bottom: 19%;
 }
 
 .container {
@@ -72,7 +72,7 @@
 }
 
 .profile-detail-tbl th {
-  width: 50%;
+  width: 40%;
 }
 
 .profile-btn {
@@ -105,7 +105,7 @@
 
 .login .medicine-link {
   float: left;
-  margin-left: 110px;
+  margin-left: 135px;
   margin-top: 50px;
 }
 
@@ -252,7 +252,7 @@ button:hover, .add-btn:hover, .cmn-link:hover {
   border-top: 1px solid #fff;
   background-color: #32b3b8;
   bottom: 0;
-  /*position: fixed;*/
+  position: fixed;
   width: 100%;
 }
 
@@ -441,7 +441,8 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 
 .medicine-list .cmn-link {
   padding: 10px 12px;
-  margin-left: 8px;
+  /* margin-left: 8px; */
+  margin-left: 20px;
   font-size: 1em;
   font-family: "Century Gothic";
 }
@@ -481,6 +482,11 @@ button:hover, .add-btn:hover, .cmn-link:hover {
 .user-btn button {
   width: 80px;
   margin-top: 0px;
+  margin-left: 30px;
+}
+
+.order-sec .search-box {
+  margin-right: 20px;
 }
 
 .btn-list li a {
@@ -600,7 +606,7 @@ hr {
     text-align: right;
   }
   .login .medicine-link {
-    margin-left: 60px;
+    margin-left: 100px;
     margin-top: 50px;
   }
   /*Form*/
@@ -883,7 +889,7 @@ hr {
   }
   .login .medicine-link {
     margin-top: 50px;
-    margin-left: 30px;
+    margin-left: 73px;
   }
   /*Form*/
   .cmn-ttl {

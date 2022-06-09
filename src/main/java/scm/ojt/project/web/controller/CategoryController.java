@@ -325,7 +325,6 @@ public class CategoryController {
      * @return
      * @return ModelAndView
      */
-
     @RequestMapping(value = "/searchCategory", params = "searchCategory", method = RequestMethod.POST)
     public ModelAndView searchCategory(@RequestParam("search-input") String search_input, HttpServletRequest requestt) {
 
@@ -334,7 +333,7 @@ public class CategoryController {
 
         if (search_input.isEmpty()) {
             this.getPagination(categoryListView, 1, 3, false, categoryForm);
-            categoryListView.addObject("errorMsg", messageSource.getMessage("M_SC_0015", null, null));
+//            categoryListView.addObject("errorMsg", messageSource.getMessage("M_SC_0015", null, null));
 
         } else {
             categoryForm.setCategory_code(search_input);

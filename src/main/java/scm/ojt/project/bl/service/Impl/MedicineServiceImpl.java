@@ -480,6 +480,9 @@ public class MedicineServiceImpl implements MedicineService {
 		if (!extension.equals("xlsx") && !extension.equals("xls")) {
 			return "File extension Wrong!";
 		}
+		if (sheet.getFirstRowNum() == 0) {
+			return "No Data Not Found";
+		}
 		// check cell
 		for (int i = sheet.getFirstRowNum(); i <= sheet.getLastRowNum(); i++) {
 			Row row = sheet.getRow(i);
