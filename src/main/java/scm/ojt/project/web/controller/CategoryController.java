@@ -171,7 +171,7 @@ public class CategoryController {
     public ModelAndView deleteCategory(HttpServletRequest request) {
         int catId = Integer.parseInt(request.getParameter("id"));
         categoryService.deleteCategory(catId);
-        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0013", null, null));
+        session.setAttribute("completeMsg", messageSource.getMessage("M_SC_0006", null, null));
         return new ModelAndView("redirect:/categoryList");
     }
 

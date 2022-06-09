@@ -260,13 +260,12 @@ public class CategoryDaoImpl implements CategoryDao {
     }
     
     /**
-     * <h2>dbGetUserCount</h2>
+     * <h2>dbGetCategoryCount</h2>
      * <p>
      * 
      * </p>
-     *
+     * 
      * @return
-     * @return long
      */
     @SuppressWarnings("rawtypes")
     @Override
