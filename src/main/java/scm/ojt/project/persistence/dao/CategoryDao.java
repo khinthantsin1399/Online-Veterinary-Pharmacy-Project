@@ -145,4 +145,28 @@ public interface CategoryDao {
      * @return long
      */
     public long dbGetCategoryCount();
+
+    /**
+     * <h2>isUpdateCategoryCodeExist</h2>
+     * <p>
+     * method to check update category code exists or not
+     * </p>
+     * 
+     * @param categoryCode
+     * @param categoryId
+     * @return
+     */
+    public List<Category> dbUpdatedCategoryExistList(String categoryCode);
+
+    /**
+     * <h2>isUpdateCategoryNameExist</h2>
+     * <p>
+     * method to check update category name exists or not
+     * </p>
+     * 
+     * @param category_name
+     * @param id
+     * @return
+     */
+    public List<Category> dbUpdatedCategoryNameExistList(String categoryName);
 }

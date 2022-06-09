@@ -34,6 +34,12 @@ public class CategoryDaoImpl implements CategoryDao {
     public static String SELECT_CATEGORY_BY_SEARCH_DATA = "AND (c.category_code like :category_code "
             + "OR c.category_name like :category_name) ";
 
+    public static String SELECT_CATEGORY_BY_CODE_HQL = "SELECT c FROM Category c "
+            + "WHERE c.category_code = :category_code ";
+
+    public static String SELECT_CATEGORY_BY_NAME_HQL = "SELECT c FROM Category c "
+            + "WHERE c.category_name = :category_name ";
+
     /**
      * <h2>dbGetCategoryListPagi</h2>
      * <p>
@@ -207,7 +213,7 @@ public class CategoryDaoImpl implements CategoryDao {
     @Override
     public String getCategoryName(CategoryForm categoryForm) {
         Query queryCategoryName = this.sessionFactory.getCurrentSession().createQuery(
-                "SELECT c.category_name FROM Category c JOIN Medicine m where c.category_id = m.category_id");
+                "SELECT c.category_name FROM Category c JOIN Category m where c.category_id = m.category_id");
         queryCategoryName.setParameter("category_name", categoryForm.getCategory_name());
         String resultCategory = (String) queryCategoryName.uniqueResult();
         return resultCategory;
@@ -268,4 +274,22 @@ public class CategoryDaoImpl implements CategoryDao {
 		Query query = this.sessionFactory.getCurrentSession().createQuery("SELECT COUNT(u) FROM Category u");
 		return (long) query.getSingleResult();
 	}
+
+    @SuppressWarnings("rawtypes")
+    @Override
+    public List<Category> dbUpdatedCategoryExistList(String categoryCode) {
+        Query queryCategory = this.sessionFactory.getCurrentSession().createQuery(SELECT_CATEGORY_BY_CODE_HQL);
+        queryCategory.setParameter("category_code", categoryCode);
+        List<Category> categoryList = (List<Category>) queryCategory.list();
+        return categoryList;
+    }
+
+    @SuppressWarnings("rawtypes")
+    @Override
+    public List<Category> dbUpdatedCategoryNameExistList(String categoryName) {
+        Query queryCategory = this.sessionFactory.getCurrentSession().createQuery(SELECT_CATEGORY_BY_NAME_HQL);
+        queryCategory.setParameter("category_name", categoryName);
+        List<Category> categoryList = (List<Category>) queryCategory.list();
+        return categoryList;
+    }
 }

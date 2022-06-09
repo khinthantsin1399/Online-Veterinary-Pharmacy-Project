@@ -216,12 +216,12 @@ public class CategoryController {
             updateConfirmView = new ModelAndView("updateCategory");
             updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0002", null, null));
             return updateConfirmView;
-        } else if (this.categoryService.isCategoryCodeExist(updateCategoryForm.getCategory_code())) {
+        } else if (this.categoryService.isUpdateCategoryCodeExist(updateCategoryForm.getCategory_code(),updateCategoryForm.getCategory_id())) {
             updateConfirmView = new ModelAndView("updateCategory");
             updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0003", null, null));
             return updateConfirmView;
 
-        } else if (this.categoryService.isCategoryNameExist(updateCategoryForm.getCategory_name())) {
+        } else if (this.categoryService.isUpdateCategoryNameExist(updateCategoryForm.getCategory_name(),updateCategoryForm.getCategory_id())) {
             updateConfirmView = new ModelAndView("updateCategory");
             updateConfirmView.addObject("errorMsg", messageSource.getMessage("M_SC_0008", null, null));
             return updateConfirmView;

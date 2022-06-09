@@ -129,4 +129,28 @@ public interface CategoryService {
      * @return long
      */
     public long doGetCategoryCount();
+
+    /**
+     * <h2> isUpdateCategoryCodeExist </h2>
+     * <p>
+     * method to check update category code exists or not
+     * </p>
+     * 
+     * @param categoryCode
+     * @param categoryId
+     * @return
+     */
+    boolean isUpdateCategoryCodeExist(String categoryCode, int categoryId);
+
+    /**
+     * <h2> isUpdateCategoryNameExist </h2>
+     * <p>
+     * method to check update category name exists or not
+     * </p>
+     * 
+     * @param category_name
+     * @param id
+     * @return
+     */
+    boolean isUpdateCategoryNameExist(String categoryName, Integer categoryId);
 }
